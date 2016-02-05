@@ -1,4 +1,4 @@
-package fms.model.dal;
+package fms.dal;
 
 public class DBHelper {
 
