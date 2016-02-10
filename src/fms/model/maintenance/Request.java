@@ -16,6 +16,7 @@ public class Request {
 		this.problem=problem;
 		this.facility=facility;
 		this.requestDate=requestDate;
+		this.completeDate=completeDate;
 		
 	}
 

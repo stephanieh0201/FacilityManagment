@@ -5,7 +5,7 @@ public class Room {
 	private int roomID;
 	private Facility facility;
 	
-	public Room(int capacity, int roomID) {
+	public Room(int roomID, int capacity) {
 		this.roomID=roomID;
 		this.capacity=capacity;
 		

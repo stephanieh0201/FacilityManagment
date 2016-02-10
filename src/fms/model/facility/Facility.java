@@ -12,11 +12,11 @@ public class Facility implements IFacility {
 	private User user;
 
 	
-	public Facility(int facilityID, String information, List<Room> roomsList) {
-		this.facilityID=facilityID;
-		this.information=information;
-		this.roomsList=roomsList;
-		facilityList.add(this);
+	public Facility() {
+//		this.facilityID=facilityID;
+//		this.information=information;
+//		this.roomsList=roomsList;
+//		facilityList.add(this);
 		
 	}
 
@@ -27,6 +27,7 @@ public class Facility implements IFacility {
 	public void setFacilityID(int facilityID) {
 		this.facilityID=facilityID;
 	}
+	
 	
 	@Override
 	public void listFacilities() {

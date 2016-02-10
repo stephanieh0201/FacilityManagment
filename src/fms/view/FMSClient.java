@@ -19,8 +19,14 @@ public class FMSClient {
 		rooms2.add(new Room(1000,5));
 		rooms2.add(new Room(2500,6));
 		System.out.println("creating facilities with rooms");
-		Facility Facility1 = new Facility(23, "business building", rooms1);
-		Facility Facility2 = new Facility(55, "large rooms", rooms2);
+		Facility Facility1 = new Facility();
+		Facility1.setFacilityID(23);
+		Facility1.setFacilityInformation("business building");
+		Facility1.setRooms(rooms1);
+		Facility Facility2 = new Facility();
+		Facility2.setFacilityID(55);
+		Facility2.setFacilityInformation("large rooms");
+		Facility2.setRooms(rooms2);
 		System.out.println("listing facilities");
 		Facility1.listFacilities();
 		System.out.println("request capacity of facility2");
