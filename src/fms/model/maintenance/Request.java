@@ -10,6 +10,7 @@ public class Request {
 	private Facility facility;
 	private Date requestDate;
 	private Date completeDate;
+	private Cost cost;
 	
 	public Request(int requestID, String problem, Facility facility, Date requestDate, Date completeDate) {
 		this.requestID=requestID;
@@ -17,6 +18,7 @@ public class Request {
 		this.facility=facility;
 		this.requestDate=requestDate;
 		this.completeDate=completeDate;
+		cost=new Cost(problem);
 		
 	}
 
@@ -60,5 +62,7 @@ public class Request {
 		this.completeDate = completeDate;
 	}
 	
-	
+	public int getCost() {
+		return cost.getCost();
+	}
 }

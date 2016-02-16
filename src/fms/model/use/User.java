@@ -4,15 +4,10 @@ public class User {
 	private int userID;
 	private String firstName;
 	private String lastName;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String address;
 	
-	public User(int userID, String firstName, String lastName, int phoneNumber, String address) {
-		this.setUserID(userID);
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
-		this.setPhoneNumber(phoneNumber);
-		this.setAddress(address);
+	public User() {
 	}
 
 	public int getUserID() {
@@ -39,11 +34,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

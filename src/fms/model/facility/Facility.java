@@ -2,14 +2,16 @@ package fms.model.facility;
 
 import java.util.*;
 
+import fms.model.use.Customer;
+import fms.model.use.IFacilityUse;
 import fms.model.use.User;
 
-public class Facility implements IFacility {
+public class Facility implements IFacility, IFacilityUse {
 	private int facilityID;
-	private String information;
 	private List<Room> roomsList;
 	private static List<Facility>facilityList=new ArrayList<Facility>();
-	private User user;
+	private Customer customer;
+	private Details details;
 
 	
 	public Facility() {
@@ -46,12 +48,12 @@ public class Facility implements IFacility {
 	
 	@Override
 	public String getFacilityInformation() {
-		return information;
+		return details.getInformation();
 	}
 	
 
 	public void setFacilityInformation(String information) {
-		this.information=information;
+		details.setInformation(information);
 	}
 	
 	@Override
@@ -80,11 +82,19 @@ public class Facility implements IFacility {
 		return false;
 	}
 
-	public User getUser() {
-		return user;
+	public Customer getUser() {
+		return customer;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Details getDetails() {
+		return details;
+	}
+
+	public void setDetails(Details details) {
+		this.details = details;
 	}
 }

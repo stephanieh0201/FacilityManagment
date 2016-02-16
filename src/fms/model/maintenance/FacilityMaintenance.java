@@ -7,8 +7,9 @@ import java.util.List;
 public class FacilityMaintenance implements IFacilityMaintenance {
 	private int ID;
 	private Request request;
-	private int cost=100;
+	//private int cost=100;
 	private List<Request> listRequests = new ArrayList<Request>();
+	
 	
 	public FacilityMaintenance(){
 		
@@ -31,7 +32,9 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	@Override
 	public int calcMaintenanceCostForFacility(Request request) {
 		int days = request.getCompleteDate().compareTo(request.getRequestDate()) +1;
-		return days*cost;
+		int amount = request.getCost()
+		return days*amount;
+		
 	}
 
 	@Override

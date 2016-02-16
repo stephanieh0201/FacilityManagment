@@ -8,6 +8,7 @@ import fms.model.facility.*;
 
 
 public class FacilityUse implements IFacilityUse {
+	private Customer customer;
 	private Date startDate;
 	private Date endDate;
 	private List<User> users=new ArrayList<User>();
@@ -25,8 +26,8 @@ public class FacilityUse implements IFacilityUse {
 	}
 
 	@Override
-	public void assignFacilityToUse(Facility facilty, User user) {
-		facility.setUser(user);	
+	public void assignFacilityToUse(Facility facility1, Customer customer) {
+		facility1.setUser(customer);	
 		
 	}
 

@@ -30,7 +30,7 @@ public FacilityDAO() {}
     	  Facility facility = new Facility();
 	      while ( facilityResults.next() ) {
 	    	  facility.setFacilityID(facilityResults.getInt("facilityID"));
-	    	  facility.setFacilityInformation(facilityResults.getString("information"));
+	    	//  facility.setFacilityInformation(facilityResults.getString("information"));
 	      }
 	      //close to manage resources
 	      facilityResults.close();

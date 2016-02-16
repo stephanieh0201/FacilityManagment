@@ -27,7 +27,7 @@ public class FMSClient2 {
     Facility searchedFacility = manager.findFacilityById(2); 
     
       System.out.println("FMSClient2: *************** Here is searched customer information *************************");
-      System.out.println("ID:" + searchedFacility.getFacilityID() + " " + searchedFacility.getFacilityInformation());
+      System.out.println("ID:" + searchedFacility.getFacilityID());
       List<Room> rooms = searchedFacility.getRooms();
       for (Room r:rooms){
     	  System.out.println("Room ID:" + r.getRoomID());
