@@ -29,7 +29,7 @@ public class DBHelper {
  
 		try {
  
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/FacilityManagement", "sverlingo", "Vznkqrhs7?");
+			connection = DriverManager.getConnection("jdbc:http://162.243.249.75/phpmyadmin/FacilityManagement", "root", "henry2992");
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery("SELECT VERSION()");
 
