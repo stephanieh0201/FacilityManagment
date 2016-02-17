@@ -6,7 +6,7 @@ import fms.model.use.Customer;
 import fms.model.use.IFacilityUse;
 import fms.model.use.User;
 
-public class Facility implements IFacility, IFacilityUse {
+public class Facility implements IFacility {
 	private int facilityID;
 	private List<Room> roomsList;
 	private static List<Facility>facilityList=new ArrayList<Facility>();

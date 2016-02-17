@@ -23,13 +23,13 @@ public class DBHelper {
  
 		}
  
-		System.out.println("DBHelper: PostgreSQL JDBC Driver Registered!");
+		System.out.println("DBHelper: MySQL JDBC Driver Registered!");
  
 		Connection connection = null;
  
 		try {
  
-			connection = DriverManager.getConnection("jdbc:http://162.243.249.75/phpmyadmin/FacilityManagement", "root", "henry2992");
+			connection = DriverManager.getConnection("jdbc:mysql://162.243.249.75/FacilityManagement", "root", "henry2992");
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery("SELECT VERSION()");
 

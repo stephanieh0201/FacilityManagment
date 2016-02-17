@@ -21,7 +21,7 @@ public FacilityDAO() {}
 	    try { 		
 	    	//Get Facility
 	    	Statement st = DBHelper.getConnection().createStatement();
-	    	String selectFacilityQuery = "SELECT facilityID, information FROM facility WHERE facilityID = '" + facilityID + "'";
+	    	String selectFacilityQuery = "SELECT facilityID FROM facility WHERE facilityID = '" + facilityID + "'";
 
 	    	ResultSet facilityResults = st.executeQuery(selectFacilityQuery);      
 	    	System.out.println("FacilityDAO: *************** Query " + selectFacilityQuery);
@@ -55,7 +55,7 @@ public FacilityDAO() {}
 	      return facility;
 	    }	    
 	    catch (SQLException se) {
-	      System.err.println("CustomerDAO: Threw a SQLException retrieving the customer object.");
+	      System.err.println("FacilityDAO: Threw a SQLException retrieving the facility object.");
 	      System.err.println(se.getMessage());
 	      se.printStackTrace();
 	    }
