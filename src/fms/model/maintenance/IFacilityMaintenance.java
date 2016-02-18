@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IFacilityMaintenance {
 	public Request makeFacilityMaintRequest(Request request); 
-	public Date scheduleMaintenance(Date date);
+	public String scheduleMaintenance(String date);
 	public int calcMaintenanceCostForFacility(Request request);
 	public int calcProblemRateForFacility();
 	public int calcDownTimeForFacility(Request request);

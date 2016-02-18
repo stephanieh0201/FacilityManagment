@@ -29,7 +29,7 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 	@Override
-	public Date scheduleMaintenance(Date date) {
+	public String scheduleMaintenance(String date) {
 		request.setRequestDate(date);
 		return date;
 
