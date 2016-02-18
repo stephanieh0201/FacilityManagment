@@ -9,70 +9,73 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fms.model.Manager.FacilityManager;
+import fms.model.Manager.MaintenanceManager;
 import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
+import fms.model.maintenance.FacilityMaintenance;
 
 
 public class FMSClient2 {
 
 	public static void main(String args[]) throws Exception {
 		
-		//Client will use the customer service to have access to anything related to customer functionality.
+		//Client will use the facility manager to have access to anything related to facility functionality.
 	    System.out.println("*************** Creating Facility Manager object *************************");
 		FacilityManager manager = new FacilityManager();    
 
         System.out.println("FMSClient2: *************** trying to search facility in the database *************************");
 
-    //Find a customer if already exists; if not, create a new one.
-    Facility searchedFacility = manager.findFacilityById(2); 
+        //Find a facility 
+        Facility searchedFacility = manager.findFacilityById(2); 
     
-      System.out.println("FMSClient2: *************** Here is searched facility information *************************");
-      System.out.println("ID:" + searchedFacility.getFacilityID());
-      List<Room> rooms = searchedFacility.getRooms();
-      for (Room r:rooms){
-    	  System.out.println("Room ID:" + r.getRoomID());
-          System.out.println("Capacity:"+ r.getCapacity());
-    	  
-      }
-      System.out.println("Facility "+ searchedFacility.getFacilityID() + " capacity: " + searchedFacility.requestAvailableCapacity());
-      System.out.println("Facility detials: " + searchedFacility.getDetails().toString());
-      System.out.println("-----------");
-      Facility Facility1 = new Facility();
-      List<Room> rooms1 = new ArrayList<Room>();
+        System.out.println("FMSClient2: *************** Here is searched facility information *************************");
+        System.out.println("ID:" + searchedFacility.getFacilityID());
+        List<Room> rooms = searchedFacility.getRooms();
+        for (Room r:rooms){
+        	System.out.println("Room ID:" + r.getRoomID());
+        	System.out.println("Capacity:"+ r.getCapacity());
+    	}
+        System.out.println("Facility "+ searchedFacility.getFacilityID() + " capacity: " + searchedFacility.requestAvailableCapacity());
+        System.out.println("Facility detials: " + searchedFacility.getDetails().toString());
+        System.out.println("-----------");
+        
+        /*//create a new facility and add to the database
+        Facility Facility1 = new Facility();
+        List<Room> rooms1 = new ArrayList<Room>();
 		Room r1=new Room();
-		Room r2=new Room();
 		r1.setCapacity(1000);
 		r1.setRoomID(99);
 		r1.setFacility(Facility1);
+		Room r2=new Room();
 		r2.setCapacity(300);
 		r2.setRoomID(98);
 		r2.setFacility(Facility1);
 		rooms1.add(r1);
 		rooms1.add(r2);
-		//rooms1.add(new Room(100, 1));
-		//rooms1.add(new Room(50,2));
-		//rooms1.add(new Room(120,3));
-		//rooms1.add(new Room(15,4));
-
-		List<Room> rooms2 = new ArrayList<Room>();
-		Room r3=new Room();
-		r3.setCapacity(5000);
-		r3.setRoomID(100);
-		//rooms2.add(new Room(1000,5));
-		//rooms2.add(new Room(2500,6));
-		rooms2.add(r3);
-		System.out.println("creating facilities with rooms");
-		
-		Details detail1=new Details();
-		
-		detail1.setAddress("123 Main St");
-		detail1.setInformation("business building");
-		Facility1.setDetails(detail1);
-		
+		Details detail=new Details();
+		detail.setAddress("123 Main St");
+		detail.setInformation("business building");
+		Facility1.setDetails(detail);
 		Facility1.setFacilityID(876);
-	//	Facility1.setFacilityInformation("business building");
 		Facility1.setRooms(rooms1);
-		manager.addFacility(Facility1);
+		
+		manager.addFacility(Facility1);*/
+        
+        //search db for facility maintenance object
+        MaintenanceManager mManager= new MaintenanceManager();
+        FacilityMaintenance test = mManager.findMaintById(1);
+        System.out.println("Request for facility: " + test.getFacilityID());
+        System.out.println("Request ID: " + test.getRequestID());
+        System.out.println("-------adding new maint obj------");
+        
+        //create new maintenance object and add to the db
+        FacilityMaintenance fm1 = new FacilityMaintenance();
+        fm1.setRequestID(400);
+        fm1.setFacilityID(123);
+        mManager.addMaint(fm1);
+        
+        //search db for facility use object
+        
 	}
 }

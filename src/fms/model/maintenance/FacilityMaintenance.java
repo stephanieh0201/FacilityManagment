@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 public class FacilityMaintenance implements IFacilityMaintenance {
-	private int ID;
+	private int requestID;
 	private Request request;
-	//private int cost=100;
 	private List<Request> listRequests = new ArrayList<Request>();
+	private int facilityID;
 	
 	
 	public FacilityMaintenance(){
@@ -16,23 +16,24 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 	
 	@Override
-	public void makeFacilityMaintRequest(Request request) {
+	public Request makeFacilityMaintRequest(Request request) {
 		this.request=request;
 		listRequests.add(request);
+		return request;
 
 	}
 
 	@Override
-	public void scheduleMaintenance(Date date) {
+	public Date scheduleMaintenance(Date date) {
 		request.setRequestDate(date);
-		
+		return date;
 
 	}
 
 	@Override
 	public int calcMaintenanceCostForFacility(Request request) {
 		int days = request.getCompleteDate().compareTo(request.getRequestDate()) +1;
-		int amount = request.getCost()
+		int amount = request.getCost();
 		return days*amount;
 		
 	}
@@ -50,27 +51,43 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 	@Override
-	public void listMaintRequests() {
-		for (Request r : listRequests) {
-			System.out.println(r.getRequestID());
-		}
-
+	public List<Request> listMaintRequests() {
+		return listRequests;
+		
 	}
 
 	@Override
-	public void listMaintenance() {
+	public String listMaintenance() {
+		String maint="";
 		for (Request r : listRequests) {
-			System.out.println(r.getRequestDate());
+			maint += r.getRequestID()+"\n";
 			}
-
+		return maint;
 	}
 
 	@Override
-	public void listFacilityProblems() {
+	public String listFacilityProblems() {
+		String prob="";
 		for (Request r : listRequests) {
-			System.out.println(r.getProblem());
+			prob+= r.getProblem() +"\n";
 		}
+		return prob;
+	}
 
+	public int getRequestID() {
+		return requestID;
+	}
+
+	public void setRequestID(int requestID) {
+		this.requestID = requestID;
+	}
+
+	public int getFacilityID() {
+		return facilityID;
+	}
+
+	public void setFacilityID(int facilityID) {
+		this.facilityID = facilityID;
 	}
 
 

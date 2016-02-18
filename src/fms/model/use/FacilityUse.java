@@ -99,6 +99,14 @@ public class FacilityUse implements IFacilityUse {
 		this.inspections = inspections;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 
 
 

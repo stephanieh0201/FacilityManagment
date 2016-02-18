@@ -12,13 +12,15 @@ public class Request {
 	private Date completeDate;
 	private Cost cost;
 	
-	public Request(int requestID, String problem, Facility facility, Date requestDate, Date completeDate) {
-		this.requestID=requestID;
-		this.problem=problem;
-		this.facility=facility;
-		this.requestDate=requestDate;
-		this.completeDate=completeDate;
-		cost=new Cost(problem);
+	public Request(
+			//int requestID, String problem, Facility facility, Date requestDate, Date completeDate
+			) {
+//		this.requestID=requestID;
+//		this.problem=problem;
+//		this.facility=facility;
+//		this.requestDate=requestDate;
+//		this.completeDate=completeDate;
+//		cost=new Cost(problem);
 		
 	}
 

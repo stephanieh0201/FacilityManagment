@@ -1,22 +1,25 @@
 package fms.model.maintenance;
 
 public class Cost {
-	Request request;
+	int requestID;
 	int maintenanceCost;
 	
 	
-	public Cost(String problem){
-		
-		if (problem=="electrical") { 
-			maintenanceCost=200;
-		}
-		if (problem=="plumbing") { 
-			maintenanceCost=100;
-		}
+	public Cost(){
 		
 	}
 	public int getCost(){
 		return maintenanceCost;
+	}
+	public void setCost(int maintenanceCost){
+		this.maintenanceCost=maintenanceCost;
+		
+	}
+	public int getRequestID(){
+		return requestID;
+	}
+	public void setRequestID(int requestID){
+		this.requestID=requestID;
 	}
 	
 }

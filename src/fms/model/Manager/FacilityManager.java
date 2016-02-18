@@ -7,7 +7,7 @@ import fms.model.facility.Facility;
 public class FacilityManager {
 	private FacilityDAO facilityDAO = new FacilityDAO();
 	
-	//search customer by ID from the DB
+	//search facility by ID from the database
 	public Facility findFacilityById(int facilityID) {
 			
 		try {
@@ -20,7 +20,7 @@ public class FacilityManager {
 		return null;
 	}
 	
-	//Insert a new customer in the DB
+	//Insert a new facility into the database
 	public void addFacility(Facility facility) {
 		
 		try {

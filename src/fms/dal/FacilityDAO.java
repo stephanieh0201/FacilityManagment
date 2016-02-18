@@ -55,6 +55,9 @@ public FacilityDAO() {}
 	    //close to manage resources
 	      roomResults.close();
 	      
+	      //String selectMaintQuery = "SELECT facilityID FROM facilityMaintenance WHERE facilityID = '" + facilityID + "'";
+	      
+	      
 	      facility.setRooms(rooms);
 	      //get details
 	      String selectDetailsQuery = "SELECT address, information FROM details WHERE facilityID = '" + facilityID + "'";
