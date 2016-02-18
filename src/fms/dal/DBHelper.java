@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class DBHelper {
 	public static Connection getConnection() {
 		 
-		System.out.println("DBHelper: -------- PostgreSQL " + "JDBC Connection  ------------");
+		System.out.println("DBHelper: -------- MySql " + "JDBC Connection  ------------");
 		 
 		try {
  
@@ -17,7 +17,7 @@ public class DBHelper {
  
 		} catch (ClassNotFoundException e) {
  
-			System.out.println("DBHelper: Check Where  your PostgreSQL JDBC Driver exist and " + "Include in your library path!");
+			System.out.println("DBHelper: Check Where  your MySql JDBC Driver exist and " + "Include in your library path!");
 			e.printStackTrace();
 			return null;
  

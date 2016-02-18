@@ -27,7 +27,7 @@ public class FMSClient2 {
     //Find a customer if already exists; if not, create a new one.
     Facility searchedFacility = manager.findFacilityById(2); 
     
-      System.out.println("FMSClient2: *************** Here is searched customer information *************************");
+      System.out.println("FMSClient2: *************** Here is searched facility information *************************");
       System.out.println("ID:" + searchedFacility.getFacilityID());
       List<Room> rooms = searchedFacility.getRooms();
       for (Room r:rooms){
@@ -36,6 +36,7 @@ public class FMSClient2 {
     	  
       }
       System.out.println("Facility "+ searchedFacility.getFacilityID() + " capacity: " + searchedFacility.requestAvailableCapacity());
+      System.out.println("Facility detials: " + searchedFacility.getDetails().toString());
       System.out.println("-----------");
       Facility Facility1 = new Facility();
       List<Room> rooms1 = new ArrayList<Room>();

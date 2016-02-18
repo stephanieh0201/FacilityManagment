@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
 
@@ -51,10 +52,26 @@ public FacilityDAO() {}
 	    	  rooms.add(newroom);
 
 	      }
+	    //close to manage resources
+	      roomResults.close();
 	      
 	      facility.setRooms(rooms);
+	      //get details
+	      String selectDetailsQuery = "SELECT address, information FROM details WHERE facilityID = '" + facilityID + "'";
+	      ResultSet detailsResults= st.executeQuery(selectDetailsQuery);
+	      System.out.println("FacilityDAO: ************** Query " + selectDetailsQuery);
+	      while (detailsResults.next()){
+	    	  
+	    	  Details detail= new Details();
+	    	  String add = detailsResults.getString("address");
+	    	  String info = detailsResults.getString("information");
+	    	  detail.setAddress(add);
+	    	  detail.setInformation(info);
+	    	  facility.setDetails(detail);
+	      }
 	      //close to manage resources
-	      roomResults.close();
+	      detailsResults.close();
+	      
 	      st.close();
 	      
 	      return facility;
