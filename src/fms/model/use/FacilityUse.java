@@ -9,8 +9,11 @@ import fms.model.facility.*;
 
 public class FacilityUse implements IFacilityUse {
 	private Customer customer;
-	private Date startDate;
-	private Date endDate;
+	private int customerID;
+	private int facilityID;
+	private String startDate;
+	private String endDate;
+	private int days;
 	private List<User> users=new ArrayList<User>();
 	private boolean isInUse;
 	private Facility facility;
@@ -18,15 +21,17 @@ public class FacilityUse implements IFacilityUse {
 	private int rate = 200;
 	
 	
-	public FacilityUse(Facility facility, Date startDate, Date endDate) {
-		this.facility=facility;
-		this.startDate=startDate;
-		this.endDate=endDate;
-		isInUse=true;
+	public FacilityUse(
+			//Facility facility, Date startDate, Date endDate
+			) {
+//		this.facility=facility;
+//		this.startDate=startDate;
+//		this.endDate=endDate;
+//		isInUse=true;
 	}
 
 	@Override
-	public boolean isInUseDuringInterval(Date startDate, Date endDate) {
+	public boolean isInUseDuringInterval(String startDate, String endDate) {
 		return isInUse;
 	}
 
@@ -49,29 +54,29 @@ public class FacilityUse implements IFacilityUse {
 
 	@Override
 	public int listActualUsage() {
-		int days = endDate.compareTo(startDate) +1;
+	//	int days = endDate.compareTo(startDate) +1;
 		return days;
 	}
 
 	@Override
 	public int calcUsageRate() {
-		int days = endDate.compareTo(startDate) +1;
+//		int days = endDate.compareTo(startDate) +1;
 		return days*rate;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
@@ -107,7 +112,28 @@ public class FacilityUse implements IFacilityUse {
 		this.customer = customer;
 	}
 
+	public int getCustomerID() {
+		return customerID;
+	}
 
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+
+	public int getFacilityID() {
+		return facilityID;
+	}
+
+	public void setFacilityID(int facilityID) {
+		this.facilityID = facilityID;
+	}
+
+	public void setDays(int days){
+		this.days=days;
+	}
+	public int getDays() {
+		return days;
+	}
 
 
 }

@@ -5,15 +5,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import fms.model.Manager.FacilityManager;
 import fms.model.Manager.MaintenanceManager;
+import fms.model.Manager.UseManager;
 import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
 import fms.model.maintenance.FacilityMaintenance;
+import fms.model.use.FacilityUse;
 
 
 public class FMSClient2 {
@@ -76,6 +80,25 @@ public class FMSClient2 {
         mManager.addMaint(fm1);
         
         //search db for facility use object
+        UseManager uManager = new UseManager();
+        FacilityUse use= uManager.findUseById(123);
+        System.out.println("Use for facility: " + use.getFacilityID());
+        System.out.println("Customer ID: " + use.getCustomerID());
+        System.out.println("Start Date: " + use.getStartDate());
+        System.out.println("End Date: " + use.getEndDate());
         
+        System.out.println("-------adding new maint obj------");
+        
+		
+		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String date1 = "2016-01-01";
+		String date2 = "2016-01-03";
+		FacilityUse use1 = new FacilityUse();
+		use1.setCustomerID(9);
+		use1.setFacilityID(2000);
+		use1.setStartDate(date1);
+		use1.setEndDate(date2);
+		use1.setDays(2);
+		uManager.addUse(use1);
 	}
 }

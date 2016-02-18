@@ -76,11 +76,18 @@ public class FMSClient {
 		c1.setPhoneNumber("3121234567");
 		System.out.println("Assigning customer to facility");
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date date1 = formatter.parse("2016-01-01");
-		Date date2 = formatter.parse("2016-01-03");
+	//	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		//Date date1 = formatter.parse("2016-01-01");
+		//Date date2 = formatter.parse("2016-01-03");
+		String date1 = "2016-01-01";
+		String date2 = "2016-01-03";
+		FacilityUse use1 = new FacilityUse();
+		use1.setCustomerID(c1.getCustomerID());
+		use1.setFacilityID(Facility1.getFacilityID());
+		use1.setStartDate(date1);
+		use1.setEndDate(date2);
+		use1.setDays(2);
 		
-		FacilityUse use1 = new FacilityUse(Facility1, date1, date2);
 		
 		
 		use1.assignFacilityToUse(Facility1, c1);
