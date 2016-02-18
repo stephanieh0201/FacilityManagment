@@ -11,7 +11,9 @@ import java.util.List;
 import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
+import fms.model.maintenance.Cost;
 import fms.model.maintenance.FacilityMaintenance;
+import fms.model.maintenance.Request;
 
 public class MaintenanceDAO {
 
@@ -34,43 +36,44 @@ public class MaintenanceDAO {
 	      }
 	      //close to manage resources
 	      maintResults.close();
-	      	   /* 		  
-	      //Get Address
-	      String selectRoomQuery = "SELECT roomID, capacity FROM room WHERE facilityID = '" + facilityID + "'";
-	      ResultSet roomResults = st.executeQuery(selectRoomQuery);
-    	  List<Room> rooms = new ArrayList<Room>();
+	      	 		  
+	      //Get Cost
+	      String selectCostQuery = "SELECT maintenanceCost FROM cost WHERE requestID = '" + requestID + "'";
+	      ResultSet costResults = st.executeQuery(selectCostQuery);
+    		  
+    	  System.out.println("MaintenanceDAO: *************** Query " + selectCostQuery);
     	  
-    	  System.out.println("FacilityDAO: *************** Query " + selectRoomQuery);
-    	  
-	      while ( roomResults.next() ) {
-	    	  Room newroom= new Room();
-	    	  int id= roomResults.getInt("roomID");
-	    	  int cap= roomResults.getInt("capacity");
-	    	  newroom.setCapacity(cap);
-	    	  newroom.setRoomID(id);
-	    	  rooms.add(newroom);
-
+	      while ( costResults.next() ) {
+	    	  Cost newcost= new Cost();
+	    	  int cost= costResults.getInt("maintenanceCost");
+	    	  newcost.setCost(cost);
+	    	  newcost.setRequestID(requestID);
+	    	  facilityMaint.setCost(newcost);
 	      }
-	    //close to manage resources
-	      roomResults.close();
 	      
-	      facility.setRooms(rooms);
-	      //get details
-	      String selectDetailsQuery = "SELECT address, information FROM details WHERE facilityID = '" + facilityID + "'";
-	      ResultSet detailsResults= st.executeQuery(selectDetailsQuery);
-	      System.out.println("FacilityDAO: ************** Query " + selectDetailsQuery);
-	      while (detailsResults.next()){
+	    //close to manage resources
+	      costResults.close();
+	      
+	      //get request
+	      String selectRequestQuery = "SELECT problem, requestDate, completeDate, days FROM request WHERE requestID = '" + requestID + "'";
+	      ResultSet requestResults= st.executeQuery(selectRequestQuery);
+	      System.out.println("MaintenanceDAO: ************** Query " + selectRequestQuery);
+	      while (requestResults.next()){
 	    	  
-	    	  Details detail= new Details();
-	    	  String add = detailsResults.getString("address");
-	    	  String info = detailsResults.getString("information");
-	    	  detail.setAddress(add);
-	    	  detail.setInformation(info);
-	    	  facility.setDetails(detail);
+	    	  Request request = new Request();
+	    	  String prob = requestResults.getString("problem");
+	    	  String requestDate = requestResults.getString("requestDate");
+	    	  String completeDate = requestResults.getString("completeDate");
+	    	  int days = requestResults.getInt("days");
+	    	  request.setProblem(prob);
+	    	  request.setRequestDate(requestDate);
+	    	  request.setCompleteDate(completeDate);
+	    	  request.setDays(days);
+	    	  facilityMaint.setRequest(request);
 	      }
 	      //close to manage resources
-	      detailsResults.close();
-	      */
+	      requestResults.close();
+	      
 	      st.close();
 	      
 	      return facilityMaint;
@@ -88,8 +91,8 @@ public class MaintenanceDAO {
 		
 		Connection con = DBHelper.getConnection();
 		PreparedStatement maintPst = null;
-        PreparedStatement roomPst = null;
-        PreparedStatement detPst=null; 
+        PreparedStatement costPst = null;
+        PreparedStatement requestPst=null; 
 
         try {
         	//Insert the FacilityMaintenance object
@@ -98,24 +101,24 @@ public class MaintenanceDAO {
             maintPst.setInt(1, req.getFacilityID());
             maintPst.setInt(2, req.getRequestID());
             maintPst.executeUpdate();
-         /*   //Insert the detail object
-            String detStm = "INSERT INTO details (address, facilityID, information) " + " VALUES (?, ?, ?)";
-            detPst = con.prepareStatement(detStm);
-            detPst.setString(1, f.getDetails().getAddress());
-            detPst.setInt(2, f.getFacilityID());
-            detPst.setString(3, f.getDetails().getInformation());
-            detPst.executeUpdate();
             
-            for (Room r : f.getRooms()){
-    	//Insert the room object
-            	String roomStm = "INSERT INTO room (capacity, facilityID, roomId) " + " VALUES(?, ?, ?)";
-            	roomPst = con.prepareStatement(roomStm);
-            	roomPst.setInt(1, r.getCapacity());
-            	roomPst.setInt(2, r.getFacility().getFacilityID());
-            	roomPst.setInt(3, r.getRoomID());
-            	roomPst.executeUpdate();
+            //Insert the cost object
+            String costStm = "INSERT INTO cost (maintenanceCost, requestID) " + " VALUES (?, ?)";
+            costPst = con.prepareStatement(costStm);
+            costPst.setInt(1, req.getCost().getCost());
+            costPst.setInt(2, req.getRequest().getRequestID());
+            costPst.executeUpdate();
             
-         }*/   	
+            //Insert the request object
+            String requestStm = "INSERT INTO request (completeDate, days, requestDate, problem, requestID) " + " VALUES(?, ?, ?, ?, ?)";
+            requestPst = con.prepareStatement(requestStm);
+            requestPst.setString(1, req.getRequest().getCompleteDate());
+            requestPst.setInt(2, req.getRequest().getDays());
+            requestPst.setString(3, req.getRequest().getRequestDate());
+            requestPst.setString(4, req.getRequest().getProblem());
+            requestPst.setInt(5, req.getRequestID());
+            requestPst.executeUpdate();
+         	
         
         } catch (SQLException ex) {
 
@@ -123,8 +126,8 @@ public class MaintenanceDAO {
         } finally {
 
             try {
-                if (roomPst != null) {
-                	roomPst.close();
+                if (costPst != null) {
+                	costPst.close();
                 	//fPst.close();
                 }
                 if (con != null) {

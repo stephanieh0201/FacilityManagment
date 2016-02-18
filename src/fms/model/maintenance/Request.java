@@ -8,9 +8,10 @@ public class Request {
 	private int requestID;
 	private String problem;
 	private Facility facility;
-	private Date requestDate;
-	private Date completeDate;
-	private Cost cost;
+	private String requestDate;
+	private String completeDate;
+	private int days;
+
 	
 	public Request(
 			//int requestID, String problem, Facility facility, Date requestDate, Date completeDate
@@ -48,23 +49,28 @@ public class Request {
 		this.facility = facility;
 	}
 
-	public Date getRequestDate() {
+	public String getRequestDate() {
 		return requestDate;
 	}
 
-	public void setRequestDate(Date requestDate) {
+	public void setRequestDate(String requestDate) {
 		this.requestDate = requestDate;
 	}
 
-	public Date getCompleteDate() {
+	public String getCompleteDate() {
 		return completeDate;
 	}
 
-	public void setCompleteDate(Date completeDate) {
+	public void setCompleteDate(String completeDate) {
 		this.completeDate = completeDate;
 	}
-	
-	public int getCost() {
-		return cost.getCost();
+
+	public int getDays() {
+		return days;
 	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+	
 }

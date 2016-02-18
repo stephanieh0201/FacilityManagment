@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fms.model.facility.Facility;
+
 public class FacilityMaintenance implements IFacilityMaintenance {
 	private int requestID;
 	private Request request;
 	private List<Request> listRequests = new ArrayList<Request>();
 	private int facilityID;
+	private Facility facility;
+	private Cost cost;
+
 	
 	
 	public FacilityMaintenance(){
@@ -33,7 +38,7 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	@Override
 	public int calcMaintenanceCostForFacility(Request request) {
 		int days = request.getCompleteDate().compareTo(request.getRequestDate()) +1;
-		int amount = request.getCost();
+		int amount = getCost().getCost();
 		return days*amount;
 		
 	}
@@ -88,6 +93,28 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 
 	public void setFacilityID(int facilityID) {
 		this.facilityID = facilityID;
+	}
+
+	public Facility getFacility() {
+		return facility;
+	}
+
+	public void setFacility(Facility facility) {
+		this.facility = facility;
+	}
+
+	public Cost getCost() {
+		return cost;
+	}
+
+	public void setCost(Cost cost) {
+		this.cost = cost;
+	}
+	public Request getRequest(){
+		return request;
+	}
+	public void setRequest(Request request) {
+		this.request=request;
 	}
 
 

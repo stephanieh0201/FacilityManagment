@@ -27,7 +27,7 @@ public class UseManager {
 		try {
 			UseDAO.addUseRequest(use);
 	    } catch (Exception se) {
-	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
+	      System.err.println("UseManager: Threw a Exception retrieving facilityuse.");
 	      System.err.println(se.getMessage());
 	    }
 	}

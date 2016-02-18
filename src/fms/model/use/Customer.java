@@ -4,6 +4,8 @@ public class Customer extends User {
 	int customerID;
 	String creditCard;
 	double salary;
+	int userID;
+	
 	
 	public Customer(){
 		
@@ -30,6 +32,12 @@ public class Customer extends User {
 	
 	public double getSalary() {
 		return salary;
+	}
+	public void setUserID(int userID) {
+		this.userID=userID;
+	}
+	public int getCUserID(){
+		return userID;
 	}
 	
 }
