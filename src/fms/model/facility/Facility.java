@@ -18,10 +18,14 @@ public class Facility implements IFacility {
 //		this.facilityID=facilityID;
 //		this.information=information;
 //		this.roomsList=roomsList;
-//		facilityList.add(this);
+		facilityList.add(this);
 		
 	}
-
+	@Override
+	public String toString() {
+		String id = Integer.toString(facilityID);
+		return id;
+	}
 	public int getFacilityID() {
 		return facilityID;
 	}
@@ -32,10 +36,10 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public void listFacilities() {
-		for (Facility f : facilityList) {
-			System.out.println(f.getFacilityID());
-		}
+	public List<Facility> listFacilities() {
+		
+		return facilityList;
+
 	}
 
 	public List<Room> getRooms() {
@@ -47,14 +51,14 @@ public class Facility implements IFacility {
 	}
 	
 	@Override
-	public String getFacilityInformation() {
-		return details.getInformation();
+	public Details getFacilityInformation() {
+		return details;
 	}
 	
 
-	public void setFacilityInformation(String information) {
-		details.setInformation(information);
-	}
+	//public void setFacilityInformation(String information) {
+		//details.setInformation(information);
+//	}
 	
 	@Override
 	public int requestAvailableCapacity() {
@@ -68,18 +72,21 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public void addNewFacility() {
-		
+	public void addNewFacility(Room room) {
+		roomsList.add(room); 
 	}
 	
 	@Override
-	public void addFacilityDetail() {
-		
+	public void addFacilityDetail(Details details) {
+		this.details=details;
 	}
 	
 	@Override
-	public boolean removeFacility() {
-		return false;
+	public Room removeFacility(Room room) {
+		boolean remove = roomsList.remove(room);
+		if (remove==true) {System.out.println("Room " + room.getRoomID()+  " has been removed.");}
+		else System.out.println("Unable to remove room " + room.getRoomID());
+		return room;
 	}
 
 	public Customer getUser() {

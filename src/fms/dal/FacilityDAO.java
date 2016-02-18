@@ -43,7 +43,12 @@ public FacilityDAO() {}
     	  System.out.println("FacilityDAO: *************** Query " + selectRoomQuery);
     	  
 	      while ( roomResults.next() ) {
-	    	  rooms.add(new Room (roomResults.getInt("roomID"), roomResults.getInt("capacity")));
+	    	  Room newroom= new Room();
+	    	  int id= roomResults.getInt("roomID");
+	    	  int cap= roomResults.getInt("capacity");
+	    	  newroom.setCapacity(cap);
+	    	  newroom.setRoomID(id);
+	    	  rooms.add(newroom);
 
 	      }
 	      
@@ -63,49 +68,56 @@ public FacilityDAO() {}
 	    return null;
 	  }
 	
-//	public void addCustomer(Customer cust) {
-//		Connection con = DBHelper.getConnection();
-//        PreparedStatement custPst = null;
-//        PreparedStatement addPst = null;
-//
-//        try {
-//        	//Insert the customer object
-//            String custStm = "INSERT INTO Customer(customerID, lname, fname) VALUES(?, ?, ?)";
-//            custPst = con.prepareStatement(custStm);
-//            custPst.setString(1, cust.getCustomerId());
-//            custPst.setString(2, cust.getLastName());       
-//            custPst.setString(3, cust.getFirstName()); 
-//            custPst.executeUpdate();
-//
-//        	//Insert the customer address object
-//            String addStm = "INSERT INTO Address(customerID, addressID, street, unit, city, state, zip) VALUES(?, ?, ?, ?, ?, ?, ?)";
-//            addPst = con.prepareStatement(addStm);
-//            addPst.setString(1, cust.getCustomerId());
-//            addPst.setString(2, cust.getBillingAddress().getAddressId());  
-//            addPst.setString(3, cust.getBillingAddress().getStreet());       
-//            addPst.setString(4, cust.getBillingAddress().getUnit());  
-//            addPst.setString(5, cust.getBillingAddress().getCity());  
-//            addPst.setString(6, cust.getBillingAddress().getState());      
-//            addPst.setString(7, cust.getBillingAddress().getZip());  
-//            addPst.executeUpdate();
-//        } catch (SQLException ex) {
-//
-//        } finally {
-//
-//            try {
-//                if (addPst != null) {
-//                	addPst.close();
-//                	custPst.close();
-//                }
-//                if (con != null) {
-//                    con.close();
-//                }
-//
-//            } catch (SQLException ex) {
-//      	      System.err.println("CustomerDAO: Threw a SQLException saving the customer object.");
-//    	      System.err.println(ex.getMessage());
-//            }
-//        }
-//    }
+	public static void addFacility(Facility f) {
+		
+		Connection con = DBHelper.getConnection();
+		PreparedStatement fPst = null;
+        PreparedStatement roomPst = null;
+        PreparedStatement detPst=null; 
+
+        try {
+        	//Insert the facility object
+            String fStm = "INSERT INTO facility (facilityID) " + " VALUES (?)";
+            fPst = con.prepareStatement(fStm);
+            fPst.setInt(1, f.getFacilityID());
+            fPst.executeUpdate();
+            //Insert the detail object
+            String detStm = "INSERT INTO details (address, facilityID, information) " + " VALUES (?, ?, ?)";
+            detPst = con.prepareStatement(detStm);
+            detPst.setString(1, f.getDetails().getAddress());
+            detPst.setInt(2, f.getFacilityID());
+            detPst.setString(3, f.getDetails().getInformation());
+            detPst.executeUpdate();
+            
+            for (Room r : f.getRooms()){
+    	//Insert the room object
+            	String roomStm = "INSERT INTO room (capacity, facilityID, roomId) " + " VALUES(?, ?, ?)";
+            	roomPst = con.prepareStatement(roomStm);
+            	roomPst.setInt(1, r.getCapacity());
+            	roomPst.setInt(2, r.getFacility().getFacilityID());
+            	roomPst.setInt(3, r.getRoomID());
+            	roomPst.executeUpdate();
+            
+            	
+        }} catch (SQLException ex) {
+
+
+        } finally {
+
+            try {
+                if (roomPst != null) {
+                	roomPst.close();
+                	fPst.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+      	      System.err.println("FacilityDAO: Threw a SQLException saving the facility object.");
+    	      System.err.println(ex.getMessage());
+            }
+        }
+    }
 }
 

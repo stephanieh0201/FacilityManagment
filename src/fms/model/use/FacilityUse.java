@@ -18,7 +18,12 @@ public class FacilityUse implements IFacilityUse {
 	private int rate = 200;
 	
 	
-	public FacilityUse() {	}
+	public FacilityUse(Facility facility, Date startDate, Date endDate) {
+		this.facility=facility;
+		this.startDate=startDate;
+		this.endDate=endDate;
+		isInUse=true;
+	}
 
 	@Override
 	public boolean isInUseDuringInterval(Date startDate, Date endDate) {
@@ -26,22 +31,20 @@ public class FacilityUse implements IFacilityUse {
 	}
 
 	@Override
-	public void assignFacilityToUse(Facility facility1, Customer customer) {
-		facility1.setUser(customer);	
-		
+	public void assignFacilityToUse(Facility facility, Customer customer) {
+		facility.setUser(customer);	
 	}
 
 	@Override
-	public void vacateFacility() {
+	public Facility vacateFacility() {
 		this.facility.setUser(null);
-		
+		return facility;
 	}
 
 	@Override
-	public void listInspections() {
-		for (String s : inspections) {
-			System.out.println(s);
-		}
+	public List<String> listInspections() {
+		return inspections;
+		
 	}
 
 	@Override

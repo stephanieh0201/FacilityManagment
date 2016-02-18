@@ -8,7 +8,7 @@ public class Cost {
 	public Cost(String problem){
 		
 		if (problem=="electrical") { 
-				maintenanceCost=200;
+			maintenanceCost=200;
 		}
 		if (problem=="plumbing") { 
 			maintenanceCost=100;

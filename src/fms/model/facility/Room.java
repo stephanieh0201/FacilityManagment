@@ -5,9 +5,9 @@ public class Room {
 	private int roomID;
 	private Facility facility;
 	
-	public Room(int roomID, int capacity) {
-		this.roomID=roomID;
-		this.capacity=capacity;
+	public Room() {
+	//	this.roomID=roomID;
+	//	this.capacity=capacity;
 		
 	}
 	

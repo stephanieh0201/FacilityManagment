@@ -18,4 +18,9 @@ public class Details {
 	public String getInformation() {
 		return information;
 	}
+	
+	@Override
+	public String toString() {
+		return "Address: " + getAddress() + "\nInformation: " + getInformation();
+	}
 }

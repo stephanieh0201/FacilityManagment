@@ -1,4 +1,4 @@
-package fms.model.facilityManager;
+package fms.model.Manager;
 
 
 import fms.dal.FacilityDAO;
@@ -21,15 +21,15 @@ public class FacilityManager {
 	}
 	
 	//Insert a new customer in the DB
-//	public void addFacility(Facility facility) {
-//		
-//		try {
-//			custDAO.addCustomer(facility);
-//	    } catch (Exception se) {
-//	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
-//	      System.err.println(se.getMessage());
-//	    }
-//	}
+	public void addFacility(Facility facility) {
+		
+		try {
+			FacilityDAO.addFacility(facility);
+	    } catch (Exception se) {
+	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
+	      System.err.println(se.getMessage());
+	    }
+	}
 	
 }
 
