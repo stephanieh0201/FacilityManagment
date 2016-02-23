@@ -9,7 +9,9 @@ public class Customer extends User {
 	public Customer(){
 		
 	}
-	
+	public String toString() {
+		return "CustomerID: " + getCustomerID() + " Name: " + getLastName() + ", " + getFirstName();
+	}
 	public void setCustomerID(int customerID) {
 		this.customerID=customerID;
 	}

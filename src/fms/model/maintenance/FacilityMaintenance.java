@@ -22,7 +22,7 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	
 	@Override
 	public Request makeFacilityMaintRequest(Request request) {
-		this.request=request;
+
 		listRequests.add(request);
 		return request;
 
@@ -30,9 +30,14 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 
 	@Override
 	public Request scheduleMaintenance(Date startDate, Date completeDate) {
-		request.setRequestDate(startDate);
-		request.setCompleteDate(completeDate);
-		return request;
+		Request r = new Request();
+		r.setRequestDate(startDate);
+		r.setCompleteDate(completeDate);
+		
+		listRequests.add(r);
+		return r;
+	
+		
 
 	}
 
@@ -46,10 +51,10 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 
 	@Override
 	public int calcProblemRateForFacility(Problem p1) {
-		int id=p1.getProblemID();
+		
 		int count=0;
 		for (Request r: listRequests){
-			if (r.getProblem().getProblemID()==id) {
+			if (r.getProblem()==p1) {
 				count++;
 			}
 		}
@@ -81,8 +86,9 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	public String listFacilityProblems() {
 		String prob="";
 		for (Request r : listRequests) {
-			prob+= r.getProblem().getProblem() +"\n";
-		}
+			if (!(r.getProblem()==null)){
+				prob+= r.getProblem().getProblem() +"\n";
+		}}
 		return prob;
 	}
 
@@ -102,13 +108,6 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 		this.facilityID = facilityID;
 	}
 
-	public Facility getFacility() {
-		return facility;
-	}
-
-	public void setFacility(Facility facility) {
-		this.facility = facility;
-	}
 
 	public Cost getCost() {
 		return cost;
@@ -122,6 +121,14 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 	public void setRequest(Request request) {
 		this.request=request;
+	}
+
+	public Facility getFacility() {
+		return facility;
+	}
+
+	public void setFacility(Facility facility) {
+		this.facility = facility;
 	}
 
 

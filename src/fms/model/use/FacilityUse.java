@@ -12,47 +12,43 @@ public class FacilityUse implements IFacilityUse {
 	private Facility facility;
 	private Date startDate;
 	private Date endDate;
-	private List<User> users;
-	private List<String> inspections=new ArrayList<String>();
+	private List<Inspection> inspections;
 	private int rate = 200;
-	private List<UseSchedule> schedule;
-	private int customerID;
-	private int facilityID;
 	private UseSchedule useSchedule;
+	private int facilityID;
+	private int customerID;
 	
 	
 	public FacilityUse() {
+		
 
 	}
 
 	@Override
 	public boolean isInUseDuringInterval(Date startDate, Date endDate) {
 		int days= this.endDate.compareTo(this.startDate) + 1;
-		System.out.println(days);
 		long milliInADay = 1000 * 60 * 60 * 24;
 		for (int i=0; i<=days; i++){
 			Date checkDate = new Date (getStartDate().getTime()+(i*milliInADay));
-			System.out.println("checkdate is: "+checkDate);
-			System.out.println("checkdate is after start: " + checkDate.after(startDate));
-
 			if (checkDate.equals(startDate)||checkDate.equals(endDate) || (checkDate.after(startDate)&& checkDate.before(endDate))){return true;}
 		}
 		return false;
 	}
 
 	@Override
-	public void assignFacilityToUse(Facility facility, Customer customer) {
-		facility.setUser(customer);	
+	public Customer assignFacilityToUse(Facility facility, Customer customer) {
+		 facility.setUser(customer);	
+		 return customer;
 	}
 
 	@Override
-	public Facility vacateFacility() {
-		this.facility.setUser(null);
-		return facility;
+	public Customer vacateFacility() {
+		setCustomer(null);
+		return getCustomer();
 	}
 
 	@Override
-	public List<String> listInspections() {
+	public List<Inspection> listInspections() {
 		return inspections;
 		
 	}
@@ -85,14 +81,6 @@ public class FacilityUse implements IFacilityUse {
 		this.endDate = endDate;
 	}
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
 	public Facility getFacility() {
 		return facility;
 	}
@@ -101,12 +89,15 @@ public class FacilityUse implements IFacilityUse {
 		this.facility = facility;
 	}
 
-	public List<String> getInspections() {
-		return inspections;
+	public List<Inspection> getInspections() {
+		return this.inspections;
 	}
 
-	public void setInspections(List<String> inspections) {
+	public void setInspections(List<Inspection> inspections) {
 		this.inspections = inspections;
+	}
+	public void setInspections(Inspection inspection){
+		inspections.add(inspection);
 	}
 
 	public Customer getCustomer() {
@@ -117,12 +108,12 @@ public class FacilityUse implements IFacilityUse {
 		this.customer = customer;
 	}
 
-	public int getCustomerID() {
-		return customerID;
+	public UseSchedule getUseSchedule() {
+		return useSchedule;
 	}
 
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+	public void setUseSchedule(UseSchedule useSchedule) {
+		this.useSchedule = useSchedule;
 	}
 
 	public int getFacilityID() {
@@ -133,20 +124,12 @@ public class FacilityUse implements IFacilityUse {
 		this.facilityID = facilityID;
 	}
 
-	public List<UseSchedule> getSchedule() {
-		return schedule;
+	public int getCustomerID() {
+		return customerID;
 	}
 
-	public void setSchedule(List<UseSchedule> schedule) {
-		this.schedule = schedule;
-	}
-
-	public UseSchedule getUseSchedule() {
-		return useSchedule;
-	}
-
-	public void setUseSchedule(UseSchedule useSchedule) {
-		this.useSchedule = useSchedule;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 
 

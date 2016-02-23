@@ -9,111 +9,172 @@ import java.util.List;
 import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
+import fms.model.maintenance.Cost;
 import fms.model.maintenance.FacilityMaintenance;
+import fms.model.maintenance.MaintenanceSchedule;
+import fms.model.maintenance.Problem;
+import fms.model.maintenance.Request;
+import fms.model.manager.FacilityManager;
+import fms.model.manager.MaintenanceManager;
+import fms.model.manager.UseManager;
 import fms.model.use.Customer;
 import fms.model.use.FacilityUse;
+import fms.model.use.Inspection;
+import fms.model.use.Manager;
+import fms.model.use.UseSchedule;
 
 public class FMSClient {
 
 	public static void main(String[] args) throws ParseException {
-		System.out.println("creating rooms");
-		List<Room> rooms1 = new ArrayList<Room>();
+		
+        
+        //create a new facility 
+        Facility Facility1 = new Facility();
+        List<Room> rooms1 = new ArrayList<Room>();
 		Room r1=new Room();
+		r1.setCapacity(700);
+		r1.setRoomID(100);
+		r1.setFacility(Facility1);
 		Room r2=new Room();
-		r1.setCapacity(1000);
-		r1.setRoomID(1);
-		r2.setCapacity(300);
-		r2.setRoomID(2);
+		r2.setCapacity(850);
+		r2.setRoomID(101);
+		r2.setFacility(Facility1);
 		rooms1.add(r1);
 		rooms1.add(r2);
-		//rooms1.add(new Room(100, 1));
-		//rooms1.add(new Room(50,2));
-		//rooms1.add(new Room(120,3));
-		//rooms1.add(new Room(15,4));
-
-		List<Room> rooms2 = new ArrayList<Room>();
-		Room r3=new Room();
-		r3.setCapacity(5000);
-		r3.setRoomID(100);
-		//rooms2.add(new Room(1000,5));
-		//rooms2.add(new Room(2500,6));
-		rooms2.add(r3);
-		System.out.println("creating facilities with rooms");
-		Facility Facility1 = new Facility();
-		Details detail1=new Details();
-		
-		detail1.setAddress("123 Main St");
-		detail1.setInformation("business building");
-		Facility1.setDetails(detail1);
-		
-		Facility1.setFacilityID(23);
-	//	Facility1.setFacilityInformation("business building");
+		Details detail=new Details();
+		detail.setAddress("99 Apple Valley");
+		detail.setInformation("office space");
+		Facility1.setDetails(detail);
+		Facility1.setFacilityID(9999);
 		Facility1.setRooms(rooms1);
-		Facility Facility2 = new Facility();
-		Facility2.setFacilityID(55);
-	//	Facility2.setFacilityInformation("large rooms");
-		Facility2.setRooms(rooms2);
-		System.out.println("listing facilities");
-		System.out.println(Facility1.listFacilities());
-		System.out.println(Facility2.listFacilities());
-		for (Facility f : Facility1.listFacilities()) {
-			System.out.println(f.getFacilityID());
-		}
-		System.out.println("request capacity of facility2");
-		System.out.println(Facility2.requestAvailableCapacity());
-		System.out.println("get rooms of facility 1");
-		List<Room> room3 = Facility1.getRooms();
-		for (Room r : room3) {
-			System.out.println(r.getRoomID());
-		}
-		System.out.println("creating a customer");
-		Customer c1=new Customer();
-		c1.setAddress("123 Main Street, Chicago, IL");
-		c1.setCreditCard("1111222233334444");
-		c1.setCustomerID(1);
-		c1.setFirstName("Bob");
-		c1.setLastName("Doe");
-		c1.setPhoneNumber("3121234567");
-		System.out.println("Assigning customer to facility");
 		
-	//	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		//Date date1 = formatter.parse("2016-01-01");
-		//Date date2 = formatter.parse("2016-01-03");
-		String date1 = "2016-01-01";
-		String date2 = "2016-01-03";
-		FacilityUse use1 = new FacilityUse();
-		use1.setCustomerID(c1.getCustomerID());
-		use1.setFacilityID(Facility1.getFacilityID());
-		use1.setStartDate(date1);
-		use1.setEndDate(date2);
-		use1.setDays(2);
-		
-		
-		
-		use1.assignFacilityToUse(Facility1, c1);
-		
-		System.out.println(Facility1.getUser().getCustomerID());
-		System.out.println("Usage: " + use1.listActualUsage());
-		System.out.println("Rate: " + use1.calcUsageRate());
-		
-		FacilityMaintenance maint1 = new FacilityMaintenance();
-		//maint1.makeFacilityMaintRequest(request);
-		System.out.println("get facility 1 info");
-		System.out.println(Facility1.getFacilityInformation());
-		Room r5= new Room();
-		r5.setCapacity(700);
-		r5.setRoomID(12);
-		Facility1.addNewFacility(r5);
-		Details det = new Details();
-		det.setAddress("12345 Hello World");
-		det.setInformation("building moved");
-		Facility1.addFacilityDetail(det);
-		System.out.println(Facility1.getFacilityInformation());
-		Facility1.removeFacility(r3);
-		List<Room> room4 = Facility1.getRooms();
-		for (Room r : room4) {
-			System.out.println(r.getRoomID());
-		}
-	}
+		System.out.println("\nFacility Interface Methods:");
+        System.out.println("List Facilities: " + Facility1.listFacilities());
+        System.out.println("Get Facility Info: " + Facility1.getFacilityInformation());
+        System.out.println("Request Available capacity: " + Facility1.requestAvailableCapacity());
+        Room roomAdd = new Room();
+        roomAdd.setCapacity(300);
+        roomAdd.setFacility(Facility1);
+        roomAdd.setRoomID(3);
+        System.out.println("Adding new facility: " + Facility1.addNewFacility(roomAdd));
+        Details d = new Details();
+        d.setAddress("123 america road");
+        d.setInformation("building moved locations");
+        System.out.println("Adding facility details." );
+        Facility1.addFacilityDetail(d);
+        System.out.println("Removing facility: " + Facility1.removeFacility(roomAdd));
 
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = formatter.parse("2016-02-22");
+		Date date2 = formatter.parse("2016-02-23");
+		
+        //create new facility maintenance objects
+		FacilityMaintenance fm1 = new FacilityMaintenance();
+        Request req = new Request();
+		Date date3= formatter.parse("2015-12-15");
+		Date date4= formatter.parse("2015-12-20");
+		
+        req.setCompleteDate(date4);
+        req.setRequestDate(date3);
+        req.setFacility(Facility1);
+        
+        req.setRequestID(444);
+        Problem prob1 = new Problem();
+        prob1.setProblem("ac not working");
+        prob1.setProblemID(6);
+        req.setProblem(prob1);
+        fm1.setRequest(req);
+        fm1.setRequestID(req.getRequestID());
+        Cost cost = new Cost();
+        cost.setCost(300);
+        cost.setRequestID(4);
+        MaintenanceSchedule ms = new MaintenanceSchedule();
+        ms.setFacility(Facility1);
+        ms.setReserveDate(date1);
+        ms.setStatus(true);
+        fm1.setFacilityID(9999);
+        req.setMaintenanceSchedule(ms);
+        fm1.setCost(cost);
+        fm1.setFacility(Facility1);
+        fm1.setRequest(req);
+        System.out.println("\nFacility Maintenance Methods:");
+        System.out.println("Schedule Maintenance: " + fm1.scheduleMaintenance(date3, date4) );
+        System.out.println("Calculate Maint Cost for Facility: " + fm1.calcMaintenanceCostForFacility(req));
+        System.out.println("Calculate Problem Rate for Facility: " + fm1.calcProblemRateForFacility(prob1));
+        System.out.println("Calculate Down Time for Facility: " + fm1.calcDownTimeForFacility(req));
+        System.out.println("List Maint Requests: " + fm1.listMaintRequests());
+        System.out.println("List Maintenance: " + fm1.listMaintenance());
+        System.out.println("List Facility problems: " + fm1.listFacilityProblems());
+        
+        
+
+        
+        //create new maintenance object and add to the db
+        
+       
+
+
+		Manager m1= new Manager();
+		m1.setAddress("123 dirt road");
+		m1.setEmployeeID(1);
+		m1.setFirstName("Matt");
+		m1.setLastName("Poe");
+		m1.setPhoneNumber("9998888");
+		m1.setSalary(40000.00);
+		m1.setUserID(2);
+		
+		
+		
+		Date date5 = formatter.parse("2016-01-01");
+		Date date6 = formatter.parse("2016-01-03");
+		
+		FacilityUse use1 = new FacilityUse();
+		Customer c2 = new Customer();
+		c2.setAddress("123 loyola");
+		c2.setCreditCard("1111333355557777");
+		c2.setFirstName("jane");
+		
+		c2.setLastName("apple");
+		c2.setPhoneNumber("7777777");
+		c2.setCustomerID(333);
+		c2.setUserID(333);
+		
+	
+		use1.setStartDate(date5);
+		use1.setEndDate(date6);
+		use1.setFacility(Facility1);
+
+		use1.setCustomer(c2);
+		UseSchedule usched= new UseSchedule();
+		usched.setInUse(true);
+		usched.setFacility(Facility1);
+		usched.setUseDate(date3);
+		use1.setUseSchedule(usched);
+		Inspection i1 = new Inspection();
+		i1.setManager(m1);
+		i1.setReason("routine check");
+		Inspection i2 = new Inspection();
+		i2.setManager(m1);
+		i2.setReason("false alarm");
+
+		List<Inspection> list1 = new ArrayList<Inspection>();
+		list1.add(i1);
+		list1.add(i2);
+		use1.setInspections(list1);
+        
+		System.out.println("\nFacility Use Methods:");
+		System.out.println("Assign Facility to Use: " + use1.assignFacilityToUse(Facility1, c2));
+        System.out.println("Vacate Facility: " + use1.vacateFacility());
+        System.out.println("List Inspections: " +  use1.listInspections());
+        System.out.println("List Actual Usage: " + use1.listActualUsage());
+        System.out.println("Calculate Usage Rate: " + use1.calcUsageRate());
+       
+
+        
+		
+
+	
+
+	}
 }

@@ -6,9 +6,7 @@ public class Room {
 	private Facility facility;
 	
 	public Room() {
-	//	this.roomID=roomID;
-	//	this.capacity=capacity;
-		
+
 	}
 	
 	public int getCapacity() {
@@ -32,5 +30,7 @@ public class Room {
 	public void setFacility(Facility facility) {
 		this.facility = facility;
 	}
-	
+	public String toString(){
+		return "Room"+ "ID: " + getRoomID() + " Capacity: " + getCapacity();
+	}
 }

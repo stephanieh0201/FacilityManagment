@@ -20,5 +20,9 @@ public class Problem {
 	public void setProblem(String problem) {
 		this.problem = problem;
 	}
+	public String toString(){
+		return "ProblemID " + getProblemID() + ": " + getProblem();
+		
+	}
 
 }

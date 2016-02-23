@@ -26,7 +26,7 @@ public class FacilityManager {
 		try {
 			FacilityDAO.addFacility(facility);
 	    } catch (Exception se) {
-	      System.err.println("FacilityManager: Threw a Exception retrieving facility.");
+	      System.err.println("FacilityManager: Threw a Exception adding facility.");
 	      System.err.println(se.getMessage());
 	    }
 	}

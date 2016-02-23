@@ -7,9 +7,9 @@ import fms.model.facility.Facility;
 
 public interface IFacilityUse {
 	public boolean isInUseDuringInterval(Date startDate, Date endDate);
-	public void assignFacilityToUse(Facility facility, Customer customer);
-	public Facility vacateFacility();
-	public List<String> listInspections();
+	public Customer assignFacilityToUse(Facility facility, Customer customer);
+	public Customer vacateFacility();
+	public List<Inspection> listInspections();
 	public int listActualUsage();
 	public int calcUsageRate();
 

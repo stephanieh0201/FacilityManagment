@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import fms.model.maintenance.Cost;
 import fms.model.maintenance.FacilityMaintenance;
@@ -52,7 +53,7 @@ public class MaintenanceDAO {
 	      costResults.close();
 	      
 	      //get request
-	      String selectRequestQuery = "SELECT problemID, requestDate, completeDate, days FROM request WHERE requestID = '" + requestID + "'";
+	      String selectRequestQuery = "SELECT problemID, requestDate, completeDate FROM request WHERE requestID = '" + requestID + "'";
 	      ResultSet requestResults= st.executeQuery(selectRequestQuery);
 	      System.out.println("MaintenanceDAO: ************** Query " + selectRequestQuery);
 	      Request request = new Request();
@@ -61,11 +62,10 @@ public class MaintenanceDAO {
 	    	  int prob = requestResults.getInt("problemID");
 	    	  Date requestDate = requestResults.getDate("requestDate");
 	    	  Date completeDate = requestResults.getDate("completeDate");
-	    	  int days = requestResults.getInt("days");
 	    	  
 	    	  request.setRequestDate(requestDate);
 	    	  request.setCompleteDate(completeDate);
-	    	  request.setDays(days);
+	    	  request.setProblemID(prob);
 	    	  facilityMaint.setRequest(request);
 	    	 
 		      
@@ -73,7 +73,7 @@ public class MaintenanceDAO {
 	      //close to manage resources
 	      requestResults.close();
 	     
-	      String selectProblemQuery = "SELECT problemID, problem FROM problem WHERE problemID = '" + request + "'";
+	      String selectProblemQuery = "SELECT problemID, problem FROM problem WHERE problemID = '" + request.getProblemID() + "'";
     	  ResultSet problemResults= st.executeQuery(selectProblemQuery);
 	      System.out.println("MaintenanceDAO: ************** Query " + selectProblemQuery);
 	      
@@ -126,26 +126,23 @@ public class MaintenanceDAO {
             costPst.executeUpdate();
             
             //Insert the request object
-            String requestStm = "INSERT INTO request (completeDate, days, requestDate, problemID, requestID) " + " VALUES(?, ?, ?, ?, ?)";
+            String requestStm = "INSERT INTO request (completeDate, requestDate, problemID, requestID) " + " VALUES(?, ?, ?, ?)";
             requestPst = con.prepareStatement(requestStm);
             requestPst.setDate(1, new java.sql.Date (req.getRequest().getCompleteDate().getTime()));
-            requestPst.setInt(2, req.getRequest().getDays());
-            requestPst.setDate(3, new java.sql.Date(req.getRequest().getRequestDate().getTime()));
-            requestPst.setInt(4, req.getRequest().getProblem().getProblemID());
-            
-            requestPst.setInt(5, req.getRequestID());
+            requestPst.setDate(2, new java.sql.Date(req.getRequest().getRequestDate().getTime()));
+            requestPst.setInt(3, req.getRequest().getProblem().getProblemID());
+            requestPst.setInt(4, req.getRequestID());
             requestPst.executeUpdate();
             //insert schedule object
-            
-            int days= req.getRequest().getCompleteDate().compareTo(req.getRequest().getRequestDate());
+
+            int days= (int)(TimeUnit.DAYS.convert(req.getRequest().getCompleteDate().getTime() - req.getRequest().getRequestDate().getTime(), TimeUnit.MILLISECONDS));
             long milliInADay = 1000 * 60 * 60 * 24;
             for (int i=0; i<=days; i++){
             	String scheduleStm = "INSERT INTO maintenanceSchedule (facilityID, reserveDate, status) " + " VALUES(?, ?, ?)";
             	schedulePst = con.prepareStatement(scheduleStm);
-            	schedulePst.setInt(1, req.getFacility().getFacilityID());
+            	schedulePst.setInt(1, req.getFacilityID());
             	schedulePst.setDate(2, new java.sql.Date (req.getRequest().getRequestDate().getTime() + i*milliInADay));
             	schedulePst.setBoolean(3, req.getRequest().getMaintenanceSchedule().getStatus());
-
             	schedulePst.executeUpdate();
             }
         

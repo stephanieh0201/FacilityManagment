@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.concurrent.TimeUnit;
 
 import fms.model.use.Customer;
 import fms.model.use.FacilityUse;
@@ -18,8 +18,7 @@ public class UseDAO {
 	    try { 		
 	    	//Get FacilityUse
 	    	Statement st = DBHelper.getConnection().createStatement();
-	    	String selectUseQuery = "SELECT customerID, facilityID, startDate, endDate "
-	    			+ " FROM facilityUse WHERE customerID = '" + customerID + "'";
+	    	String selectUseQuery = "SELECT customerID, facilityID, startDate, endDate "+ " FROM facilityUse WHERE customerID = '" + customerID + "'";
 
 	    	ResultSet useResults = st.executeQuery(selectUseQuery);      
 	    	System.out.println("UseDAO: *************** Query " + selectUseQuery);
@@ -31,7 +30,6 @@ public class UseDAO {
 	    		facilityUse.setFacilityID(useResults.getInt("facilityID"));
 	    		facilityUse.setStartDate(useResults.getDate("startDate"));
 	    		facilityUse.setEndDate(useResults.getDate("endDate"));
-	    	//	facilityUse.setDays(useResults.getInt("days"));
 	      }
 	      //close to manage resources
 	      useResults.close();
@@ -45,12 +43,10 @@ public class UseDAO {
 	    	  
 	    	  int cID= customerResults.getInt("customerID");
 	    	  String cc = customerResults.getString("creditCard");
-	    	//  double salary = customerResults.getDouble("salary");
 	    	  int uID = customerResults.getInt("userID");
 	    	  
 	    	  c.setCustomerID(cID);
 	    	  c.setCreditCard(cc);
-	    	  //c.setSalary(salary);
 	    	  c.setUserID(uID);
 	    	  facilityUse.setCustomer(c);
 	      }
@@ -107,7 +103,7 @@ public class UseDAO {
         	//Insert the FacilityUse object
             String useStm = "INSERT INTO facilityUse (facilityID, customerID, startDate, endDate) " + " VALUES (?, ?, ?, ?)";
             usePst = con.prepareStatement(useStm);
-            usePst.setInt(1, use.getFacilityID());
+            usePst.setInt(1, use.getFacility().getFacilityID());
             usePst.setInt(2, use.getCustomer().getCustomerID());
             usePst.setDate(3, new java.sql.Date(use.getStartDate().getTime()));
             usePst.setDate(4, new java.sql.Date(use.getEndDate().getTime()));
@@ -132,13 +128,12 @@ public class UseDAO {
             
             userPst.executeUpdate();
             
-            int days= use.getEndDate().compareTo(use.getStartDate());
-            System.out.println("Days to add: " + days);
+            int days= (int)(TimeUnit.DAYS.convert(use.getEndDate().getTime()- use.getStartDate().getTime(), TimeUnit.MILLISECONDS));
             long milliInADay = 1000 * 60 * 60 * 24;
             for (int i=0; i<=days; i++){
             	String useSchedStm = "INSERT INTO useSchedule (facilityID, isInUse, useDate) " + " VALUES(?, ?, ?)";
             	useSchedPst = con.prepareStatement(useSchedStm);
-            	useSchedPst.setInt(1, use.getFacilityID());
+            	useSchedPst.setInt(1, use.getFacility().getFacilityID());
             	useSchedPst.setBoolean(2, use.getUseSchedule().isInUse());
             	useSchedPst.setDate(3, new java.sql.Date (use.getStartDate().getTime() + i*milliInADay));
             	useSchedPst.executeUpdate();

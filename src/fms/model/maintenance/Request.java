@@ -10,11 +10,14 @@ public class Request {
 	private Facility facility;
 	private Date requestDate;
 	private Date completeDate;
-	private int days;
 	private Problem problem;
+	private int problemID;
 	private MaintenanceSchedule maintenanceSchedule;
 	
 	public Request() {
+	}
+	public String toString(){
+		return "Request " + getRequestID() + " on " + getRequestDate() + " for " + getProblem();
 	}
 
 	public int getRequestID() {
@@ -25,13 +28,6 @@ public class Request {
 		this.requestID = requestID;
 	}
 
-//	public int getProblemID() {
-//		return problemID;
-//	}
-//
-//	public void setProblemID(int problemID) {
-//		this.problemID = problemID;
-//	}
 
 	public Facility getFacility() {
 		return facility;
@@ -57,13 +53,6 @@ public class Request {
 		this.completeDate = completeDate;
 	}
 
-	public int getDays() {
-		return days;
-	}
-
-	public void setDays(int days) {
-		this.days = days;
-	}
 
 	public Problem getProblem() {
 		return problem;
@@ -80,6 +69,14 @@ public class Request {
 
 	public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule) {
 		this.maintenanceSchedule = maintenanceSchedule;
+	}
+
+	public int getProblemID() {
+		return problemID;
+	}
+
+	public void setProblemID(int problemID) {
+		this.problemID = problemID;
 	}
 
 }

@@ -9,16 +9,11 @@ import fms.model.use.User;
 public class Facility implements IFacility {
 	private int facilityID;
 	private List<Room> roomsList;
-	private static List<Facility>facilityList=new ArrayList<Facility>();
 	private Customer customer;
 	private Details details;
 
 	
 	public Facility() {
-//		this.facilityID=facilityID;
-//		this.information=information;
-//		this.roomsList=roomsList;
-		facilityList.add(this);
 		
 	}
 	@Override
@@ -36,9 +31,8 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public List<Facility> listFacilities() {
-		
-		return facilityList;
+	public List<Room> listFacilities() {
+		return roomsList;
 
 	}
 
@@ -56,9 +50,7 @@ public class Facility implements IFacility {
 	}
 	
 
-	//public void setFacilityInformation(String information) {
-		//details.setInformation(information);
-//	}
+
 	
 	@Override
 	public int requestAvailableCapacity() {
@@ -72,8 +64,9 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public void addNewFacility(Room room) {
+	public Room addNewFacility(Room room) {
 		roomsList.add(room); 
+		return room;
 	}
 	
 	@Override
@@ -83,9 +76,7 @@ public class Facility implements IFacility {
 	
 	@Override
 	public Room removeFacility(Room room) {
-		boolean remove = roomsList.remove(room);
-		if (remove==true) {System.out.println("Room " + room.getRoomID()+  " has been removed.");}
-		else System.out.println("Unable to remove room " + room.getRoomID());
+		roomsList.remove(room);
 		return room;
 	}
 
