@@ -1,4 +1,4 @@
-package fms.model.Manager;
+package fms.model.manager;
 
 import fms.dal.FacilityDAO;
 import fms.dal.MaintenanceDAO;
@@ -15,7 +15,7 @@ public class MaintenanceManager {
 			FacilityMaintenance maint = MaintenanceDAO.getRequestID(requestID);
 	    	return maint;
 	    } catch (Exception se) {
-	      System.err.println("FacilityManager: Threw a Exception retrieving facility.");
+	      System.err.println("MaintenanceManager: Threw a Exception retrieving FacilityMaintenance.");
 	      System.err.println(se.getMessage());
 	    }
 		return null;
@@ -27,7 +27,7 @@ public class MaintenanceManager {
 		try {
 			MaintenanceDAO.addMaintRequest(maint);
 	    } catch (Exception se) {
-	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
+	      System.err.println("MaintenanceManager: Threw a Exception retrieving FacilityMaintenance.");
 	      System.err.println(se.getMessage());
 	    }
 	}

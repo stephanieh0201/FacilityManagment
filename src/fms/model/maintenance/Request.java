@@ -1,28 +1,20 @@
 package fms.model.maintenance;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import fms.model.facility.Facility;
 
 public class Request {
 	private int requestID;
-	private String problem;
 	private Facility facility;
-	private String requestDate;
-	private String completeDate;
+	private Date requestDate;
+	private Date completeDate;
 	private int days;
-
+	private Problem problem;
+	private MaintenanceSchedule maintenanceSchedule;
 	
-	public Request(
-			//int requestID, String problem, Facility facility, Date requestDate, Date completeDate
-			) {
-//		this.requestID=requestID;
-//		this.problem=problem;
-//		this.facility=facility;
-//		this.requestDate=requestDate;
-//		this.completeDate=completeDate;
-//		cost=new Cost(problem);
-		
+	public Request() {
 	}
 
 	public int getRequestID() {
@@ -33,13 +25,13 @@ public class Request {
 		this.requestID = requestID;
 	}
 
-	public String getProblem() {
-		return problem;
-	}
-
-	public void setProblem(String problem) {
-		this.problem = problem;
-	}
+//	public int getProblemID() {
+//		return problemID;
+//	}
+//
+//	public void setProblemID(int problemID) {
+//		this.problemID = problemID;
+//	}
 
 	public Facility getFacility() {
 		return facility;
@@ -49,19 +41,19 @@ public class Request {
 		this.facility = facility;
 	}
 
-	public String getRequestDate() {
+	public Date getRequestDate() {
 		return requestDate;
 	}
 
-	public void setRequestDate(String requestDate) {
+	public void setRequestDate(Date requestDate) {
 		this.requestDate = requestDate;
 	}
 
-	public String getCompleteDate() {
+	public Date getCompleteDate() {
 		return completeDate;
 	}
 
-	public void setCompleteDate(String completeDate) {
+	public void setCompleteDate(Date completeDate) {
 		this.completeDate = completeDate;
 	}
 
@@ -72,5 +64,22 @@ public class Request {
 	public void setDays(int days) {
 		this.days = days;
 	}
+
+	public Problem getProblem() {
+		return problem;
+	}
+
+	public void setProblem(Problem problem) {
+		this.problem = problem;
+	}
+
 	
+	public MaintenanceSchedule getMaintenanceSchedule() {
+		return maintenanceSchedule;
+	}
+
+	public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule) {
+		this.maintenanceSchedule = maintenanceSchedule;
+	}
+
 }

@@ -29,9 +29,10 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 	@Override
-	public String scheduleMaintenance(String date) {
-		request.setRequestDate(date);
-		return date;
+	public Request scheduleMaintenance(Date startDate, Date completeDate) {
+		request.setRequestDate(startDate);
+		request.setCompleteDate(completeDate);
+		return request;
 
 	}
 
@@ -44,9 +45,15 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 	@Override
-	public int calcProblemRateForFacility() {
-		//TODO 
-		return 0;
+	public int calcProblemRateForFacility(Problem p1) {
+		int id=p1.getProblemID();
+		int count=0;
+		for (Request r: listRequests){
+			if (r.getProblem().getProblemID()==id) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	@Override
@@ -74,7 +81,7 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	public String listFacilityProblems() {
 		String prob="";
 		for (Request r : listRequests) {
-			prob+= r.getProblem() +"\n";
+			prob+= r.getProblem().getProblem() +"\n";
 		}
 		return prob;
 	}

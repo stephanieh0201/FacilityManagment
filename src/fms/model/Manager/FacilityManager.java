@@ -1,4 +1,4 @@
-package fms.model.Manager;
+package fms.model.manager;
 
 
 import fms.dal.FacilityDAO;
@@ -11,7 +11,7 @@ public class FacilityManager {
 	public Facility findFacilityById(int facilityID) {
 			
 		try {
-			Facility facility = facilityDAO.getFacilityID(facilityID);
+			Facility facility = FacilityDAO.getFacilityID(facilityID);
 	    	return facility;
 	    } catch (Exception se) {
 	      System.err.println("FacilityManager: Threw a Exception retrieving facility.");
@@ -26,7 +26,7 @@ public class FacilityManager {
 		try {
 			FacilityDAO.addFacility(facility);
 	    } catch (Exception se) {
-	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
+	      System.err.println("FacilityManager: Threw a Exception retrieving facility.");
 	      System.err.println(se.getMessage());
 	    }
 	}

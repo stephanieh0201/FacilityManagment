@@ -5,14 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
-import fms.model.facility.Details;
-import fms.model.facility.Facility;
-import fms.model.facility.Room;
 import fms.model.maintenance.Cost;
 import fms.model.maintenance.FacilityMaintenance;
+import fms.model.maintenance.Problem;
 import fms.model.maintenance.Request;
 
 public class MaintenanceDAO {
@@ -55,31 +52,49 @@ public class MaintenanceDAO {
 	      costResults.close();
 	      
 	      //get request
-	      String selectRequestQuery = "SELECT problem, requestDate, completeDate, days FROM request WHERE requestID = '" + requestID + "'";
+	      String selectRequestQuery = "SELECT problemID, requestDate, completeDate, days FROM request WHERE requestID = '" + requestID + "'";
 	      ResultSet requestResults= st.executeQuery(selectRequestQuery);
 	      System.out.println("MaintenanceDAO: ************** Query " + selectRequestQuery);
+	      Request request = new Request();
 	      while (requestResults.next()){
 	    	  
-	    	  Request request = new Request();
-	    	  String prob = requestResults.getString("problem");
-	    	  String requestDate = requestResults.getString("requestDate");
-	    	  String completeDate = requestResults.getString("completeDate");
+	    	  int prob = requestResults.getInt("problemID");
+	    	  Date requestDate = requestResults.getDate("requestDate");
+	    	  Date completeDate = requestResults.getDate("completeDate");
 	    	  int days = requestResults.getInt("days");
-	    	  request.setProblem(prob);
+	    	  
 	    	  request.setRequestDate(requestDate);
 	    	  request.setCompleteDate(completeDate);
 	    	  request.setDays(days);
 	    	  facilityMaint.setRequest(request);
+	    	 
+		      
 	      }
 	      //close to manage resources
 	      requestResults.close();
+	     
+	      String selectProblemQuery = "SELECT problemID, problem FROM problem WHERE problemID = '" + request + "'";
+    	  ResultSet problemResults= st.executeQuery(selectProblemQuery);
+	      System.out.println("MaintenanceDAO: ************** Query " + selectProblemQuery);
 	      
+	      while (problemResults.next()){
+	    	  Problem problem = new Problem();
+	    	  int probID = problemResults.getInt("problemID"); 
+	    	  String problemText = problemResults.getString("problem");
+	    	  problem.setProblemID(probID);
+	    	  problem.setProblem(problemText);
+	    	  
+	    	  request.setProblem(problem);
+	    	  
+	      }
+	      
+	      problemResults.close();
 	      st.close();
 	      
 	      return facilityMaint;
 	    }	    
 	    catch (SQLException se) {
-	      System.err.println("FacilityDAO: Threw a SQLException retrieving the facility object.");
+	      System.err.println("MaintenanceDAO: Threw a SQLException retrieving the facility object.");
 	      System.err.println(se.getMessage());
 	      se.printStackTrace();
 	    }
@@ -93,6 +108,7 @@ public class MaintenanceDAO {
 		PreparedStatement maintPst = null;
         PreparedStatement costPst = null;
         PreparedStatement requestPst=null; 
+        PreparedStatement schedulePst=null;
 
         try {
         	//Insert the FacilityMaintenance object
@@ -110,15 +126,28 @@ public class MaintenanceDAO {
             costPst.executeUpdate();
             
             //Insert the request object
-            String requestStm = "INSERT INTO request (completeDate, days, requestDate, problem, requestID) " + " VALUES(?, ?, ?, ?, ?)";
+            String requestStm = "INSERT INTO request (completeDate, days, requestDate, problemID, requestID) " + " VALUES(?, ?, ?, ?, ?)";
             requestPst = con.prepareStatement(requestStm);
-            requestPst.setString(1, req.getRequest().getCompleteDate());
+            requestPst.setDate(1, new java.sql.Date (req.getRequest().getCompleteDate().getTime()));
             requestPst.setInt(2, req.getRequest().getDays());
-            requestPst.setString(3, req.getRequest().getRequestDate());
-            requestPst.setString(4, req.getRequest().getProblem());
+            requestPst.setDate(3, new java.sql.Date(req.getRequest().getRequestDate().getTime()));
+            requestPst.setInt(4, req.getRequest().getProblem().getProblemID());
+            
             requestPst.setInt(5, req.getRequestID());
             requestPst.executeUpdate();
-         	
+            //insert schedule object
+            
+            int days= req.getRequest().getCompleteDate().compareTo(req.getRequest().getRequestDate());
+            long milliInADay = 1000 * 60 * 60 * 24;
+            for (int i=0; i<=days; i++){
+            	String scheduleStm = "INSERT INTO maintenanceSchedule (facilityID, reserveDate, status) " + " VALUES(?, ?, ?)";
+            	schedulePst = con.prepareStatement(scheduleStm);
+            	schedulePst.setInt(1, req.getFacility().getFacilityID());
+            	schedulePst.setDate(2, new java.sql.Date (req.getRequest().getRequestDate().getTime() + i*milliInADay));
+            	schedulePst.setBoolean(3, req.getRequest().getMaintenanceSchedule().getStatus());
+
+            	schedulePst.executeUpdate();
+            }
         
         } catch (SQLException ex) {
 
@@ -135,7 +164,7 @@ public class MaintenanceDAO {
                 }
 
             } catch (SQLException ex) {
-      	      System.err.println("FacilityDAO: Threw a SQLException saving the facility object.");
+      	      System.err.println("MaintenanceDAO: Threw a SQLException saving the facility object.");
     	      System.err.println(ex.getMessage());
             }
         }
