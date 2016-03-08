@@ -1,9 +1,9 @@
 package fms.model.facility;
 
-public class Room {
+public class Room implements IRoom {
 	private int capacity;
 	private int roomID;
-	private Facility facility;
+	private IFacility facility;
 	
 	public Room() {
 
@@ -23,11 +23,11 @@ public class Room {
 		this.roomID=roomID;
 	}
 
-	public Facility getFacility() {
+	public IFacility getFacility() {
 		return facility;
 	}
 
-	public void setFacility(Facility facility) {
+	public void setFacility(IFacility facility) {
 		this.facility = facility;
 	}
 	public String toString(){

@@ -8,9 +8,9 @@ import fms.model.use.User;
 
 public class Facility implements IFacility {
 	private int facilityID;
-	private List<Room> roomsList;
-	private Customer customer;
-	private Details details;
+	private List<IRoom> roomsList;
+	private ICustomer customer;
+	private IDetails details;
 
 	
 	public Facility() {
@@ -31,21 +31,21 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public List<Room> listFacilities() {
+	public List<IRoom> listFacilities() {
 		return roomsList;
 
 	}
 
-	public List<Room> getRooms() {
+	public List<IRoom> getRooms() {
 		return roomsList;
 	}
 	
-	public void setRooms(List<Room> roomsList) {
+	public void setRooms(List<IRoom> roomsList) {
 		this.roomsList=roomsList;
 	}
 	
 	@Override
-	public Details getFacilityInformation() {
+	public IDetails getFacilityInformation() {
 		return details;
 	}
 	
@@ -64,35 +64,35 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public Room addNewFacility(Room room) {
+	public IRoom addNewFacility(IRoom room) {
 		roomsList.add(room); 
 		return room;
 	}
 	
 	@Override
-	public void addFacilityDetail(Details details) {
+	public void addFacilityDetail(IDetails details) {
 		this.details=details;
 	}
 	
 	@Override
-	public Room removeFacility(Room room) {
+	public IRoom removeFacility(IRoom room) {
 		roomsList.remove(room);
 		return room;
 	}
 
-	public Customer getUser() {
+	public ICustomer getUser() {
 		return customer;
 	}
 
-	public void setUser(Customer customer) {
+	public void setUser(ICustomer customer) {
 		this.customer = customer;
 	}
 
-	public Details getDetails() {
+	public IDetails getDetails() {
 		return details;
 	}
 
-	public void setDetails(Details details) {
+	public void setDetails(IDetails details) {
 		this.details = details;
 	}
 }
