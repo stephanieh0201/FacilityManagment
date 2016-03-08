@@ -4,7 +4,7 @@ import java.util.Date;
 
 import fms.model.facility.Facility;
 
-public class MaintenanceSchedule {
+public class MaintenanceSchedule implements MaintenanceScheduleInterface {
 	Facility facility;
 	Date reserveDate;
 	boolean status;

@@ -5,7 +5,7 @@ import java.util.Date;
 
 import fms.model.facility.Facility;
 
-public class Request {
+public class Request implements RequestInterface{
 	private int requestID;
 	private Facility facility;
 	private Date requestDate;

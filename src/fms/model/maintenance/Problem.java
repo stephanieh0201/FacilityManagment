@@ -1,6 +1,6 @@
 package fms.model.maintenance;
 
-public class Problem {
+public class Problem implements ProblemInterface {
 	private int problemID;
 	private String problem;
 
@@ -22,7 +22,6 @@ public class Problem {
 	}
 	public String toString(){
 		return "ProblemID " + getProblemID() + ": " + getProblem();
-		
 	}
 
 }

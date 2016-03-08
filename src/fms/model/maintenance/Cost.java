@@ -1,11 +1,11 @@
 package fms.model.maintenance;
 
-public class Cost {
+public class Cost implements CostInterface {
 	int requestID;
 	int maintenanceCost;
 	
 	
-	public Cost(){
+	public Cost() {
 		
 	}
 	public int getCost(){
@@ -21,5 +21,6 @@ public class Cost {
 	public void setRequestID(int requestID){
 		this.requestID=requestID;
 	}
+	
 	
 }
