@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface IFacility {
-	public List<Room> listFacilities();
-	public Details getFacilityInformation();
+	public List<IRoom> listFacilities();
+	public IDetails getFacilityInformation();
 	public int requestAvailableCapacity();
-	public Room addNewFacility(Room room);
-	public void addFacilityDetail(Details details);
-	public Room removeFacility(Room room);
+	public IRoom addNewFacility(IRoom room);
+	public void addFacilityDetail(IDetails details);
+	public IRoom removeFacility(IRoom room);
 	
 
 }

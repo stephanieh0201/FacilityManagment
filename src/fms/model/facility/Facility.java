@@ -70,7 +70,7 @@ public class Facility implements IFacility {
 	}
 	
 	@Override
-	public void addFacilityDetail(Details details) {
+	public void addFacilityDetail(IDetails details) {
 		this.details=details;
 	}
 	
@@ -88,7 +88,7 @@ public class Facility implements IFacility {
 		this.customer = customer;
 	}
 
-	public Details getDetails() {
+	public IDetails getDetails() {
 		return details;
 	}
 
