@@ -1,6 +1,6 @@
 package fms.model.use;
 
-public class User {
+public class User implements UserInterface {
 	private int userID;
 	private String firstName;
 	private String lastName;

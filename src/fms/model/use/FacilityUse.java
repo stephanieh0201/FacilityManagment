@@ -5,23 +5,23 @@ import java.util.Date;
 import java.util.List;
 
 import fms.model.facility.*;
+import fms.model.use.*;
 
 
-public class FacilityUse implements IFacilityUse {
-	private Customer customer;
-	private Facility facility;
+
+public class FacilityUse implements FacilityUseInterface {
+	private CustomerInterface customer;
+	private FacilityInterface facility;
 	private Date startDate;
 	private Date endDate;
-	private List<Inspection> inspections;
+	private List<InspectionInterface> inspections;
 	private int rate = 200;
-	private UseSchedule useSchedule;
+	private UseScheduleInterface useSchedule;
 	private int facilityID;
 	private int customerID;
 	
 	
 	public FacilityUse() {
-		
-
 	}
 
 	@Override
@@ -36,19 +36,19 @@ public class FacilityUse implements IFacilityUse {
 	}
 
 	@Override
-	public Customer assignFacilityToUse(Facility facility, Customer customer) {
+	public CustomerInterface assignFacilityToUse(FacilityInterface facility, CustomerInterface customer) {
 		 facility.setUser(customer);	
 		 return customer;
 	}
 
 	@Override
-	public Customer vacateFacility() {
+	public CustomerInterface vacateFacility() {
 		setCustomer(null);
 		return getCustomer();
 	}
 
 	@Override
-	public List<Inspection> listInspections() {
+	public List<InspectionInterface> listInspections() {
 		return inspections;
 		
 	}
@@ -81,38 +81,38 @@ public class FacilityUse implements IFacilityUse {
 		this.endDate = endDate;
 	}
 
-	public Facility getFacility() {
+	public FacilityInterface getFacility() {
 		return facility;
 	}
 
-	public void setFacility(Facility facility) {
+	public void setFacility(FacilityInterface facility) {
 		this.facility = facility;
 	}
 
-	public List<Inspection> getInspections() {
+	public List<InspectionInterface> getInspections() {
 		return this.inspections;
 	}
 
-	public void setInspections(List<Inspection> inspections) {
+	public void setInspections(List<InspectionInterface> inspections) {
 		this.inspections = inspections;
 	}
-	public void setInspections(Inspection inspection){
+	public void setInspections(InspectionInterface inspection){
 		inspections.add(inspection);
 	}
 
-	public Customer getCustomer() {
+	public CustomerInterface getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerInterface customer) {
 		this.customer = customer;
 	}
 
-	public UseSchedule getUseSchedule() {
+	public UseScheduleInterface getUseSchedule() {
 		return useSchedule;
 	}
 
-	public void setUseSchedule(UseSchedule useSchedule) {
+	public void setUseSchedule(UseScheduleInterface useSchedule) {
 		this.useSchedule = useSchedule;
 	}
 

@@ -1,6 +1,6 @@
 package fms.model.use;
 
-public class Manager extends User {
+public class Manager extends User implements ManagerInterface  {
 	private int employeeID;
 	private double salary;
 	

@@ -3,17 +3,18 @@ package fms.model.use;
 import java.util.Date;
 
 import fms.model.facility.Facility;
+import fms.model.facility.FacilityInterface;
 
-public class UseSchedule {
-	private Facility facility;
+public class UseSchedule implements UseScheduleInterface {
+	private FacilityInterface facility;
 	private boolean isInUse;
 	private Date useDate;
 	
 	
-	public Facility getFacility() {
+	public FacilityInterface getFacility() {
 		return facility;
 	}
-	public void setFacility(Facility facility) {
+	public void setFacility(FacilityInterface facility) {
 		this.facility = facility;
 	}
 	public boolean isInUse() {

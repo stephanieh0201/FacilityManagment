@@ -1,6 +1,6 @@
 package fms.model.facility;
 
-public class Details implements IDetails {
+public class Details implements DetailsInterface {
 	String address;
 	String information;
 	

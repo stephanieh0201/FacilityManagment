@@ -3,14 +3,15 @@ package fms.model.facility;
 import java.util.*;
 
 import fms.model.use.Customer;
-import fms.model.use.IFacilityUse;
+import fms.model.use.CustomerInterface;
+import fms.model.use.FacilityUseInterface;
 import fms.model.use.User;
 
-public class Facility implements IFacility {
+public class Facility implements FacilityInterface {
 	private int facilityID;
-	private List<IRoom> roomsList;
-	private ICustomer customer;
-	private IDetails details;
+	private List<RoomInterface> roomsList;
+	private CustomerInterface customer;
+	private DetailsInterface details;
 
 	
 	public Facility() {
@@ -31,21 +32,21 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public List<IRoom> listFacilities() {
+	public List<RoomInterface> listFacilities() {
 		return roomsList;
 
 	}
 
-	public List<IRoom> getRooms() {
+	public List<RoomInterface> getRooms() {
 		return roomsList;
 	}
 	
-	public void setRooms(List<IRoom> roomsList) {
+	public void setRooms(List<RoomInterface> roomsList) {
 		this.roomsList=roomsList;
 	}
 	
 	@Override
-	public IDetails getFacilityInformation() {
+	public DetailsInterface getFacilityInformation() {
 		return details;
 	}
 	
@@ -55,7 +56,7 @@ public class Facility implements IFacility {
 	@Override
 	public int requestAvailableCapacity() {
 		int capacity=0;
-		for (Room room : roomsList) {
+		for (RoomInterface room : roomsList) {
 			capacity+= room.getCapacity();
 		}
 		return capacity;
@@ -64,35 +65,35 @@ public class Facility implements IFacility {
 	
 	
 	@Override
-	public IRoom addNewFacility(IRoom room) {
+	public RoomInterface addNewFacility(RoomInterface room) {
 		roomsList.add(room); 
 		return room;
 	}
 	
 	@Override
-	public void addFacilityDetail(IDetails details) {
+	public void addFacilityDetail(DetailsInterface details) {
 		this.details=details;
 	}
 	
 	@Override
-	public IRoom removeFacility(IRoom room) {
+	public RoomInterface removeFacility(RoomInterface room) {
 		roomsList.remove(room);
 		return room;
 	}
 
-	public ICustomer getUser() {
+	public CustomerInterface getUser() {
 		return customer;
 	}
 
-	public void setUser(ICustomer customer) {
+	public void setUser(CustomerInterface customer) {
 		this.customer = customer;
 	}
 
-	public IDetails getDetails() {
+	public DetailsInterface getDetails() {
 		return details;
 	}
 
-	public void setDetails(IDetails details) {
+	public void setDetails(DetailsInterface details) {
 		this.details = details;
 	}
 }
