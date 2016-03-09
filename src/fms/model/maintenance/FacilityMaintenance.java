@@ -10,7 +10,7 @@ import fms.model.facility.FacilityInterface;
 public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	private int requestID;
 	private RequestInterface request;
-	private List<Request> listRequests = new ArrayList<Request>();
+	private List<RequestInterface> listRequests = new ArrayList<RequestInterface>();
 	private int facilityID;
 	private FacilityInterface facility;
 	private CostInterface cost;
@@ -68,7 +68,7 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	}
 
 	@Override
-	public List<Request> listMaintRequests() {
+	public List<RequestInterface> listMaintRequests() {
 		return listRequests;
 		
 	}

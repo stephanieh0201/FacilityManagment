@@ -11,7 +11,7 @@ public interface FacilityMaintenanceInterface {
 	public int calcMaintenanceCostForFacility(RequestInterface request);
 	public int calcProblemRateForFacility(Problem problem);
 	public int calcDownTimeForFacility(Request request);
-	public List<Request> listMaintRequests();
+	public List<RequestInterface> listMaintRequests();
 	public String listMaintenance(); 
 	public String listFacilityProblems();
 }

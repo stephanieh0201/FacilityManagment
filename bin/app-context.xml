@@ -7,7 +7,7 @@
 
 	<description>Wiring the dependencies for the Facility Management Application.</description>
 
-	<context:component-scan base-package="com.online.bookstore" />
+	<context:component-scan base-package="fms" />
 	
 	<bean id="billingAddress" class="com.online.bookstore.model.customer.AddressImpl" scope="prototype"/>
 	<bean id="shippingAddress" class="com.online.bookstore.model.customer.AddressImpl" scope="prototype"/>
