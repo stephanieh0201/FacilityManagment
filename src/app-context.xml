@@ -46,20 +46,22 @@
 	
 	
 	<!-- Maintenance   -->
-	<bean id="Cost" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="Cost" class="fms.model.maintenance.Cost" scope="prototype"></bean>
 	
-	<bean id="FacilityMaintenance" class="fms.model.maintenance" scope="prototype"
+	<bean id="FacilityMaintenance" class="fms.model.maintenanc.FacilityMaintenance" scope="prototype">
+		<property name="request" ref="request" />
 		 <property name="listRequests">
         	<list/>
          </property>
+         <property name="facility" ref="facility" />
+         <property name="cost" ref="cost" />
+	</bean>
 	
-	></bean>
+	<bean id="MaintenanceSchedule" class="fms.model.maintenance.MaintenanceSchedule" scope="prototype"></bean>
 	
-	<bean id="MaintenanceSchedule" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="Problem" class="fms.model.maintenance.Problem" scope="prototype"></bean>
 	
-	<bean id="Problem" class="fms.model.maintenance" scope="prototype"></bean>
-	
-	<bean id="Request" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="Request" class="fms.model.maintenance.Request" scope="prototype"></bean>
 	
 	
 	
