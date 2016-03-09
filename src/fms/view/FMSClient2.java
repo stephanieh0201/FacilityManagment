@@ -15,6 +15,7 @@ import javax.xml.soap.Detail;
 import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
+import fms.model.facility.RoomInterface;
 import fms.model.maintenance.Cost;
 import fms.model.maintenance.FacilityMaintenance;
 import fms.model.maintenance.MaintenanceSchedule;
@@ -45,8 +46,8 @@ public class FMSClient2 {
     
         System.out.println("FMSClient2: *************** Here is searched facility information *************************");
         System.out.println("ID:" + searchedFacility.getFacilityID());
-        List<Room> rooms = searchedFacility.getRooms();
-        for (Room r:rooms){
+        List<RoomInterface> rooms = searchedFacility.getRooms();
+        for (RoomInterface r:rooms){
         	System.out.println("Room ID:" + r.getRoomID());
         	System.out.println("Capacity:"+ r.getCapacity());
     	}

@@ -9,6 +9,7 @@
 
 	<context:component-scan base-package="fms" />
 	
+	<!-- Facility  -->
 	<bean id="details" class="fms.model.facility.Details" scope="prototype"/>
 	<bean id="room" class="fms.model.facility.Room" scope="prototype"/>
 
@@ -18,7 +19,12 @@
 		</property>
 		<property name="details" ref="details"/>
 	</bean>
+	
+	<bean id="facilityManager" class="fms.model.manager.FacilityManager" scope="prototype">
+		<property name="facility" ref="facility" />
+	</bean>
 
+	<!-- Use  -->
 	<bean id="customer" class="fms.model.use.Customer" scope="prototype"/>
 		
 	<bean id="manager" class="fms.model.use.Manager" scope="prototype"/>
@@ -38,35 +44,34 @@
 		<property name="useSchedule" ref="useSchedule"/>
 	</bean>
 			
-	<bean id="customer" class="com.online.bookstore.model.customer.CustomerImpl" scope="prototype">
-		<property name="billingAddress" ref="billingAddress" />
-		<property name="shippingAddress" ref="shippingAddress" />
-		<!-- Inject the Order List -->
-        <property name="orders">
-        	<list/>
-         </property>
+	<bean id="UseManager" class="fms.model.manager.UseManager" scope="prototype">
+		<property name="facilityUse" ref="facilityUse" />
 	</bean>
+			
 	
-	<bean id="customerService" class="com.online.bookstore.model.service.CustomerService" scope="prototype">
-		<property name="customer" ref="customer" />
-	</bean>
+
 	
 	
 	<!-- Maintenance   -->
-	<bean id="Cost" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="Cost" class="fms.model.maintenance.Cost" scope="prototype"></bean>
 	
-	<bean id="FacilityMaintenance" class="fms.model.maintenance" scope="prototype"
-		 <property name="listRequests">
+	<bean id="FacilityMaintenance" class="fms.model.maintenance.FacilityMaintenance" scope="prototype">
+		<property name="request" ref="request">
         	<list/>
          </property>
+         <property name="facility" ref="facility" />
+         <property name="cost" ref="cost" />
+	</bean>
 	
-	></bean>
+	<bean id="MaintenanceSchedule" class="fms.model.maintenance.MaintenanceSchedule" scope="prototype"></bean>
 	
-	<bean id="MaintenanceSchedule" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="Problem" class="fms.model.maintenance.Problem" scope="prototype"></bean>
 	
-	<bean id="Problem" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="Request" class="fms.model.maintenance.Request" scope="prototype"></bean>
 	
-	<bean id="Request" class="fms.model.maintenance" scope="prototype"></bean>
+	<bean id="maintenanceManager" class="fms.model.manager.MaintenanceManager" scope="prototype">
+		<property name="FacilityMaintenance" ref="FacilityMaintenance" />
+	</bean>
 	
 	
 	
