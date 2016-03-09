@@ -29,7 +29,7 @@
 		
 	<bean id="manager" class="fms.model.use.Manager" scope="prototype"/>
 	<bean id="user" class="fms.model.use.User" scope="prototype"/>
-	<bean id="inspection" class="fms.model.use.Inpsection" scope="prototype">
+	<bean id="inspection" class="fms.model.use.Inspection" scope="prototype">
 		<property name="manager" ref="manager"/>
 	</bean>
 	<bean id="useSchedule" class="fms.model.use.UseSchedule" scope="prototype">
@@ -60,7 +60,7 @@
         	<list/>
          </property>
          <property name="facility" ref="facility" />
-         <property name="cost" ref="cost" />
+         <property name="cost" ref="cost"/>
 	</bean>
 	
 	<bean id="MaintenanceSchedule" class="fms.model.maintenance.MaintenanceSchedule" scope="prototype"></bean>
