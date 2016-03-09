@@ -9,28 +9,35 @@
 
 	<context:component-scan base-package="fms" />
 	
-	<bean id="billingAddress" class="com.online.bookstore.model.customer.AddressImpl" scope="prototype"/>
-	<bean id="shippingAddress" class="com.online.bookstore.model.customer.AddressImpl" scope="prototype"/>
-	<bean id="book" class="com.online.bookstore.model.product.Book" scope="prototype"/>
+	<bean id="details" class="fms.model.facility.Details" scope="prototype"/>
+	<bean id="room" class="fms.model.facility.Room" scope="prototype"/>
 
-	<bean id="orderDetail" class="com.online.bookstore.model.order.OrderDetailImpl" scope="prototype">
-		<property name="book" ref="book" />
-		<property name="quantity" >
-			<value>0</value>
-		</property>
-	</bean>
-
-	<bean id="order" class="com.online.bookstore.model.order.OrderImpl" scope="prototype">	
-		<property name="orderDetails">
+	<bean id="facility" class="fms.model.facility.Facility" scope="prototype">
+		<property name="room">
 			<list/>
-        	<!-- 
-         	<list>
-             	<ref bean="orderDetail" />
-            </list>
-            -->
-         </property>
+		</property>
+		<property name="details" ref="details"/>
 	</bean>
-	
+
+	<bean id="customer" class="fms.model.use.Customer" scope="prototype"/>
+		
+	<bean id="manager" class="fms.model.use.Manager" scope="prototype"/>
+	<bean id="user" class="fms.model.use.User" scope="prototype"/>
+	<bean id="inspection" class="fms.model.use.Inpsection" scope="prototype">
+		<property name="manager" ref="manager"/>
+	</bean>
+	<bean id="useSchedule" class="fms.model.use.UseSchedule" scope="prototype">
+		<property name="facility" ref="facility"/>
+	</bean>
+	<bean id="facilityUse" class="fms.model.use.FacilityUse" scope="prototype">
+		<property name="customer" ref="customer"/>
+		<property name="facility" ref="facility"/>
+		<property name="inspections">
+			<list/>
+		</property>
+		<property name="useSchedule" ref="useSchedule"/>
+	</bean>
+			
 	<bean id="customer" class="com.online.bookstore.model.customer.CustomerImpl" scope="prototype">
 		<property name="billingAddress" ref="billingAddress" />
 		<property name="shippingAddress" ref="shippingAddress" />
