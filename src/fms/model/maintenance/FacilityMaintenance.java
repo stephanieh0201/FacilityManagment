@@ -50,10 +50,10 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	}
 
 	@Override
-	public int calcProblemRateForFacility(Problem p1) {
+	public int calcProblemRateForFacility(ProblemInterface p1) {
 		
 		int count=0;
-		for (Request r: listRequests){
+		for (RequestInterface r: listRequests){
 			if (r.getProblem()==p1) {
 				count++;
 			}
@@ -62,7 +62,7 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	}
 
 	@Override
-	public int calcDownTimeForFacility(Request request) {
+	public int calcDownTimeForFacility(RequestInterface request) {
 		int days = request.getCompleteDate().compareTo(request.getRequestDate()) +1;
 		return days;
 	}
@@ -76,7 +76,7 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	@Override
 	public String listMaintenance() {
 		String maint="";
-		for (Request r : listRequests) {
+		for (RequestInterface r : listRequests) {
 			maint += r.getRequestID()+"\n";
 			}
 		return maint;
@@ -85,7 +85,7 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	@Override
 	public String listFacilityProblems() {
 		String prob="";
-		for (Request r : listRequests) {
+		for (RequestInterface r : listRequests) {
 			if (!(r.getProblem()==null)){
 				prob+= r.getProblem().getProblem() +"\n";
 		}}
