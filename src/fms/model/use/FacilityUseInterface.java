@@ -13,5 +13,22 @@ public interface FacilityUseInterface {
 	public List<InspectionInterface> listInspections();
 	public int listActualUsage();
 	public int calcUsageRate();
+	public Date getStartDate();
+	public void setStartDate(Date startDate);
+	public Date getEndDate();
+	public void setEndDate(Date endDate);
+	public FacilityInterface getFacility();
+	public void setFacility(FacilityInterface facility);
+	public List<InspectionInterface> getInspections();
+	public void setInspections(List<InspectionInterface> inspections);
+	public void setInspections(InspectionInterface inspection);
+	public CustomerInterface getCustomer();
+	public void setCustomer(CustomerInterface customer);
+	public UseScheduleInterface getUseSchedule();
+	public void setUseSchedule(UseScheduleInterface useSchedule);
+	public int getFacilityID();
+	public void setFacilityID(int facilityID);
+	public int getCustomerID();
+	public void setCustomerID(int customerID);
 
 }

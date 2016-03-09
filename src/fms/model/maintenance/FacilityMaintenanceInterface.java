@@ -3,7 +3,7 @@ package fms.model.maintenance;
 import java.util.Date;
 import java.util.List;
 
-public interface IFacilityMaintenance {
+public interface FacilityMaintenanceInterface {
 	public Request makeFacilityMaintRequest(Request request); 
 	public Request scheduleMaintenance(Date requestDate, Date completeDate);
 	public int calcMaintenanceCostForFacility(Request request);
