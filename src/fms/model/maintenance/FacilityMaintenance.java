@@ -5,23 +5,23 @@ import java.util.Date;
 import java.util.List;
 
 import fms.model.facility.Facility;
+import fms.model.facility.FacilityInterface;
 
-public class FacilityMaintenance implements IFacilityMaintenance {
+public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	private int requestID;
-	private Request request;
+	private RequestInterface request;
 	private List<Request> listRequests = new ArrayList<Request>();
 	private int facilityID;
-	private Facility facility;
-	private Cost cost;
+	private FacilityInterface facility;
+	private CostInterface cost;
 
-	
 	
 	public FacilityMaintenance(){
 		
 	}
 	
 	@Override
-	public Request makeFacilityMaintRequest(Request request) {
+	public RequestInterface makeFacilityMaintRequest(RequestInterface request) {
 
 		listRequests.add(request);
 		return request;
@@ -29,7 +29,7 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 	@Override
-	public Request scheduleMaintenance(Date startDate, Date completeDate) {
+	public RequestInterface scheduleMaintenance(Date startDate, Date completeDate) {
 		Request r = new Request();
 		r.setRequestDate(startDate);
 		r.setCompleteDate(completeDate);
@@ -42,7 +42,7 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 	@Override
-	public int calcMaintenanceCostForFacility(Request request) {
+	public int calcMaintenanceCostForFacility(RequestInterface request) {
 		int days = request.getCompleteDate().compareTo(request.getRequestDate()) +1;
 		int amount = getCost().getCost();
 		return days*amount;
@@ -109,25 +109,25 @@ public class FacilityMaintenance implements IFacilityMaintenance {
 	}
 
 
-	public Cost getCost() {
+	public CostInterface getCost() {
 		return cost;
 	}
 
-	public void setCost(Cost cost) {
+	public void setCost(CostInterface cost) {
 		this.cost = cost;
 	}
-	public Request getRequest(){
+	public RequestInterface getRequest(){
 		return request;
 	}
-	public void setRequest(Request request) {
+	public void setRequest(RequestInterface request) {
 		this.request=request;
 	}
 
-	public Facility getFacility() {
+	public FacilityInterface getFacility() {
 		return facility;
 	}
 
-	public void setFacility(Facility facility) {
+	public void setFacility(FacilityInterface facility) {
 		this.facility = facility;
 	}
 

@@ -3,19 +3,20 @@ package fms.model.maintenance;
 import java.util.Date;
 
 import fms.model.facility.Facility;
+import fms.model.facility.FacilityInterface;
 
 public class MaintenanceSchedule implements MaintenanceScheduleInterface {
-	Facility facility;
+	FacilityInterface facility;
 	Date reserveDate;
 	boolean status;
 	
 	public MaintenanceSchedule() {}
 	
-	public Facility getFacility(){
+	public FacilityInterface getFacility(){
 		return facility;
 		
 	}
-	public void setFacility(Facility facility){
+	public void setFacility(FacilityInterface facility){
 		this.facility=facility;
 	}
 	

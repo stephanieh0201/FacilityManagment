@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import fms.model.facility.Facility;
+import fms.model.facility.FacilityInterface;
 
 public class Request implements RequestInterface{
 	private int requestID;
-	private Facility facility;
+	private FacilityInterface facility;
 	private Date requestDate;
 	private Date completeDate;
-	private Problem problem;
+	private ProblemInterface problem;
 	private int problemID;
-	private MaintenanceSchedule maintenanceSchedule;
+	private MaintenanceScheduleInterface maintenanceSchedule;
 	
 	public Request() {
 	}
@@ -29,11 +30,11 @@ public class Request implements RequestInterface{
 	}
 
 
-	public Facility getFacility() {
+	public FacilityInterface getFacility() {
 		return facility;
 	}
 
-	public void setFacility(Facility facility) {
+	public void setFacility(FacilityInterface facility) {
 		this.facility = facility;
 	}
 
@@ -54,20 +55,20 @@ public class Request implements RequestInterface{
 	}
 
 
-	public Problem getProblem() {
+	public ProblemInterface getProblem() {
 		return problem;
 	}
 
-	public void setProblem(Problem problem) {
+	public void setProblem(ProblemInterface problem) {
 		this.problem = problem;
 	}
 
 	
-	public MaintenanceSchedule getMaintenanceSchedule() {
+	public MaintenanceScheduleInterface getMaintenanceSchedule() {
 		return maintenanceSchedule;
 	}
 
-	public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule) {
+	public void setMaintenanceSchedule(MaintenanceScheduleInterface maintenanceSchedule) {
 		this.maintenanceSchedule = maintenanceSchedule;
 	}
 

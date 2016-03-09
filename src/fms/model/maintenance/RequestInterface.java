@@ -3,22 +3,23 @@ package fms.model.maintenance;
 import java.util.Date;
 
 import fms.model.facility.Facility;
+import fms.model.facility.FacilityInterface;
 
 public interface RequestInterface {
 	
 	public String toString();
 	public int getRequestID();
 	public void setRequestID(int requestID);
-	public Facility getFacility();
-	public void setFacility(Facility facility);
+	public FacilityInterface getFacility();
+	public void setFacility(FacilityInterface facility);
 	public Date getRequestDate();
 	public void setRequestDate(Date requestDate);
 	public Date getCompleteDate();
 	public void setCompleteDate(Date completeDate);
-	public Problem getProblem();
-	public void setProblem(Problem problem);
-	public MaintenanceSchedule getMaintenanceSchedule();
-	public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule);
+	public ProblemInterface getProblem();
+	public void setProblem(ProblemInterface problem);
+	public MaintenanceScheduleInterface getMaintenanceSchedule();
+	public void setMaintenanceSchedule(MaintenanceScheduleInterface maintenanceSchedule);
 	public int getProblemID();
 	public void setProblemID(int problemID);
 
