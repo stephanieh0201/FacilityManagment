@@ -44,16 +44,30 @@
 		<!-- Inject the Order List -->
         <property name="orders">
         	<list/>
-        	<!-- 
-        	<list>
-            	<ref bean="order" />
-            </list>
-             -->
          </property>
 	</bean>
 	
 	<bean id="customerService" class="com.online.bookstore.model.service.CustomerService" scope="prototype">
 		<property name="customer" ref="customer" />
 	</bean>
+	
+	
+	<!-- Maintenance   -->
+	<bean id="Cost" class="fms.model.maintenance" scope="prototype"></bean>
+	
+	<bean id="FacilityMaintenance" class="fms.model.maintenance" scope="prototype"
+		 <property name="listRequests">
+        	<list/>
+         </property>
+	
+	></bean>
+	
+	<bean id="MaintenanceSchedule" class="fms.model.maintenance" scope="prototype"></bean>
+	
+	<bean id="Problem" class="fms.model.maintenance" scope="prototype"></bean>
+	
+	<bean id="Request" class="fms.model.maintenance" scope="prototype"></bean>
+	
+	
 	
 </beans>
