@@ -1,4 +1,4 @@
-package fms.dal;
+package fms.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,7 +1,7 @@
 package fms.model.manager;
 
-import fms.dal.FacilityDAO;
-import fms.dal.MaintenanceDAO;
+import fms.dao.FacilityDAO;
+import fms.dao.MaintenanceDAO;
 import fms.model.facility.Facility;
 import fms.model.maintenance.FacilityMaintenance;
 import fms.model.maintenance.FacilityMaintenanceInterface;
