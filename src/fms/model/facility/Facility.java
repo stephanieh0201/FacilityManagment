@@ -37,11 +37,11 @@ public class Facility implements FacilityInterface {
 
 	}
 
-	public List<RoomInterface> getRooms() {
+	public List<RoomInterface> getRoomsList() {
 		return roomsList;
 	}
 	
-	public void setRooms(List<RoomInterface> roomsList) {
+	public void setRoomsList(List<RoomInterface> roomsList) {
 		this.roomsList=roomsList;
 	}
 	
@@ -96,4 +96,5 @@ public class Facility implements FacilityInterface {
 	public void setDetails(DetailsInterface details) {
 		this.details = details;
 	}
+
 }

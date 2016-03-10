@@ -10,7 +10,7 @@ import fms.model.facility.FacilityInterface;
 public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	private int requestID;
 	private RequestInterface request;
-	private List<RequestInterface> listRequests = new ArrayList<RequestInterface>();
+	private List<RequestInterface> listRequests;
 	private int facilityID;
 	private FacilityInterface facility;
 	private CostInterface cost;
@@ -129,6 +129,13 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 
 	public void setFacility(FacilityInterface facility) {
 		this.facility = facility;
+	}
+	public List<RequestInterface> getListRequests() {
+		return listRequests;
+	}
+	public void setListRequests(List<RequestInterface> listRequests) {
+		this.listRequests=listRequests;
+	
 	}
 
 

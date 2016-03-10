@@ -14,9 +14,10 @@
 	<bean id="room" class="fms.model.facility.Room" scope="prototype"/>
 
 	<bean id="facility" class="fms.model.facility.Facility" scope="prototype">
-		<property name="room">
+		<property name="roomsList">
 			<list/>
-		</property>
+			</property>
+			
 		<property name="details" ref="details"/>
 	</bean>
 	
@@ -53,24 +54,24 @@
 	
 	
 	<!-- Maintenance   -->
-	<bean id="Cost" class="fms.model.maintenance.Cost" scope="prototype"></bean>
+	<bean id="cost" class="fms.model.maintenance.Cost" scope="prototype"></bean>
 	
-	<bean id="FacilityMaintenance" class="fms.model.maintenance.FacilityMaintenance" scope="prototype">
-		<property name="request" ref="request">
+	<bean id="facilityMaintenance" class="fms.model.maintenance.FacilityMaintenance" scope="prototype">
+		<property name="listRequests">
         	<list/>
          </property>
          <property name="facility" ref="facility" />
          <property name="cost" ref="cost"/>
 	</bean>
 	
-	<bean id="MaintenanceSchedule" class="fms.model.maintenance.MaintenanceSchedule" scope="prototype"></bean>
+	<bean id="maintenanceSchedule" class="fms.model.maintenance.MaintenanceSchedule" scope="prototype"></bean>
 	
-	<bean id="Problem" class="fms.model.maintenance.Problem" scope="prototype"></bean>
+	<bean id="problem" class="fms.model.maintenance.Problem" scope="prototype"></bean>
 	
-	<bean id="Request" class="fms.model.maintenance.Request" scope="prototype"></bean>
+	<bean id="request" class="fms.model.maintenance.Request" scope="prototype"></bean>
 	
 	<bean id="maintenanceManager" class="fms.model.manager.MaintenanceManager" scope="prototype">
-		<property name="FacilityMaintenance" ref="FacilityMaintenance" />
+		<property name="facilityMaintenance" ref="facilityMaintenance" />
 	</bean>
 	
 	

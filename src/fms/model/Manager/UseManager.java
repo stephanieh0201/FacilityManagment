@@ -8,7 +8,7 @@ import fms.model.use.FacilityUseInterface;
 
 public class UseManager {
 //	private UseDAO useDAO = new UseDAO();
-	private FacilityUseInterface use;
+	private FacilityUseInterface facilityUse;
 //	//search maintenance by requestID from the database
 //	public FacilityUse findUseById(int customerID) {
 //			
@@ -34,12 +34,12 @@ public class UseManager {
 //	}
 //	
 
-	public FacilityUseInterface getUse() {
-		return use;
+	public FacilityUseInterface getFacilityUse() {
+		return facilityUse;
 	}
 
-	public void setUse(FacilityUseInterface use) {
-		this.use = use;
+	public void setFacilityUse(FacilityUseInterface facilityUse) {
+		this.facilityUse = facilityUse;
 	}
 }
 

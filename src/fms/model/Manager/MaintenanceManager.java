@@ -8,7 +8,7 @@ import fms.model.maintenance.FacilityMaintenanceInterface;
 
 public class MaintenanceManager {
 	//private MaintenanceDAO maintDAO = new MaintenanceDAO();
-	private FacilityMaintenanceInterface maintenance;
+	private FacilityMaintenanceInterface facilityMaintenance;
 	
 //	//search maintenance by requestID from the database
 //	public FacilityMaintenance findMaintById(int requestID) {
@@ -34,12 +34,12 @@ public class MaintenanceManager {
 //	    }
 //	}
 
-	public FacilityMaintenanceInterface getMaintenance() {
-		return maintenance;
+	public FacilityMaintenanceInterface getFacilityMaintenance() {
+		return facilityMaintenance;
 	}
 
-	public void setMaintenance(FacilityMaintenanceInterface maintenance) {
-		this.maintenance = maintenance;
+	public void setFacilityMaintenance(FacilityMaintenanceInterface facilityMaintenance) {
+		this.facilityMaintenance = facilityMaintenance;
 	}
 	
 }

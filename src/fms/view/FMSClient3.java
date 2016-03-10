@@ -1,5 +1,8 @@
 package fms.view;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import fms.model.facility.DetailsInterface;
 import fms.model.facility.FacilityInterface;
 import fms.model.manager.FacilityManager;
@@ -12,10 +15,11 @@ public class FMSClient3 {
 
         //Spring to inject the right object implementation in CustomerService for customer using Setter Injection
         //Also, bootstrapping the CustomerService instantiation using factory
-        FacilityManager facilityManager = (FacilityManager) context.getBean("facility");
+        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
      
         FacilityInterface facility = facilityManager.getFacility();
 		facility.setFacilityID(3);
+		System.out.println("Facility is " + facility.getFacilityID());
 
 //		DetailsInterface details = facility.getDetails();
 //		details.setAddress(123 ABC Street);
