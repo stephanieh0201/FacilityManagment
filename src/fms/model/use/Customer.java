@@ -1,6 +1,6 @@
 package fms.model.use;
 
-public class Customer extends User {
+public class Customer extends User implements CustomerInterface  {
 	int customerID;
 	String creditCard;
 	int userID;

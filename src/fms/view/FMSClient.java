@@ -9,6 +9,7 @@ import java.util.List;
 import fms.model.facility.Details;
 import fms.model.facility.Facility;
 import fms.model.facility.Room;
+import fms.model.facility.RoomInterface;
 import fms.model.maintenance.Cost;
 import fms.model.maintenance.FacilityMaintenance;
 import fms.model.maintenance.MaintenanceSchedule;
@@ -30,15 +31,15 @@ public class FMSClient {
         
         //create a new facility 
         Facility Facility1 = new Facility();
-        List<Room> rooms1 = new ArrayList<Room>();
+        List<RoomInterface> rooms1 = new ArrayList<RoomInterface>();
 		Room r1=new Room();
 		r1.setCapacity(700);
 		r1.setRoomID(100);
-		r1.setFacility(Facility1);
+		//r1.setFacility(Facility1);
 		Room r2=new Room();
 		r2.setCapacity(850);
 		r2.setRoomID(101);
-		r2.setFacility(Facility1);
+		//r2.setFacility(Facility1);
 		rooms1.add(r1);
 		rooms1.add(r2);
 		Details detail=new Details();
@@ -46,7 +47,7 @@ public class FMSClient {
 		detail.setInformation("office space");
 		Facility1.setDetails(detail);
 		Facility1.setFacilityID(9999);
-		Facility1.setRooms(rooms1);
+		Facility1.setRoomsList(rooms1);
 		
 		System.out.println("\nFacility Interface Methods:");
         System.out.println("List Facilities: " + Facility1.listFacilities());
@@ -54,7 +55,7 @@ public class FMSClient {
         System.out.println("Request Available capacity: " + Facility1.requestAvailableCapacity());
         Room roomAdd = new Room();
         roomAdd.setCapacity(300);
-        roomAdd.setFacility(Facility1);
+      //  roomAdd.setFacility(Facility1);
         roomAdd.setRoomID(3);
         System.out.println("Adding new facility: " + Facility1.addNewFacility(roomAdd));
         Details d = new Details();

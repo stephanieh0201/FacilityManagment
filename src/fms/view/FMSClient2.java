@@ -46,7 +46,7 @@ public class FMSClient2 {
     
         System.out.println("FMSClient2: *************** Here is searched facility information *************************");
         System.out.println("ID:" + searchedFacility.getFacilityID());
-        List<RoomInterface> rooms = searchedFacility.getRooms();
+        List<RoomInterface> rooms = searchedFacility.getRoomsList();
         for (RoomInterface r:rooms){
         	System.out.println("Room ID:" + r.getRoomID());
         	System.out.println("Capacity:"+ r.getCapacity());

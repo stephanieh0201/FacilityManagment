@@ -122,7 +122,9 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	public void setRequest(RequestInterface request) {
 		this.request=request;
 	}
-
+	public void addRequest(RequestInterface request){
+		listRequests.add(request);
+	}
 	public FacilityInterface getFacility() {
 		return facility;
 	}

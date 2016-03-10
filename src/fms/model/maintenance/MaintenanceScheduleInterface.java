@@ -13,6 +13,7 @@ public interface  MaintenanceScheduleInterface {
 	public void setReserveDate(Date reserveDate);
 	public boolean getStatus();
 	public void setStatus(Boolean status);
+
 	
 }
 
