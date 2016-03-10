@@ -5,8 +5,10 @@ public interface RoomInterface {
 	public void setCapacity(int capacity);
 	public int getRoomID();
 	public void setRoomID(int roomID);
-	public FacilityInterface getFacility();
-	public void setFacility(FacilityInterface facility);
-
+//	public FacilityInterface getFacility();
+//	public void setFacility(FacilityInterface facility);
+	public int getFacilityID();
+	public void setFacilityID(int facilityID);
+	
 }
 

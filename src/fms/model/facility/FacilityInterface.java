@@ -14,10 +14,11 @@ public interface FacilityInterface {
 	public RoomInterface removeFacility(RoomInterface room);
 	public int getFacilityID();
 	public void setFacilityID(int facilityID) ;
-	public List<RoomInterface> getRooms();
-	public void setRooms(List<RoomInterface> roomsList);
+	public List<RoomInterface> getRoomsList();
+	public void setRoomsList(List<RoomInterface> roomsList);
 	public CustomerInterface getUser();
 	public void setUser(CustomerInterface customer);
 	public DetailsInterface getDetails();
 	public void setDetails(DetailsInterface details);
+	public void addRoom(RoomInterface room);
 }

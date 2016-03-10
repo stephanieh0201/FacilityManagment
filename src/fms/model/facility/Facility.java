@@ -44,7 +44,9 @@ public class Facility implements FacilityInterface {
 	public void setRoomsList(List<RoomInterface> roomsList) {
 		this.roomsList=roomsList;
 	}
-	
+	public void addRoom(RoomInterface room){
+		roomsList.add(room);
+	}
 	@Override
 	public DetailsInterface getFacilityInformation() {
 		return details;
