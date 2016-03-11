@@ -28,7 +28,13 @@ public class FMSHibernateInsertClient {
 		RoomInterface room = (RoomInterface) context.getBean("room");
 		room.setCapacity(1000);
 		room.setRoomID(82);
-		facility.addRoom(room);		
+		room.setFacilityID(3);
+		facility.addRoom(room);	
+		RoomInterface room2 = (RoomInterface) context.getBean("room");
+		room2.setCapacity(888);
+		room2.setRoomID(100);
+		room.setFacilityID(3);
+		facility.addRoom(room2);
 		//System.out.println("Facility is " + facility.getFacilityID());
 		//System.out.println("Facility rooms are " + facility.listFacilities());
 		DetailsInterface details = (DetailsInterface) context.getBean("details");

@@ -7,7 +7,7 @@
 	<class name="Facility" table="facility">
 		<id name="facilityID" column="facilityid"/>
 		<one-to-one name="details" class="fms.model.facility.Details" cascade="save-update, delete"></one-to-one>
-		
+
 	</class>
 </hibernate-mapping>
 
