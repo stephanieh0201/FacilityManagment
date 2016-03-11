@@ -3,8 +3,17 @@ package fms.model.facility;
 public class Details implements DetailsInterface {
 	String address;
 	String information;
+	int facilityID;
+	
 	
 	public Details() {}
+	
+	public void setFacilityID(int facilityID){
+		this.facilityID=facilityID;
+	}
+	public int getFacilityID(){
+		return facilityID;
+	}
 	
 	public void setAddress(String address){
 		this.address=address;

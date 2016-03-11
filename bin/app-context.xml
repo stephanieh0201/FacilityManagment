@@ -21,9 +21,7 @@
 		<property name="details" ref="details"/>
 	</bean>
 	
-	<bean id="facilityManager" class="fms.model.manager.FacilityManager" scope="prototype">
-		<property name="facility" ref="facility" />
-	</bean>
+	<bean id="facilityManager" class="fms.model.manager.FacilityManager" scope="prototype">	</bean>
 
 	<!-- Use  -->
 	<bean id="customer" class="fms.model.use.Customer" scope="prototype"/>

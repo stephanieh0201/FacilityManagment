@@ -1,5 +1,8 @@
 package fms.dao;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 public class HibernateMySQLHelper {
 
 	private static final SessionFactory sessionFactory;
