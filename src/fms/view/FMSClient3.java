@@ -28,6 +28,7 @@ import fms.model.use.UseScheduleInterface;
 public class FMSClient3 {
 
 	public static void main(String[] args) throws ParseException {
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
 
@@ -77,9 +78,10 @@ public class FMSClient3 {
 		request.setProblem(problem);
 		request.setProblemID(1);
 		maintenance.addRequest(request);
+		maintenance.setCost(cost);
 		System.out.println("maintenance down time " + maintenance.calcDownTimeForFacility(request));
 		System.out.println("facility problems " + maintenance.listFacilityProblems());
-		System.out.println("facility maintenance: "+ maintenance.getRequest());
+		System.out.println("facility maintenance: "+ maintenance.calcMaintenanceCostForFacility(request));
 		
 		//Spring to inject dependencies for facility use
 		UseManager useManager = (UseManager) context.getBean("useManager");
@@ -100,14 +102,15 @@ public class FMSClient3 {
 		manager.setSalary(70000);
 		inspection.setManager(manager);
 		inspection.setReason("routine");
-		use.setInspections(inspection);
 		use.setCustomer(customer);
 		useSchedule.setFacility(facility);
 		useSchedule.setInUse(true);
 		useSchedule.setUseDate(date3);
 		use.setUseSchedule(useSchedule);
-		System.out.println("Use customer " + use.getCustomer());
-		System.out.println("Use " + use.getUseSchedule());
+		use.addInspection(inspection);
+		System.out.println("Use customer: " + use.getCustomer());
+		System.out.println("Use rate: " + use.calcUsageRate());
+		System.out.println("Inspections: " + use.listInspections());
 //		
         
         //Spring to inject the right object implementation in Customer object for BillingAddress using Setter Injection

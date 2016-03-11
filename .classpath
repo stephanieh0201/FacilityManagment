@@ -6,12 +6,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="FacilityManagment2/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Stephanie/Downloads/eclipse-jee-mars-1-win32-x86_64/eclipse/plugins/com.fasterxml.jackson.core.jackson-databind_2.5.0.v201504151636.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Stephanie/Downloads/eclipse-jee-mars-1-win32-x86_64/eclipse/plugins/com.google.protobuf_2.4.0.v201105131100.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Stephanie/Downloads/eclipse-jee-mars-1-win32-x86_64/eclipse/plugins/com.sun.syndication_0.9.0.v200803061811.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Stephanie/Downloads/eclipse-jee-mars-1-win32-x86_64/eclipse/plugins/com.vmware.vfabric.ide.eclipse.tcserver.core_3.7.3.201602250927-RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Stephanie/Downloads/eclipse-jee-mars-1-win32-x86_64/eclipse/plugins/com.fasterxml.jackson.core.jackson-annotations_2.5.0.v201504151636.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Stephanie/Downloads/eclipse-jee-mars-1-win32-x86_64/eclipse/plugins/com.fasterxml.jackson.core.jackson-core_2.5.0.v201504151636.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/plugins"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

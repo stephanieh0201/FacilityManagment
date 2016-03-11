@@ -21,7 +21,7 @@ public interface FacilityUseInterface {
 	public void setFacility(FacilityInterface facility);
 	public List<InspectionInterface> getInspections();
 	public void setInspections(List<InspectionInterface> inspections);
-	public void setInspections(InspectionInterface inspection);
+	public void addInspection(InspectionInterface inspection);
 	public CustomerInterface getCustomer();
 	public void setCustomer(CustomerInterface customer);
 	public UseScheduleInterface getUseSchedule();

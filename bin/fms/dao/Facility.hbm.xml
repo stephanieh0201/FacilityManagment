@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fms.model.facility">
+	<class name="Facility" table="facility">
+		<id name="facilityId" column="facilityid"/>
+		<property name="lastName" type="string" column="lname"/>
+		<property name="firstName" type="string" column="fname"/>
+		<one-to-one name="Details" class="fms.model.facility.Details" cascade="save-update, delete"></one-to-one>
+		<one-to-many  name="Room" class="fms.model.facility.Room" cascade="save-update, delete"></one-to-many>
+	</class>
+</hibernate-mapping>
+

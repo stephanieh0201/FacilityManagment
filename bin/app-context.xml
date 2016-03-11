@@ -68,7 +68,10 @@
 	
 	<bean id="problem" class="fms.model.maintenance.Problem" scope="prototype"></bean>
 	
-	<bean id="request" class="fms.model.maintenance.Request" scope="prototype"></bean>
+	<bean id="request" class="fms.model.maintenance.Request" scope="prototype">
+		<property name="problem" ref="problem" />	
+		<property name="maintenanceSchedule" ref="maintenanceSchedule" />	
+	</bean>
 	
 	<bean id="maintenanceManager" class="fms.model.manager.MaintenanceManager" scope="prototype">
 		<property name="facilityMaintenance" ref="facilityMaintenance" />

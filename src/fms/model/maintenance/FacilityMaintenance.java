@@ -9,7 +9,7 @@ import fms.model.facility.FacilityInterface;
 
 public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	private int requestID;
-	private RequestInterface request;
+	//private RequestInterface request;
 	private List<RequestInterface> listRequests;
 	private int facilityID;
 	private FacilityInterface facility;
@@ -92,13 +92,13 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 		return prob;
 	}
 
-	public int getRequestID() {
-		return requestID;
-	}
+	//public int getRequestID() {
+		//return requestID;
+	//}
 
-	public void setRequestID(int requestID) {
-		this.requestID = requestID;
-	}
+//	public void setRequestID(int requestID) {
+	//	this.requestID = requestID;
+	//}
 
 	public int getFacilityID() {
 		return facilityID;
@@ -116,12 +116,12 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	public void setCost(CostInterface cost) {
 		this.cost = cost;
 	}
-	public RequestInterface getRequest(){
-		return request;
-	}
-	public void setRequest(RequestInterface request) {
-		this.request=request;
-	}
+//	public RequestInterface getRequest(){
+//		return request;
+//	}
+//	public void setRequest(RequestInterface request) {
+//		this.request=request;
+//	}
 	public void addRequest(RequestInterface request){
 		listRequests.add(request);
 	}

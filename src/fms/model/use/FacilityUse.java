@@ -96,7 +96,7 @@ public class FacilityUse implements FacilityUseInterface {
 	public void setInspections(List<InspectionInterface> inspections) {
 		this.inspections = inspections;
 	}
-	public void setInspections(InspectionInterface inspection){
+	public void addInspection(InspectionInterface inspection){
 		inspections.add(inspection);
 	}
 
