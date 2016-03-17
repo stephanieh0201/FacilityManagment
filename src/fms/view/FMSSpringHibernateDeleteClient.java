@@ -18,9 +18,9 @@ public class FMSSpringHibernateDeleteClient {
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
 		//Find a customer if already exists; if not, create a new one.
-		FacilityInterface searchedFacility = facilityManager.findFacilityById(3); 
+		FacilityInterface searchedFacility = facilityManager.findFacilityById(333); 
 		
-		System.out.println("*************** Cutomer to be deleted *************************");
+		System.out.println("*************** Facility to be deleted *************************");
 		System.out.println("\tName: \t\t\t" + searchedFacility.getFacilityID()  + "\n");
        /* 
         Address billingAdd = searchedCustomer.getBillingAddress();

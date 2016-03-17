@@ -28,7 +28,7 @@ public class FacilityManager {
 			FacilityInterface facility = facilityDAO.retrieveFacility(facilityId);
 	    	return facility;
 	    } catch (Exception se) {
-	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
+	      System.err.println("CustomerService: Threw a Exception retrieving facility.");
 	      System.err.println(se.getMessage());
 	    }
 		return null;

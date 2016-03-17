@@ -35,7 +35,7 @@ public class FacilityHibernateDAO {
 		//System.out.println("*************** Hibernate session is created ..................\n" + session.toString());
 		
 		//Query getCustQuery = session.createQuery("From CustomerImpl ");
-		Query getFacilityQuery = session.createQuery("From Facility where facilityId=:facilityId");		
+		Query getFacilityQuery = session.createQuery("From facility where facilityId=:facilityId");		
 		getFacilityQuery.setInteger("facilityId", facilityId);
 		
 		System.out.println("*************** Retrieve Query is ....>>\n" + getFacilityQuery.toString()); 

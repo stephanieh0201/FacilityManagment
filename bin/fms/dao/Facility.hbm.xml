@@ -5,12 +5,12 @@
 
 <hibernate-mapping package="fms.model.facility">
 	<class name="Facility" table="facility">
-		<id name="facilityID" type="int" column="id" />
+		<id name="facilityID" type="int" column="facilityId" />
 		<one-to-one name="details" class="fms.model.facility.Details" cascade="save-update, delete"></one-to-one>
-          <bag name="roomsList" cascade="all">
-         	<!-- <key column="facilityId" not-null="true" /> -->
+           <bag name="roomsList" cascade="save-update, delete">
+         	<key column="facilityId" not-null="true"/>
          	<one-to-many class="fms.model.facility.Room"/>
-         </bag>
+         </bag> 
 	</class>
 </hibernate-mapping>
 

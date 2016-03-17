@@ -27,16 +27,16 @@ public class FMSSpringHibernateInsertClient {
 		facility.setFacilityID(333);
 		RoomInterface room = (RoomInterface) context.getBean("room");
 		room.setCapacity(1000);
-		room.setRoomID(82);
+		room.setRoomID(12);
 		
 		
 	
-		//room.setFacilityID(333);
+		room.setFacilityID(facility.getFacilityID());
 		facility.addRoom(room);	
 		RoomInterface room2 = (RoomInterface) context.getBean("room");
 		room2.setCapacity(888);
 		room2.setRoomID(100);
-		//room2.setFacilityID(333);
+		room2.setFacilityID(facility.getFacilityID());
 		facility.addRoom(room2);
 		//System.out.println("Facility is " + facility.getFacilityID());
 		//System.out.println("Facility rooms are " + facility.listFacilities());
