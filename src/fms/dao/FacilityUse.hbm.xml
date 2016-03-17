@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fms.model.use">
+	<class name="FacilityUse" table="facilityUse">
+		<id name="customerID" type="int" column="customerID" />
+         <property name="facilityID" type="int" column="facilityID"/>
+         <property name="startDate" type="date" column="startDate"/>
+		 <property name="endDate" type="date" column="endDate"/>	
+	</class>
+</hibernate-mapping>
+

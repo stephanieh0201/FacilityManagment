@@ -11,7 +11,7 @@ import fms.model.facility.FacilityInterface;
 import fms.model.facility.RoomInterface;
 import fms.model.manager.FacilityManager;
 
-public class FMSHibernateInsertClient {
+public class FMSSpringHibernateInsertClient {
 	public static void main (String args[]) throws Exception {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
@@ -24,22 +24,26 @@ public class FMSHibernateInsertClient {
         System.out.println("*************** Instantiating Facility ***********************");
         
         FacilityInterface facility = (FacilityInterface) context.getBean("facility");
-		facility.setFacilityID(3);
+		facility.setFacilityID(333);
 		RoomInterface room = (RoomInterface) context.getBean("room");
 		room.setCapacity(1000);
 		room.setRoomID(82);
-		room.setFacilityID(3);
+		
+		
+	
+		//room.setFacilityID(333);
 		facility.addRoom(room);	
 		RoomInterface room2 = (RoomInterface) context.getBean("room");
 		room2.setCapacity(888);
 		room2.setRoomID(100);
-		room.setFacilityID(3);
+		//room2.setFacilityID(333);
 		facility.addRoom(room2);
 		//System.out.println("Facility is " + facility.getFacilityID());
 		//System.out.println("Facility rooms are " + facility.listFacilities());
 		DetailsInterface details = (DetailsInterface) context.getBean("details");
 		details.setAddress("123 ABC Street");
 		details.setInformation("testing building");
+		details.setFacilityID(333);
 		facility.setDetails(details);
 		//System.out.println("Facility Details: " + facility.getDetails());
 		///

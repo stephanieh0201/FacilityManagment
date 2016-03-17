@@ -21,4 +21,6 @@ public interface FacilityInterface {
 	public DetailsInterface getDetails();
 	public void setDetails(DetailsInterface details);
 	public void addRoom(RoomInterface room);
+	public int getDetailsID() ;
+	public void setDetailsID(int detailsID);
 }

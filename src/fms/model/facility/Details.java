@@ -4,10 +4,17 @@ public class Details implements DetailsInterface {
 	String address;
 	String information;
 	int facilityID;
+	int detailsID;
+	
 	
 	
 	public Details() {}
-	
+	public void setDetailsID(int detailsID){
+		this.detailsID=detailsID;
+	}
+	public int getDetailsID(){
+		return detailsID;
+	}
 	public void setFacilityID(int facilityID){
 		this.facilityID=facilityID;
 	}

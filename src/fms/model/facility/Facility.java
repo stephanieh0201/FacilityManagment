@@ -12,6 +12,7 @@ public class Facility implements FacilityInterface {
 	private List<RoomInterface> roomsList;
 	private CustomerInterface customer;
 	private DetailsInterface details;
+	private int detailsID;
 
 	
 	public Facility() {
@@ -97,6 +98,12 @@ public class Facility implements FacilityInterface {
 
 	public void setDetails(DetailsInterface details) {
 		this.details = details;
+	}
+	public int getDetailsID() {
+		return detailsID;
+	}
+	public void setDetailsID(int detailsID) {
+		this.detailsID = detailsID;
 	}
 
 }

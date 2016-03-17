@@ -5,7 +5,7 @@
  
 <hibernate-mapping package="fms.model.facility">
 	<class name="Details" table="details">
-		<id name="facilityID" column="facilityid"/>
+		<id name="facilityID" type="int" column="facilityid"/>
 		<property name="address" type="string" column="address"/>
 		<property name="information" type="string" column="information"/>
 	</class>

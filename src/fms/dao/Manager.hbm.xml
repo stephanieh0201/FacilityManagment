@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fms.model.use">
+	<class name="Manager" table="manager">
+		<id name="employeeID" type="int" column="employeeID" />
+        <property name="salary" type="double" column="salary"/>
+        <property name="userID" type="date" column="UserID"/>
+	</class>
+</hibernate-mapping>
+

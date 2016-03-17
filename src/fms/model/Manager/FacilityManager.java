@@ -1,6 +1,10 @@
 package fms.model.manager;
 
 
+
+
+
+
 import fms.dao.FacilityDAO;
 import fms.dao.FacilityHibernateDAO;
 import fms.model.facility.Facility;
@@ -18,9 +22,31 @@ public class FacilityManager {
 	      System.err.println(se.getMessage());
 	    }
 	}
-	//private FacilityInterface facility;
+	public FacilityInterface findFacilityById(int facilityId) {
+		
+		try {
+			FacilityInterface facility = facilityDAO.retrieveFacility(facilityId);
+	    	return facility;
+	    } catch (Exception se) {
+	      System.err.println("CustomerService: Threw a Exception retrieving customer.");
+	      System.err.println(se.getMessage());
+	    }
+		return null;
+	}
+	
+	public void deleteFacility(FacilityInterface facility) {
+		
+		try {
+			facilityDAO.deleteFacility(facility);
+	    } catch (Exception se) {
+	      System.err.println("FacilityManager: Threw a Exception retrieving facility.");
+	      System.err.println(se.getMessage());
+	    }
+}
 
-/*	public FacilityInterface getFacility() {
+	//private FacilityInterface facility;
+/*
+	public FacilityInterface getFacility() {
 		return facility;
 	}
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fms.model.use">
+	<class name="UseSchedule" table="useSchedle">
+		<id name="facilityID" type="int" column="facilityID" />
+        <property name="useDate" type="date" column="useDate"/>
+        <property name="isInUse" type="boolean" column="isInUse"/>
+	</class>
+</hibernate-mapping>
+
