@@ -26,7 +26,7 @@ public class FMSSpringHibernateSearchClient {
         System.out.println("*************** SEARCH EXAMPLE *************************");
  
         //Find a customer if already exists; if not, create a new one.
-        FacilityInterface searchedFacility = facilityManager.findFacilityById(2); 
+        FacilityInterface searchedFacility = facilityManager.findFacilityById(1838); 
              
         System.out.println("Searched facility information .......>>");
         System.out.println("\tName: \t\t\t" + searchedFacility.getFacilityID() + "\n");

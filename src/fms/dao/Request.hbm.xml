@@ -6,7 +6,8 @@
 <hibernate-mapping package="fms.model.maintenance">
 	<class name="Request" table="request">
 		<id name="requestID" type="int" column="requestID" />
-        <property name="problemID" type="int" column="problemID"/>
+		<property name="problemID" type="int" column="problemID"/>
+        <one-to-one name="problem" class="fms.model.maintenance.Problem" cascade="save-update, delete"></one-to-one>
         <property name="requestDate" type="date" column="requestDate"/>
         <property name="completeDate" type="date" column="completeDate"/>
 	</class>

@@ -72,7 +72,6 @@
 	</bean>
 	
 	<bean id="maintenanceManager" class="fms.model.manager.MaintenanceManager" scope="prototype">
-		<property name="facilityMaintenance" ref="facilityMaintenance" />
 	</bean>
 	
 	

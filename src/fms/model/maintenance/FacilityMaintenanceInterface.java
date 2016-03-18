@@ -7,7 +7,7 @@ import fms.model.facility.FacilityInterface;
 
 public interface FacilityMaintenanceInterface {
 
-	public void addRequest(RequestInterface request);
+	//public void addRequest(RequestInterface request);
 	public RequestInterface makeFacilityMaintRequest(RequestInterface request); 
 	public RequestInterface scheduleMaintenance(Date requestDate, Date completeDate);
 	public int calcMaintenanceCostForFacility(RequestInterface request);
@@ -28,4 +28,7 @@ public interface FacilityMaintenanceInterface {
 	public void setFacility(FacilityInterface facility);
 	public List<RequestInterface> getListRequests();
 	public void setListRequests(List<RequestInterface> listRequests);
+	public int getMaintenanceID();
+	public void setMaintenanceID(int maintenanceID);
+	public void addRequest(RequestInterface request);
 }

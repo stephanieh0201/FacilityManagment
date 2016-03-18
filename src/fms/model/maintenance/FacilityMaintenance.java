@@ -8,7 +8,7 @@ import fms.model.facility.Facility;
 import fms.model.facility.FacilityInterface;
 
 public class FacilityMaintenance implements FacilityMaintenanceInterface {
-	private int requestID;
+	private int maintenanceID;
 	//private RequestInterface request;
 	private List<RequestInterface> listRequests;
 	private int facilityID;
@@ -44,7 +44,7 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	@Override
 	public int calcMaintenanceCostForFacility(RequestInterface request) {
 		int days = request.getCompleteDate().compareTo(request.getRequestDate()) +1;
-		int amount = getCost().getCost();
+		int amount = getCost().getMaintenanceCost();
 		return days*amount;
 		
 	}
@@ -138,6 +138,15 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	public void setListRequests(List<RequestInterface> listRequests) {
 		this.listRequests=listRequests;
 	
+	}
+
+
+	public int getMaintenanceID() {
+		return maintenanceID;
+	}
+
+	public void setMaintenanceID(int maintenanceID) {
+		this.maintenanceID = maintenanceID;
 	}
 
 

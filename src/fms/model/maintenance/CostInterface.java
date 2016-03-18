@@ -2,10 +2,10 @@ package fms.model.maintenance;
 
 public interface CostInterface  {
 	
-	public int getCost();
-	public void setCost(int maintenanceCost);
-	public int getRequestID();
-	public void setRequestID(int requestID);
+	public int getMaintenanceCost();
+	public void setMaintenanceCost(int maintenanceCost);
+	public int getMaintenanceID();
+	public void setMaintenanceID(int maintenanceID);
 	
 }
 

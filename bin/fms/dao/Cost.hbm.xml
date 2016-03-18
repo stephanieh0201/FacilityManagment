@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="fms.model.maintenance">
 	<class name="Cost" table="cost">
-		<id name="requestID" type="int" column="requestID" />
+		<id name="maintenanceID" type="int" column="maintenanceID" />
         <property name="maintenanceCost" type="int" column="maintenanceCost"/>
 	</class>
 </hibernate-mapping>

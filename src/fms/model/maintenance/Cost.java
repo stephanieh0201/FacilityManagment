@@ -1,25 +1,25 @@
 package fms.model.maintenance;
 
 public class Cost implements CostInterface {
-	int requestID;
+	int maintenanceID;
 	int maintenanceCost;
 	
 	
 	public Cost() {
 		
 	}
-	public int getCost(){
+	public int getMaintenanceCost(){
 		return maintenanceCost;
 	}
-	public void setCost(int maintenanceCost){
+	public void setMaintenanceCost(int maintenanceCost){
 		this.maintenanceCost=maintenanceCost;
 		
 	}
-	public int getRequestID(){
-		return requestID;
+	public int getMaintenanceID(){
+		return maintenanceID;
 	}
-	public void setRequestID(int requestID){
-		this.requestID=requestID;
+	public void setMaintenanceID(int maintenanceID){
+		this.maintenanceID=maintenanceID;
 	}
 	
 	
