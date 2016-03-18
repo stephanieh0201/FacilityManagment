@@ -6,5 +6,7 @@ public interface ProblemInterface {
 	public void setProblemID(int problemID);
 	public String getProblem();
 	public void setProblem(String problem);
+	public int getRequestID();
+	public void setRequestID(int requestID);
 
 }
