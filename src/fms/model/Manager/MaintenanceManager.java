@@ -13,7 +13,7 @@ public class MaintenanceManager {
 	//private MaintenanceDAO maintDAO = new MaintenanceDAO();
 	private MaintenanceHibernateDAO maintDAO = new MaintenanceHibernateDAO();
 	
-public void addMaintenance(FacilityMaintenanceInterface maint) {
+	public void addMaintenance(FacilityMaintenanceInterface maint) {
 		
 		try {
 			maintDAO.addMaintenance(maint);
@@ -21,7 +21,30 @@ public void addMaintenance(FacilityMaintenanceInterface maint) {
 	      System.err.println("FacilityManager: Threw a Exception adding facility.");
 	      System.err.println(se.getMessage());
 	    }
+	}
+		
+	public FacilityMaintenanceInterface findMaintenanceById(int maintenanceID) {
+			
+			try {
+				FacilityMaintenanceInterface maintenance = maintDAO.retrieveMaintenance(maintenanceID);
+		    	return maintenance;
+		    } catch (Exception se) {
+		      System.err.println("CustomerService: Threw a Exception retrieving facility.");
+		      System.err.println(se.getMessage());
+		    }
+			return null;
+		}
+		
+	public void deleteMaintenance(FacilityMaintenanceInterface maintenance) {
+		
+		try {
+			maintDAO.deleteMaintenance(maintenance);
+	    } catch (Exception se) {
+	      System.err.println("MaintenanceManager: Threw a Exception retrieving maintenance.");
+	      System.err.println(se.getMessage());
+	    }
 }
+
 //	//search maintenance by requestID from the database
 //	public FacilityMaintenance findMaintById(int requestID) {
 //			

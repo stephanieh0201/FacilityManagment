@@ -19,33 +19,33 @@ public class MaintenanceHibernateDAO {
 		session.getTransaction().commit();
 	}
 	
-	public void deleteFacility(FacilityInterface facility) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + facility.getFacilityID());
+	public void deleteMaintenance(FacilityMaintenanceInterface maintenance) {
+		System.out.println("*************** Deleting maintenance information in DB with ID ...  " + maintenance.getMaintenanceID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		session.delete(facility);
+		session.delete(maintenance);
 		session.getTransaction().commit();
 	}
 	
-	public FacilityInterface retrieveFacility(int facilityId) {
+	public FacilityMaintenanceInterface retrieveMaintenance(int maintenanceID) {
 		try {
-		System.out.println("*************** Searcing for facility information with ID ...  " + facilityId);
+		System.out.println("*************** Searcing for facility maintenance information with ID ...  " + maintenanceID);
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		
 		//System.out.println("*************** Hibernate session is created ..................\n" + session.toString());
 		
 		//Query getCustQuery = session.createQuery("From CustomerImpl ");
-		Query getFacilityQuery = session.createQuery("From Facility where facilityId=:facilityId");		
-		getFacilityQuery.setInteger("facilityId", facilityId);
+		Query getMaintQuery = session.createQuery("From FacilityMaintenance where maintenanceID=:maintenanceID");		
+		getMaintQuery.setInteger("maintenanceID", maintenanceID);
 		
-		System.out.println("*************** Retrieve Query is ....>>\n" + getFacilityQuery.toString()); 
+		System.out.println("*************** Retrieve Query is ....>>\n" + getMaintQuery.toString()); 
 		
-		List facilities = getFacilityQuery.list();
-		System.out.println("Getting Book Details using HQL. \n" + facilities);
+		List maintenances = getMaintQuery.list();
+		System.out.println("Getting Book Details using HQL. \n" + maintenances);
 
 		session.getTransaction().commit();
-		return (FacilityInterface)facilities.get(0);
+		return (FacilityMaintenanceInterface)maintenances.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
