@@ -44,7 +44,7 @@
 	</bean>
 			
 	<bean id="useManager" class="fms.model.manager.UseManager" scope="prototype">
-		<property name="facilityUse" ref="facilityUse" />
+	
 	</bean>
 			
 	

@@ -3,6 +3,7 @@ package fms.model.use;
 public class Manager extends User implements ManagerInterface  {
 	private int employeeID;
 	private double salary;
+	private int inspectionID;
 	
 	public Manager() { 
 
@@ -19,6 +20,14 @@ public class Manager extends User implements ManagerInterface  {
 	}
 	public void setSalary(double salary) {
 		this.salary = salary;
+	}
+
+	public int getInspectionID() {
+		return inspectionID;
+	}
+
+	public void setInspectionID(int inspectionID) {
+		this.inspectionID = inspectionID;
 	}
 
 }

@@ -7,7 +7,8 @@
 	<class name="Manager" table="manager">
 		<id name="employeeID" type="int" column="employeeID" />
         <property name="salary" type="double" column="salary"/>
-        <property name="userID" type="date" column="UserID"/>
+        <property name="inspectionID" type="int" column="inspectionID"/>
+       
 	</class>
 </hibernate-mapping>
 

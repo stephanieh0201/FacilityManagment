@@ -1,5 +1,6 @@
 package fms.view;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -17,6 +18,11 @@ import fms.model.maintenance.ProblemInterface;
 import fms.model.maintenance.RequestInterface;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.UseManager;
+import fms.model.use.CustomerInterface;
+import fms.model.use.FacilityUseInterface;
+import fms.model.use.InspectionInterface;
+import fms.model.use.ManagerInterface;
 
 public class FMSSpringHibernateSearchClient {
 	public static void main (String args[]) throws Exception {
@@ -40,7 +46,7 @@ public class FMSSpringHibernateSearchClient {
         for (RoomInterface r : list) {
         	System.out.println("\tID: \t\t\t\t" + r.getRoomID() + "\n\t-Capacity: \t\t\t\t" + r.getCapacity());
         }*/
-		
+		/*
 		//Search for Maintenance Object
 		 MaintenanceManager maintManager = (MaintenanceManager) context.getBean("maintenanceManager");
 		 System.out.println("*************** Creating Maintenance Manager object *************************"); 
@@ -59,7 +65,28 @@ public class FMSSpringHibernateSearchClient {
 	      	ProblemInterface prob = r.getProblem();
 	      	System.out.println("\tProblem: \t\t\t  " + prob.getProblem());
 	      }
+	     */
+	     UseManager useManager = (UseManager) context.getBean("useManager");
+		 System.out.println("*************** Creating Use Manager object *************************"); 
+	     System.out.println("*************** SEARCH EXAMPLE *************************");
+	        //Find a customer if already exists; if not, create a new one.
+	     FacilityUseInterface searchedUse = useManager.findUseById(1111); 
+	             
+	     System.out.println("Searched use information .......>>");
+	     System.out.println("\tMaint ID: \t\t\t" + searchedUse.getFacilityID() + "\n");
+	     Date start = searchedUse.getStartDate();
+	     Date end = searchedUse.getEndDate();
+	     System.out.println("\tStart Date: \t\t\t\t"+ start);
+	     System.out.println("\tEnd Date: \t\t\t\t"+ end);
 	     
-
+	     List <InspectionInterface> list =searchedUse.getInspections();
+	     System.out.println("\tInpsections: " );
+	     for (InspectionInterface i : list) {
+	      	System.out.println("\tID: \t\t\t\t" + i.getInspectionID() + "\n\t-Reason: \t\t\t\t" + i.getReason());
+	      //	ManagerInterface manager = i.getManager();
+	      //	System.out.println("\tManager: \t\t\t  " + manager.getEmployeeID() + " Salary: " + manager.getSalary());
+	      }
+	     CustomerInterface customer = searchedUse.getCustomer();
+	     System.out.println("Customer ID: " + customer.getCustomerID() + " Payment Credit Card: " + customer.getCreditCard());
 	}
 }

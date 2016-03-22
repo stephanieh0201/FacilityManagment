@@ -5,4 +5,6 @@ public interface ManagerInterface {
 	public void setEmployeeID(int employeeID);
 	public double getSalary();
 	public void setSalary(double salary);
+	public int getInspectionID();
+	public void setInspectionID(int inspectionID);
 }

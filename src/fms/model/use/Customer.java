@@ -3,7 +3,9 @@ package fms.model.use;
 public class Customer extends User implements CustomerInterface  {
 	int customerID;
 	String creditCard;
-	int userID;
+//	int userID;
+	int useID;
+	
 	
 	
 	public Customer(){
@@ -25,6 +27,12 @@ public class Customer extends User implements CustomerInterface  {
 	
 	public String getCreditCard() {
 		return creditCard;
+	}
+	public void setUseID(int useID){
+		this.useID=useID;
+	}
+	public int getUseID(){
+		return useID;
 	}
 
 	

@@ -18,6 +18,11 @@ import fms.model.maintenance.ProblemInterface;
 import fms.model.maintenance.RequestInterface;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.UseManager;
+import fms.model.use.CustomerInterface;
+import fms.model.use.FacilityUseInterface;
+import fms.model.use.InspectionInterface;
+import fms.model.use.ManagerInterface;
 
 public class FMSSpringHibernateInsertClient {
 	public static void main (String args[]) throws Exception {
@@ -55,7 +60,7 @@ public class FMSSpringHibernateInsertClient {
         System.out.println("*************** Saving Facility ***********************");
         facilityManager.addFacility(facility);
         System.out.println("*************** Facility Inserted *************************");*/
-		
+		/*
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
         MaintenanceManager maintManager = (MaintenanceManager) context.getBean("maintenanceManager");
@@ -95,6 +100,61 @@ public class FMSSpringHibernateInsertClient {
 		///        
         System.out.println("*************** Saving Maintenance ***********************");
         maintManager.addMaintenance(facilityMaint);
+        System.out.println("*************** Facility Inserted *************************");*/
+        
+        
+        ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
+        System.out.println("***************** Application Context instantiated! ******************");
+        UseManager useManager = (UseManager) context.getBean("useManager");
+        
+        System.out.println("*************** INSERT EXAMPLE *************************");
+        System.out.println("*************** This example involves Instantiating and Saving FacilityUse ***********************");
+        
+        System.out.println("*************** Instantiating FacilityUse ***********************");
+        
+        FacilityUseInterface facilityUse = (FacilityUseInterface) context.getBean("facilityUse");
+		facilityUse.setUseID(1111);
+		facilityUse.setFacilityID(2);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = formatter.parse("2016-03-21");
+		Date date2 = formatter.parse("2016-03-26");
+		facilityUse.setStartDate(date1);
+		facilityUse.setEndDate(date2);
+		
+		CustomerInterface customer = (CustomerInterface) context.getBean("customer");
+		customer.setUseID(1111);
+		customer.setCreditCard("1111999911119999");
+		customer.setCustomerID(13);
+
+		facilityUse.setCustomer(customer);
+		
+		InspectionInterface inspection1 = (InspectionInterface) context.getBean("inspection");
+		inspection1.setInspectionID(100);
+		inspection1.setReason("testing");
+		inspection1.setUseID(1111);
+		ManagerInterface manager1 = (ManagerInterface) context.getBean("manager");
+		manager1.setEmployeeID(3);
+		manager1.setSalary(70000);
+		manager1.setInspectionID(100);
+		inspection1.setManager(manager1);
+		InspectionInterface inspection2 = (InspectionInterface) context.getBean("inspection");
+		inspection2.setInspectionID(101);
+		inspection2.setReason("second inspection");
+		inspection2.setUseID(1111);
+		ManagerInterface manager2 = (ManagerInterface) context.getBean("manager");
+		manager2.setEmployeeID(9991);
+		manager2.setSalary(27000);
+		manager2.setInspectionID(101);
+		inspection2.setManager(manager2);
+		facilityUse.addInspection(inspection1);
+		facilityUse.addInspection(inspection2);
+
+		
+		
+		//System.out.println("Facility Details: " + facility.getDetails());
+		///        
+        System.out.println("*************** Saving Maintenance ***********************");
+        useManager.addUse(facilityUse);
         System.out.println("*************** Facility Inserted *************************");
 	}
 }

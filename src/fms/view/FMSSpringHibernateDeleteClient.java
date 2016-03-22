@@ -6,6 +6,8 @@ import fms.model.facility.FacilityInterface;
 import fms.model.maintenance.FacilityMaintenanceInterface;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.UseManager;
+import fms.model.use.FacilityUseInterface;
 
 public class FMSSpringHibernateDeleteClient {
 	public static void main (String args[]) throws Exception {
@@ -31,7 +33,7 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
-		*/
+		*//*
 		MaintenanceManager maintManager = (MaintenanceManager) context.getBean("maintenanceManager");
 		System.out.println("*************** Creating Maintenance Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
@@ -45,6 +47,22 @@ public class FMSSpringHibernateDeleteClient {
         
         System.out.println("*************** Maintenance to be deleted *************************");
 		maintManager.deleteMaintenance(searchedMaint);
+		
+		System.out.println("*************** Maintenance deleted *************************");*/
+		
+/////
+		UseManager useManager = (UseManager) context.getBean("useManager");
+		System.out.println("*************** Creating Use Manager object *************************");
+		System.out.println("*************** DELETE EXAMPLE *************************");
+
+		//Find a facility that already exists; 
+		FacilityUseInterface searchedUse = useManager.findUseById(1111); 
+		System.out.println("*************** Facility Maintenance to be deleted *************************");
+		System.out.println("\tUse ID: \t\t\t" + searchedUse.getUseID());
+       
+        
+        System.out.println("*************** Maintenance to be deleted *************************");
+		useManager.deleteUse(searchedUse);
 		
 		System.out.println("*************** Maintenance deleted *************************");
 	}

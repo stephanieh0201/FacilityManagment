@@ -5,12 +5,10 @@
 
 <hibernate-mapping package="fms.model.use">
 	<class name="Inspection" table="inspection">
-		<id name="facilityID" type="int" column="facilityID" />
-        <bag name="roomsList" cascade="all">
-            <key column="facilityID" not-null="true" />
-            <one-to-many class="fms.model.facility.Room" />
-        </bag>
-         <one-to-one name="details" class="fms.model.facility.Details" cascade="save-update, delete"></one-to-one>
-	</class>
+		<id name="inspectionID" type="int" column="inspectionID" />
+         <one-to-one name="manager" class="fms.model.use.Manager" cascade="save-update, delete"></one-to-one>
+	
+		<property name="reason" type="string" column="reason"/>
+		</class>
 </hibernate-mapping>
 

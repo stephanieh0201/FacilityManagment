@@ -31,15 +31,15 @@
  		
  		<mapping resource="fms/dao/FacilityMaintenance.hbm.xml"/> 
  		
- 		<!-- <mapping resource="fms/dao/FacilityUse.hbm.xml"/>
+ 		<mapping resource="fms/dao/FacilityUse.hbm.xml"/>
  		<mapping resource="fms/dao/Inspection.hbm.xml"/> 
- 		<mapping resource="fms/dao/MaintenanceSchedule.hbm.xml"/>  
+ 	<!-- 	<mapping resource="fms/dao/MaintenanceSchedule.hbm.xml"/>  -->
  		<mapping resource="fms/dao/Manager.hbm.xml"/>  
  
 
 
- 		<mapping resource="fms/dao/User.hbm.xml"/> 
- 		<mapping resource="fms/dao/UseSchedule.hbm.xml"/>
- 		<mapping resource="fms/dao/Customer.hbm.xml"/> 	 -->
+ 	<!-- 	<mapping resource="fms/dao/User.hbm.xml"/> -->
+ 		<!-- <mapping resource="fms/dao/UseSchedule.hbm.xml"/>-->
+ 		<mapping resource="fms/dao/Customer.hbm.xml"/> 	 
  	</session-factory>
  </hibernate-configuration>

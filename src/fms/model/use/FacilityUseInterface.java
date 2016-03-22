@@ -30,5 +30,6 @@ public interface FacilityUseInterface {
 	public void setFacilityID(int facilityID);
 	public int getCustomerID();
 	public void setCustomerID(int customerID);
-
+	public int getUseID();
+	public void setUseID(int useID);
 }

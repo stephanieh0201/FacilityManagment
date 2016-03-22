@@ -10,6 +10,7 @@ import fms.model.use.*;
 
 
 public class FacilityUse implements FacilityUseInterface {
+	private int useID;
 	private CustomerInterface customer;
 	private FacilityInterface facility;
 	private Date startDate;
@@ -130,6 +131,14 @@ public class FacilityUse implements FacilityUseInterface {
 
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
+	}
+
+	public int getUseID() {
+		return useID;
+	}
+
+	public void setUseID(int useID) {
+		this.useID = useID;
 	}
 
 
