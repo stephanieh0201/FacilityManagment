@@ -10,9 +10,9 @@ import fms.model.use.User;
 public class Facility implements FacilityInterface {
 	private int facilityID;
 	private List<RoomInterface> roomsList;
-	private CustomerInterface customer;
+//	private CustomerInterface customer;
 	private DetailsInterface details;
-	private int detailsID;
+//	private int detailsID;
 
 	
 	public Facility() {
@@ -84,13 +84,13 @@ public class Facility implements FacilityInterface {
 		return room;
 	}
 
-	public CustomerInterface getUser() {
-		return customer;
-	}
-
-	public void setUser(CustomerInterface customer) {
-		this.customer = customer;
-	}
+//	public CustomerInterface getUser() {
+//		return customer;
+//	}
+//
+//	public void setUser(CustomerInterface customer) {
+//		this.customer = customer;
+//	}
 
 	public DetailsInterface getDetails() {
 		return details;
@@ -99,11 +99,11 @@ public class Facility implements FacilityInterface {
 	public void setDetails(DetailsInterface details) {
 		this.details = details;
 	}
-	public int getDetailsID() {
-		return detailsID;
-	}
-	public void setDetailsID(int detailsID) {
-		this.detailsID = detailsID;
-	}
+//	public int getDetailsID() {
+//		return detailsID;
+//	}
+//	public void setDetailsID(int detailsID) {
+//		this.detailsID = detailsID;
+//	}
 
 }

@@ -16,9 +16,7 @@ public class FacilityMaintenance implements FacilityMaintenanceInterface {
 	private CostInterface cost;
 
 	
-	public FacilityMaintenance(){
-		
-	}
+	public FacilityMaintenance(){	}
 	
 	@Override
 	public RequestInterface makeFacilityMaintRequest(RequestInterface request) {

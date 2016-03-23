@@ -5,10 +5,9 @@
 
 <hibernate-mapping package="fms.model.use">
 	<class name="Manager" table="manager">
-		<id name="employeeID" type="int" column="employeeID" />
+		<id name="inspectionID" type="int" column="inspectionID" />
         <property name="salary" type="double" column="salary"/>
-        <property name="inspectionID" type="int" column="inspectionID"/>
-       
+        <property name="employeeID" type="int" column="employeeID"/>
 	</class>
 </hibernate-mapping>
 

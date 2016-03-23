@@ -7,6 +7,8 @@
 	<class name="Problem" table="problem">
 		<id name="requestID" type="int" column="requestID" />
         <property name="problem" type="string" column="problem"/>
+        <property name="problemID" type="int" column="problemID"/>
             	</class>
+         
 </hibernate-mapping>
 

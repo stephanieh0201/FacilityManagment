@@ -27,7 +27,7 @@ import fms.model.use.ManagerInterface;
 public class FMSSpringHibernateInsertClient {
 	public static void main (String args[]) throws Exception {
 		//Insert Facility Example
-	/*	ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
         FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
         
@@ -48,21 +48,18 @@ public class FMSSpringHibernateInsertClient {
 		room2.setRoomID(100);
 		room2.setFacilityID(facility.getFacilityID());
 		facility.addRoom(room2);
-		//System.out.println("Facility is " + facility.getFacilityID());
-		//System.out.println("Facility rooms are " + facility.listFacilities());
 		DetailsInterface details = (DetailsInterface) context.getBean("details");
-		details.setAddress("123 ABC Street");
-		details.setInformation("testing building");
+		details.setAddress("999 Lakeshore Dr");
+		details.setInformation("Loyola Building");
 		details.setFacilityID(333);
 		facility.setDetails(details);
-		//System.out.println("Facility Details: " + facility.getDetails());
-		///        
+    
         System.out.println("*************** Saving Facility ***********************");
         facilityManager.addFacility(facility);
-        System.out.println("*************** Facility Inserted *************************");*/
-		/*
-		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
-        System.out.println("***************** Application Context instantiated! ******************");
+        System.out.println("*************** Facility Inserted *************************");
+		
+
+       // System.out.println("***************** Application Context instantiated! ******************");
         MaintenanceManager maintManager = (MaintenanceManager) context.getBean("maintenanceManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
@@ -90,8 +87,8 @@ public class FMSSpringHibernateInsertClient {
 		ProblemInterface problem = (ProblemInterface) context.getBean("problem");
 		problem.setProblem("testing");
 		problem.setProblemID(1);
+		problem.setRequestID(555);
 		request.setProblem(problem);
-		request.setProblemID(problem.getProblemID());
 		facilityMaint.addRequest(request);
 
 		
@@ -100,10 +97,8 @@ public class FMSSpringHibernateInsertClient {
 		///        
         System.out.println("*************** Saving Maintenance ***********************");
         maintManager.addMaintenance(facilityMaint);
-        System.out.println("*************** Facility Inserted *************************");*/
+        System.out.println("*************** Maintenance Inserted *************************");
         
-        
-        ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
         UseManager useManager = (UseManager) context.getBean("useManager");
         
@@ -115,11 +110,10 @@ public class FMSSpringHibernateInsertClient {
         FacilityUseInterface facilityUse = (FacilityUseInterface) context.getBean("facilityUse");
 		facilityUse.setUseID(1111);
 		facilityUse.setFacilityID(2);
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date date1 = formatter.parse("2016-03-21");
-		Date date2 = formatter.parse("2016-03-26");
-		facilityUse.setStartDate(date1);
-		facilityUse.setEndDate(date2);
+		Date date3 = formatter.parse("2016-03-21");
+		Date date4 = formatter.parse("2016-03-26");
+		facilityUse.setStartDate(date3);
+		facilityUse.setEndDate(date4);
 		
 		CustomerInterface customer = (CustomerInterface) context.getBean("customer");
 		customer.setUseID(1111);
@@ -153,8 +147,8 @@ public class FMSSpringHibernateInsertClient {
 		
 		//System.out.println("Facility Details: " + facility.getDetails());
 		///        
-        System.out.println("*************** Saving Maintenance ***********************");
+        System.out.println("*************** Saving Use ***********************");
         useManager.addUse(facilityUse);
-        System.out.println("*************** Facility Inserted *************************");
+        System.out.println("*************** Use Inserted *************************");
 	}
 }

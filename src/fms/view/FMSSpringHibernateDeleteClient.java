@@ -16,7 +16,7 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
-		/*FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+		FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 		System.out.println("*************** Creating Facility Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
@@ -33,12 +33,12 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
-		*//*
+		//deleting maintenance
 		MaintenanceManager maintManager = (MaintenanceManager) context.getBean("maintenanceManager");
 		System.out.println("*************** Creating Maintenance Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
-		//Find a facility that already exists; 
+		//Find a maintenance that already exists; 
 		FacilityMaintenanceInterface searchedMaint = maintManager.findMaintenanceById(987); 
 		System.out.println("*************** Facility Maintenance to be deleted *************************");
 		System.out.println("\tMaintenance ID: \t\t\t" + searchedMaint.getMaintenanceID()  + "\n" 
@@ -48,14 +48,14 @@ public class FMSSpringHibernateDeleteClient {
         System.out.println("*************** Maintenance to be deleted *************************");
 		maintManager.deleteMaintenance(searchedMaint);
 		
-		System.out.println("*************** Maintenance deleted *************************");*/
+		System.out.println("*************** Maintenance deleted *************************");
 		
-/////
+//deleting use
 		UseManager useManager = (UseManager) context.getBean("useManager");
 		System.out.println("*************** Creating Use Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
-		//Find a facility that already exists; 
+		//Find a use that already exists; 
 		FacilityUseInterface searchedUse = useManager.findUseById(1111); 
 		System.out.println("*************** Facility Maintenance to be deleted *************************");
 		System.out.println("\tUse ID: \t\t\t" + searchedUse.getUseID());
