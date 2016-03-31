@@ -4,12 +4,38 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="fms.model.use">
-	<class name="User" table="user">
+	<class name="User" table="user" discriminator-value="U">
 		<id name="userID" type="int" column="userID" />
         <property name="firstName" type="string" column="firstName"/>
         <property name="lastName" type="string" column="lastName"/>
         <property name="phoneNumber" type="string" column="phoneNumber"/>
         <property name="address" type="string" column="address"/>
+       </class>
+       
+        <Class name="Customer">
+        	<id name="customerID" type="int" column="customerID"/>
+        	<property name="creditCard" type="string" column="creditCard"/>
+        	<property name="useID" type="int" column="useID"></property>
+        	<property name="firstName" type="string" column="firstName"/>
+       	 	<property name="lastName" type="string" column="lastName"/>
+        	<property name="phoneNumber" type="string" column="phoneNumber"/>
+        	<property name="address" type="string" column="address"/>
+        	<property name="userID" type="int" column="userID"/>
+        </Class>
+        
+        <Class name="Manager">
+        	<id name="employeeID" type="int" column="employeeID"/>
+        	<property name="creditCard" type="string" column="creditCard"/>
+        	<property name="useID" type="int" column="useID"></property>
+        	<property name="firstName" type="string" column="firstName"/>
+       	 	<property name="lastName" type="string" column="lastName"/>
+        	<property name="phoneNumber" type="string" column="phoneNumber"/>
+        	<property name="address" type="string" column="address"/>
+        	<property name="userID" type="int" column="userID"/>
+        </Class>
+        
+        
+        
         <property name="customerID" type="int" column="customerID"/>
 	</class>
 </hibernate-mapping>

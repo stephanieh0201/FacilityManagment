@@ -24,10 +24,13 @@
 	<bean id="facilityManager" class="fms.model.manager.FacilityManager" scope="prototype">	</bean>
 
 	<!-- Use  -->
-	<bean id="customer" class="fms.model.use.Customer" scope="prototype"/>
+	<bean id="user" class="fms.model.use.User" scope="prototype" abstract="true"/>
+	<bean id="customer" class="fms.model.use.Customer" scope="prototype" parent="user">
+		</bean>
 		
-	<bean id="manager" class="fms.model.use.Manager" scope="prototype"/>
-	<bean id="user" class="fms.model.use.User" scope="prototype"/>
+	<bean id="manager" class="fms.model.use.Manager" scope="prototype" parent="user">
+		</bean>
+
 	<bean id="inspection" class="fms.model.use.Inspection" scope="prototype">
 		<property name="manager" ref="manager"/>
 	</bean>

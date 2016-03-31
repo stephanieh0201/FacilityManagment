@@ -23,13 +23,14 @@ import fms.model.use.CustomerInterface;
 import fms.model.use.FacilityUseInterface;
 import fms.model.use.InspectionInterface;
 import fms.model.use.ManagerInterface;
+import fms.model.use.UserInterface;
 
 public class FMSSpringHibernateInsertClient {
 	public static void main (String args[]) throws Exception {
 		//Insert Facility Example
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
-        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+      /*  FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving Facility ***********************");
@@ -98,10 +99,10 @@ public class FMSSpringHibernateInsertClient {
         System.out.println("*************** Saving Maintenance ***********************");
         maintManager.addMaintenance(facilityMaint);
         System.out.println("*************** Maintenance Inserted *************************");
-        
+        */
         System.out.println("***************** Application Context instantiated! ******************");
         UseManager useManager = (UseManager) context.getBean("useManager");
-        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving FacilityUse ***********************");
         
@@ -119,9 +120,15 @@ public class FMSSpringHibernateInsertClient {
 		customer.setUseID(1111);
 		customer.setCreditCard("1111999911119999");
 		customer.setCustomerID(13);
-
-		facilityUse.setCustomer(customer);
 		
+		//UserInterface user = (UserInterface) context.getBean("user");
+		
+		/*user.setFirstName("Bob");
+		user.setLastName("Smith");
+		user.setPhoneNumber("1234567");
+		user.setAddress("999 Maple Street");*/
+		facilityUse.setCustomer(customer);
+		facilityUse.setCustomerID(customer.getCustomerID());
 		InspectionInterface inspection1 = (InspectionInterface) context.getBean("inspection");
 		inspection1.setInspectionID(100);
 		inspection1.setReason("testing");

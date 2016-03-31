@@ -10,6 +10,7 @@
         <property name="facilityID" type="int" column="facilityID"/>
         <property name="startDate" type="date" column="startDate"/>
 		<property name="endDate" type="date" column="endDate"/>	
+		<property name="customerID" type="int" column="customerID"/>
 		<bag name="inspections" cascade="save-update, delete">
          	<key column="useID" not-null="true"/>
          	<one-to-many class="fms.model.use.Inspection"/>
