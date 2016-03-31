@@ -1,6 +1,6 @@
 package fms.model.use;
 
-public interface ManagerInterface {
+public interface ManagerInterface extends UserInterface {
 	public int getEmployeeID();
 	public void setEmployeeID(int employeeID);
 	public double getSalary();

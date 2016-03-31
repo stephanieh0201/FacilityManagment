@@ -6,7 +6,7 @@
 <hibernate-mapping package="fms.model.use">
 	<class name="Inspection" table="inspection">
 		<id name="inspectionID" type="int" column="inspectionID" />
-        <many-to-one name="manager" class="fms.model.use.Manager" column="employeeID" unique="true" not-null="true" cascade="save-update, delete"></many-to-one>
+        <many-to-one name="Manager" class="fms.model.use.Manager" column="employeeID" unique="true" not-null="true" cascade="save-update, delete"></many-to-one>
 		<property name="reason" type="string" column="reason"/>
 		</class>
 </hibernate-mapping>

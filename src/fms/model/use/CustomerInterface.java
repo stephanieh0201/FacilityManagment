@@ -1,6 +1,6 @@
 package fms.model.use;
 
-public interface CustomerInterface {
+public interface CustomerInterface extends UserInterface {
 	public void setCustomerID(int customerID);
 	public int getCustomerID();
 	public void setCreditCard(String creditCard);

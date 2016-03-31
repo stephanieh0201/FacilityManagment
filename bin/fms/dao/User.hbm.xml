@@ -12,31 +12,29 @@
         <property name="address" type="string" column="address"/>
        </class>
        
-        <Class name="Customer">
-        	<id name="customerID" type="int" column="customerID"/>
+        <union-subclass name="customer" table="customer">
+       		<property name="userID" type="int" column="userID" />
+        	<property name="customerID" type="int" column="customerID"/>
         	<property name="creditCard" type="string" column="creditCard"/>
         	<property name="useID" type="int" column="useID"></property>
         	<property name="firstName" type="string" column="firstName"/>
        	 	<property name="lastName" type="string" column="lastName"/>
         	<property name="phoneNumber" type="string" column="phoneNumber"/>
         	<property name="address" type="string" column="address"/>
-        	<property name="userID" type="int" column="userID"/>
-        </Class>
+
+        </union-subclass>
         
-        <Class name="Manager">
-        	<id name="employeeID" type="int" column="employeeID"/>
-        	<property name="creditCard" type="string" column="creditCard"/>
-        	<property name="useID" type="int" column="useID"></property>
+        <union-subclass name="manager" table="manager">
+        	<property name="userID" type="int" column="userID" />
+        	<property name="employeeID" type="int" column="employeeID"/>
+        	<property name="salary" type="double" column="salary"/>
+        	<property name="inspectionID" type="int" column="inspectionID"/>
         	<property name="firstName" type="string" column="firstName"/>
        	 	<property name="lastName" type="string" column="lastName"/>
         	<property name="phoneNumber" type="string" column="phoneNumber"/>
         	<property name="address" type="string" column="address"/>
-        	<property name="userID" type="int" column="userID"/>
-        </Class>
+
+        </union-subclass>
         
-        
-        
-        <property name="customerID" type="int" column="customerID"/>
-	</class>
 </hibernate-mapping>
 

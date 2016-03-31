@@ -19,6 +19,7 @@ import fms.model.maintenance.RequestInterface;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
 import fms.model.manager.UseManager;
+import fms.model.use.Customer;
 import fms.model.use.CustomerInterface;
 import fms.model.use.FacilityUseInterface;
 import fms.model.use.InspectionInterface;
@@ -120,13 +121,12 @@ public class FMSSpringHibernateInsertClient {
 		customer.setUseID(1111);
 		customer.setCreditCard("1111999911119999");
 		customer.setCustomerID(13);
+		customer.setAddress("999 Maple Street");
+		customer.setFirstName("Larry");
+		customer.setLastName("Smith");
+		customer.setPhoneNumber("1234567");
+		customer.setUserID(1);
 		
-		//UserInterface user = (UserInterface) context.getBean("user");
-		
-		/*user.setFirstName("Bob");
-		user.setLastName("Smith");
-		user.setPhoneNumber("1234567");
-		user.setAddress("999 Maple Street");*/
 		facilityUse.setCustomer(customer);
 		facilityUse.setCustomerID(customer.getCustomerID());
 		InspectionInterface inspection1 = (InspectionInterface) context.getBean("inspection");
@@ -137,6 +137,11 @@ public class FMSSpringHibernateInsertClient {
 		manager1.setEmployeeID(3);
 		manager1.setSalary(70000);
 		manager1.setInspectionID(100);
+		manager1.setAddress("111 test");
+		manager1.setFirstName("Bob");
+		manager1.setLastName("Ford");
+		manager1.setPhoneNumber("9998888");
+		manager1.setUserID(99);
 		inspection1.setManager(manager1);
 		InspectionInterface inspection2 = (InspectionInterface) context.getBean("inspection");
 		inspection2.setInspectionID(101);
@@ -146,6 +151,13 @@ public class FMSSpringHibernateInsertClient {
 		manager2.setEmployeeID(9991);
 		manager2.setSalary(27000);
 		manager2.setInspectionID(101);
+		manager2.setAddress("764 America");
+		manager2.setFirstName("Jane");
+		manager2.setLastName("Paul");
+		manager2.setPhoneNumber("7777777");
+		manager2.setUserID(123
+				);
+		
 		inspection2.setManager(manager2);
 		facilityUse.addInspection(inspection1);
 		facilityUse.addInspection(inspection2);
