@@ -1,11 +1,6 @@
 package fms.model.manager;
 
 
-
-
-
-
-import fms.dao.FacilityDAO;
 import fms.dao.FacilityHibernateDAO;
 import fms.model.facility.Facility;
 import fms.model.facility.FacilityInterface;

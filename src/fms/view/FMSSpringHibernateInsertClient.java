@@ -31,7 +31,7 @@ public class FMSSpringHibernateInsertClient {
 		//Insert Facility Example
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
-      /*  FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving Facility ***********************");
@@ -100,10 +100,10 @@ public class FMSSpringHibernateInsertClient {
         System.out.println("*************** Saving Maintenance ***********************");
         maintManager.addMaintenance(facilityMaint);
         System.out.println("*************** Maintenance Inserted *************************");
-        */
+        
         System.out.println("***************** Application Context instantiated! ******************");
         UseManager useManager = (UseManager) context.getBean("useManager");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving FacilityUse ***********************");
         
@@ -125,7 +125,6 @@ public class FMSSpringHibernateInsertClient {
 		customer.setFirstName("Larry");
 		customer.setLastName("Smith");
 		customer.setPhoneNumber("1234567");
-		customer.setUserID(1);
 		
 		facilityUse.setCustomer(customer);
 		facilityUse.setCustomerID(customer.getCustomerID());
@@ -141,7 +140,7 @@ public class FMSSpringHibernateInsertClient {
 		manager1.setFirstName("Bob");
 		manager1.setLastName("Ford");
 		manager1.setPhoneNumber("9998888");
-		manager1.setUserID(99);
+
 		inspection1.setManager(manager1);
 		InspectionInterface inspection2 = (InspectionInterface) context.getBean("inspection");
 		inspection2.setInspectionID(101);
@@ -155,8 +154,7 @@ public class FMSSpringHibernateInsertClient {
 		manager2.setFirstName("Jane");
 		manager2.setLastName("Paul");
 		manager2.setPhoneNumber("7777777");
-		manager2.setUserID(123
-				);
+
 		
 		inspection2.setManager(manager2);
 		facilityUse.addInspection(inspection1);

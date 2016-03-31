@@ -4,7 +4,7 @@ public class Manager implements ManagerInterface  {
 	private int employeeID;
 	private double salary;
 	private int inspectionID;
-	private int userID;
+//	private int userID;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
@@ -35,17 +35,17 @@ public class Manager implements ManagerInterface  {
 		this.inspectionID = inspectionID;
 	}
 
-	@Override
-	public int getUserID() {
-		// TODO Auto-generated method stub
-		return userID;
-	}
-
-	@Override
-	public void setUserID(int userID) {
-		// TODO Auto-generated method stub
-		this.userID=userID;
-	}
+//	@Override
+//	public int getUserID() {
+//		// TODO Auto-generated method stub
+//		return userID;
+//	}
+//
+//	@Override
+//	public void setUserID(int userID) {
+//		// TODO Auto-generated method stub
+//		this.userID=userID;
+//	}
 
 	@Override
 	public String getFirstName() {

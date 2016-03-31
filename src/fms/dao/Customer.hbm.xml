@@ -6,7 +6,7 @@
 <hibernate-mapping package="fms.model.use">
 	<class name="Customer" table="customer">
 		<id name="customerID" type="int" column="customerID"/>
-		<property name="userID" type="int" column="userID" />
+
         	
         	<property name="creditCard" type="string" column="creditCard"/>
         	<property name="useID" type="int" column="useID"></property>

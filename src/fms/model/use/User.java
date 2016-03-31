@@ -1,7 +1,7 @@
 package fms.model.use;
 
 public class User implements UserInterface {
-	private int userID;
+//	private int userID;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
@@ -10,13 +10,13 @@ public class User implements UserInterface {
 	public User() {
 	}
 
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
+//	public int getUserID() {
+//		return userID;
+//	}
+//
+//	public void setUserID(int userID) {
+//		this.userID = userID;
+//	}
 
 	public String getFirstName() {
 		return firstName;

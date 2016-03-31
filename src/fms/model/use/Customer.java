@@ -3,7 +3,7 @@ package fms.model.use;
 public class Customer implements CustomerInterface  {
 	int customerID;
 	String creditCard;
-	int userID;
+//	int userID;
 	int useID;
 	String firstName;
 	String lastName;
@@ -38,16 +38,16 @@ public class Customer implements CustomerInterface  {
 	public int getUseID(){
 		return useID;
 	}
-	@Override
-	public int getUserID() {
-		// TODO Auto-generated method stub
-		return userID;
-	}
-	@Override
-	public void setUserID(int userID) {
-		// TODO Auto-generated method stub
-		this.userID=userID;
-	}
+//	@Override
+//	public int getUserID() {
+//		// TODO Auto-generated method stub
+//		return userID;
+//	}
+//	@Override
+//	public void setUserID(int userID) {
+//		// TODO Auto-generated method stub
+//		this.userID=userID;
+//	}
 	@Override
 	public String getFirstName() {
 		// TODO Auto-generated method stub

@@ -1,8 +1,8 @@
 package fms.model.use;
 
 public interface UserInterface {
-	public int getUserID();
-	public void setUserID(int userID);
+//	public int getUserID();
+//	public void setUserID(int userID);
 	public String getFirstName();
 	public void setFirstName(String firstName);
 	public String getLastName();
