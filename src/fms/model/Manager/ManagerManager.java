@@ -1,8 +1,6 @@
 package fms.model.manager;
 
-import fms.dao.CustomerHibernateDAO;
 import fms.dao.ManagerHibernateDAO;
-import fms.model.use.CustomerInterface;
 import fms.model.use.ManagerInterface;
 
 public class ManagerManager {
@@ -30,7 +28,7 @@ public class ManagerManager {
 		return null;
 	}
 	
-	public CustomerInterface findCustomerByLastName(String lastName) {
+	public ManagerInterface findCustomerByLastName(String lastName) {
 		try {
 			ManagerInterface manager = managerDAO.retrieveManagerByLastName(lastName);
 	    	return manager;

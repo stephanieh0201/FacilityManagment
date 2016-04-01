@@ -7,9 +7,11 @@ import fms.model.maintenance.FacilityMaintenanceInterface;
 import fms.model.manager.CustomerManager;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.ManagerManager;
 import fms.model.manager.UseManager;
 import fms.model.use.CustomerInterface;
 import fms.model.use.FacilityUseInterface;
+import fms.model.use.ManagerInterface;
 
 public class FMSSpringHibernateDeleteClient {
 	public static void main (String args[]) throws Exception {
@@ -18,7 +20,7 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
-		FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+	/*	FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 		System.out.println("*************** Creating Facility Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
@@ -82,5 +84,19 @@ public class FMSSpringHibernateDeleteClient {
 		customerManager.deleteCustomer(searchedCustomer);
 		System.out.println("*************** Customer deleted *************************");*/
 		
+		
+		ManagerManager managerManager = (ManagerManager) context.getBean("managerManager");
+		System.out.println("*************** Creating Manager Manager object *************************");
+		System.out.println("*************** DELETE EXAMPLE *************************");
+
+		//Find a facility that already exists
+		ManagerInterface searchedManager = managerManager.findManagerById(3); 
+		System.out.println("*************** Manager to be deleted *************************");
+		System.out.println("\tName: \t\t\t" + searchedManager.getLastName() +", " +searchedManager.getFirstName()  + "\n");
+       
+        
+        System.out.println("*************** Manager to be deleted *************************");
+		managerManager.deleteManager(searchedManager);
+		System.out.println("*************** Manager deleted *************************");
 	}
 }
