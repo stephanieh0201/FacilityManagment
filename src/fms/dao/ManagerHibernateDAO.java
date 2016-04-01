@@ -11,7 +11,7 @@ import fms.model.use.ManagerInterface;
 public class ManagerHibernateDAO {
 	
 	public void addManager(ManagerInterface manager) {
-		System.out.println("*************** Adding customer information in DB with ID ...  " + manager.getEmployeeID());
+		System.out.println("*************** Adding manager information in DB with ID ...  " + manager.getEmployeeID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.save(manager);
@@ -21,18 +21,16 @@ public class ManagerHibernateDAO {
 	
 	public ManagerInterface retrieveManager(int employeeId) {
 		try {
-		System.out.println("*************** Searcing for customer information with ID ...  " + employeeId);
+		System.out.println("*************** Searcing for manager information with ID ...  " + employeeId);
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-			
-		//Query getCustQuery = session.createQuery("From CustomerImpl ");
 		Query getManagerQuery = session.createQuery("From Manager where employeeId=:employeeId");		
 		getManagerQuery.setInteger("employeeId", employeeId);
 		
 		System.out.println("*************** Retrieve Query is ....>>\n" + getManagerQuery.toString()); 
 		
 		List managers = getManagerQuery.list();
-		System.out.println("Getting Customer Details using HQL. \n" + managers);
+		System.out.println("Getting Manager Details using HQL. \n" + managers);
 
 		session.getTransaction().commit();
 		return (ManagerInterface) managers.get(0);
@@ -44,7 +42,7 @@ public class ManagerHibernateDAO {
 	
 	public ManagerInterface retrieveManagerByLastName(String lastName) {
 		try {
-		System.out.println("*************** Searcing for manager information with last name ...  " + lastName);
+		System.out.println("*************** Searching for manager information with last name ...  " + lastName);
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		
@@ -57,7 +55,7 @@ public class ManagerHibernateDAO {
 		System.out.println("*************** Retrieve Query is ....>>\n" + getManagerQuery.toString()); 
 		
 		List managers = getManagerQuery.list();
-		System.out.println("Getting Customer Details using HQL. \n" + managers);
+		System.out.println("Getting Manager Details using HQL. \n" + managers);
 
 		session.getTransaction().commit();
 		return (ManagerInterface)managers.get(0);
@@ -68,7 +66,7 @@ public class ManagerHibernateDAO {
 	}
 	
 	public void deleteManager(ManagerInterface manager) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + manager.getEmployeeID());
+		System.out.println("*************** Deleteing manager information in DB with ID ...  " + manager.getEmployeeID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(manager);

@@ -16,10 +16,16 @@ import fms.model.maintenance.FacilityMaintenanceInterface;
 import fms.model.maintenance.Problem;
 import fms.model.maintenance.ProblemInterface;
 import fms.model.maintenance.RequestInterface;
+import fms.model.manager.CostManager;
 import fms.model.manager.CustomerManager;
+import fms.model.manager.DetailsManager;
 import fms.model.manager.FacilityManager;
+import fms.model.manager.InspectionManager;
 import fms.model.manager.MaintenanceManager;
 import fms.model.manager.ManagerManager;
+import fms.model.manager.ProblemManager;
+import fms.model.manager.RequestManager;
+import fms.model.manager.RoomManager;
 import fms.model.manager.UseManager;
 import fms.model.use.CustomerInterface;
 import fms.model.use.FacilityUseInterface;
@@ -30,7 +36,7 @@ public class FMSSpringHibernateSearchClient {
 	public static void main (String args[]) throws Exception {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
-      /*  System.out.println("***************** Application Context instantiated! ******************");
+        System.out.println("***************** Application Context instantiated! ******************");
         //Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
         //Also, bootstrapping the FacilityManager instantiation using factory
         FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
@@ -100,14 +106,13 @@ public class FMSSpringHibernateSearchClient {
 	             
 	     System.out.println("Searched use information .......>>");
 	     System.out.println("\tCustomer ID: \t\t\t" + searchedCust.getCustomerID());
-	  
 	     System.out.println("\tName: \t\t\t\t"+ searchedCust.getLastName()+", " + searchedCust.getFirstName());
 	     System.out.println("\tAddress: \t\t\t"+ searchedCust.getAddress());
 	     System.out.println("\tPhone Number: \t\t\t"+ searchedCust.getPhoneNumber());
 	     System.out.println("\tCredit Card: \t\t\t"+ searchedCust.getCreditCard());
-	    */ 
+	     
 		 ManagerManager managerManager = (ManagerManager) context.getBean("managerManager");
-		 ManagerInterface searchedManag = managerManager.findManagerById(3);       
+		 ManagerInterface searchedManag = managerManager.findManagerById(9991);       
 	     System.out.println("Searched manager information .......>>");
 	     System.out.println("\tManager ID: \t\t\t" + searchedManag.getEmployeeID());
 	  
@@ -116,5 +121,44 @@ public class FMSSpringHibernateSearchClient {
 	     System.out.println("\tPhone Number: \t\t\t"+ searchedManag.getPhoneNumber());
 	     System.out.println("\tSalary: \t\t\t"+ searchedManag.getSalary());
 		 
+	     CostManager costManager = (CostManager) context.getBean("costManager");
+	     CostInterface searchedCost = costManager.findCostById(987);
+	     System.out.println("Searched cost information");
+	     System.out.println("\tID: \t\t\t" + searchedCost.getMaintenanceID());
+	     System.out.println("\tCost: \t\t\t" + searchedCost.getMaintenanceCost());
+	     
+	     DetailsManager detailsManager = (DetailsManager) context.getBean("detailsManager");
+	     DetailsInterface searchedDetails = detailsManager.findDetailsById(2);
+	     System.out.println("Searched details information");
+	     System.out.println("\tFacility ID: \t\t" + searchedDetails.getFacilityID());
+	     System.out.println("\tAddress: \t\t" + searchedDetails.getAddress());
+	     System.out.println("\tInfo: \t\t\t" + searchedDetails.getInformation());
+	     
+	     InspectionManager inspectionManager = (InspectionManager) context.getBean("inspectionManager");
+	     InspectionInterface searchedInspection = inspectionManager.findInspectionById(100);
+	     ManagerInterface manager= searchedInspection.getManager();
+	     System.out.println("Searched inspection information");
+	     System.out.println("\tInspection ID: \t\t" + searchedInspection.getInspectionID());
+	     System.out.println("\tReason: \t\t" + searchedInspection.getReason());
+	     System.out.println("\tManager ID: \t\t" + manager.getEmployeeID());
+	     
+	     ProblemManager problemManager = (ProblemManager) context.getBean("problemManager");
+	     ProblemInterface searchedProblem = problemManager.findProblemById(1);
+	     System.out.println("Searched problem information");
+	     System.out.println("\tProblem ID: \t\t" + searchedProblem.getProblemID());
+	     System.out.println("\tProblem: \t\t" + searchedProblem.getProblem());
+
+	     RequestManager requestManager = (RequestManager) context.getBean("requestManager");
+	     RequestInterface searchedRequest = requestManager.findRequestById(555);
+	     System.out.println("Searched request information");
+	     System.out.println("\tRequest ID: \t\t" + searchedRequest.getRequestID());
+	     System.out.println("\tDate: \t\t" + searchedRequest.getRequestDate());
+	     System.out.println("\tComplete Date: \t\t" + searchedRequest.getCompleteDate());
+	     
+	     RoomManager roomManager = (RoomManager) context.getBean("roomManager");
+	     RoomInterface searchedRoom = roomManager.findRoomById(12);
+	     System.out.println("Searched room information");
+	     System.out.println("\tRoom ID: \t\t" + searchedRoom.getRoomID());
+	     System.out.println("\tCapacity: \t\t" + searchedRoom.getCapacity());
 	}
 }

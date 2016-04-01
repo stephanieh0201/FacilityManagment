@@ -18,7 +18,7 @@ public class CustomerHibernateDAO {
 	
 	public CustomerInterface retrieveCustomer(int customerId) {
 		try {
-		System.out.println("*************** Searcing for customer information with ID ...  " + customerId);
+		System.out.println("*************** Searching for customer information with ID ...  " + customerId);
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		

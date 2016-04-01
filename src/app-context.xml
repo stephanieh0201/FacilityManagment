@@ -22,7 +22,8 @@
 	</bean>
 	
 	<bean id="facilityManager" class="fms.model.manager.FacilityManager" scope="prototype">	</bean>
-
+	<bean id="detailsManager" class="fms.model.manager.DetailsManager" scope="prototype">	</bean>
+	<bean id="roomManager" class="fms.model.manager.RoomManager" scope="prototype">	</bean>
 	<!-- Use  -->
 	<bean id="user" class="fms.model.use.User" scope="prototype" abstract="true"/>
 	<bean id="customer" class="fms.model.use.Customer" scope="prototype" parent="user">
@@ -49,7 +50,7 @@
 	<bean id="useManager" class="fms.model.manager.UseManager" scope="prototype"/>
 	<bean id="customerManager" class="fms.model.manager.CustomerManager" scope="prototype"/>
 	<bean id="managerManager" class="fms.model.manager.ManagerManager" scope="prototype"/>
-		
+	<bean id="inspectionManager" class="fms.model.manager.InspectionManager" scope="prototype"/>	
 	<!-- Maintenance   -->
 	<bean id="cost" class="fms.model.maintenance.Cost" scope="prototype"></bean>
 	
@@ -72,7 +73,8 @@
 	
 	<bean id="maintenanceManager" class="fms.model.manager.MaintenanceManager" scope="prototype">
 	</bean>
-	
-	
-	
+	<bean id="costManager" class="fms.model.manager.CostManager" scope="prototype"/>
+	<bean id="problemManager" class="fms.model.manager.ProblemManager" scope="prototype"/>
+	<bean id="requestManager" class="fms.model.manager.RequestManager" scope="prototype"/>
+
 </beans>

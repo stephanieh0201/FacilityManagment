@@ -37,20 +37,16 @@ public class UseHibernateDAO {
 	
 	public FacilityUseInterface retrieveUse(int useID) {
 		try {
-		System.out.println("*************** Searcing for facility use information with ID ...  " + useID);
+		System.out.println("*************** Searching for facility use information with ID ...  " + useID);
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		
-		//System.out.println("*************** Hibernate session is created ..................\n" + session.toString());
-		
-		//Query getCustQuery = session.createQuery("From CustomerImpl ");
 		Query getUseQuery = session.createQuery("From FacilityUse where useID=:useID");		
 		getUseQuery.setInteger("useID", useID);
 		
 		System.out.println("*************** Retrieve Query is ....>>\n" + getUseQuery.toString()); 
 		
 		List uses = getUseQuery.list();
-		System.out.println("Getting Book Details using HQL. \n" + uses);
+		System.out.println("Getting Use Details using HQL. \n" + uses);
 
 		session.getTransaction().commit();
 		return (FacilityUseInterface)uses.get(0);
@@ -59,31 +55,4 @@ public class UseHibernateDAO {
 		}
 		return null;
 	}
-	/*
-	public Address retrieveCustomerAddress(String customerId) {
-		try {
-		System.out.println("*************** Searcing for customer address information with ID ...  " + customerId);
-		Session session = HibernatePGSQLHelper.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-	
-        //Address billingAdd = (AddressImpl) session.load(AddressImpl.class, customerId);
-        
-        Query getAddresstQuery = session.createQuery("From AddressImpl where customerId=:customerId");		
-        getAddresstQuery.setString("customerId", customerId);
-		
-		System.out.println("*************** Retrieve Query is ....>>\n" + getAddresstQuery.toString()); 
-		
-		List addresses = getAddresstQuery.list();
-		System.out.println("Getting Book Details using HQL. \n" + addresses.get(0));
-		
-		System.out.println("*************** Retrieve Query is ....>>\n" + addresses.get(0).toString()); 
-		
-		session.getTransaction().commit();
-		return (Address)addresses.get(0);
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}*/
 }
