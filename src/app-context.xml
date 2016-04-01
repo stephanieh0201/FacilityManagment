@@ -46,9 +46,9 @@
 		<property name="useSchedule" ref="useSchedule"/>
 	</bean>
 			
-	<bean id="useManager" class="fms.model.manager.UseManager" scope="prototype">
+	<bean id="useManager" class="fms.model.manager.UseManager" scope="prototype"/>
+	<bean id="customerManager" class="fms.model.manager.CustomerManager" scope="prototype"/>
 	
-	</bean>
 			
 	
 

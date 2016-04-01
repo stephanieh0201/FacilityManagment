@@ -16,6 +16,7 @@ import fms.model.maintenance.FacilityMaintenanceInterface;
 import fms.model.maintenance.Problem;
 import fms.model.maintenance.ProblemInterface;
 import fms.model.maintenance.RequestInterface;
+import fms.model.manager.CustomerManager;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
 import fms.model.manager.UseManager;
@@ -31,7 +32,7 @@ public class FMSSpringHibernateSearchClient {
         System.out.println("***************** Application Context instantiated! ******************");
         //Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
         //Also, bootstrapping the FacilityManager instantiation using factory
-        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+     /* FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 	    System.out.println("*************** Creating Facility Manager object *************************"); 
         System.out.println("*************** SEARCH EXAMPLE *************************");
         //Find a customer if already exists; if not, create a new one.
@@ -87,6 +88,23 @@ public class FMSSpringHibernateSearchClient {
 	      //	System.out.println("\tManager: \t\t\t  " + manager.getEmployeeID() + " Salary: " + manager.getSalary());
 	      }
 	     CustomerInterface customer = searchedUse.getCustomer();
-	     System.out.println("Customer ID: " + customer.getCustomerID() + " Payment Credit Card: " + customer.getCreditCard());
+	     System.out.println("Customer ID: " + customer.getCustomerID() + " Payment Credit Card: " + customer.getCreditCard());*/
+        
+        
+         CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
+		 System.out.println("*************** Creating Use Manager object *************************"); 
+	     System.out.println("*************** SEARCH EXAMPLE *************************");
+	        //Find a customer if already exists; if not, create a new one.
+	     CustomerInterface searchedCust = customerManager.findCustomerByLastName("Smith"); 
+	             
+	     System.out.println("Searched use information .......>>");
+	     System.out.println("\tCustomer ID: \t\t\t" + searchedCust.getCustomerID());
+	  
+	     System.out.println("\tName: \t\t\t\t"+ searchedCust.getLastName()+", " + searchedCust.getFirstName());
+	     System.out.println("\tAddress: \t\t\t"+ searchedCust.getAddress());
+	     System.out.println("\tPhone Number: \t\t\t"+ searchedCust.getPhoneNumber());
+	     System.out.println("\tCredit Card: \t\t\t"+ searchedCust.getCreditCard());
+	     
+
 	}
 }

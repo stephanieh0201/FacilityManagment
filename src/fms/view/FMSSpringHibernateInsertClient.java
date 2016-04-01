@@ -16,6 +16,7 @@ import fms.model.maintenance.CostInterface;
 import fms.model.maintenance.FacilityMaintenanceInterface;
 import fms.model.maintenance.ProblemInterface;
 import fms.model.maintenance.RequestInterface;
+import fms.model.manager.CustomerManager;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
 import fms.model.manager.UseManager;
@@ -31,7 +32,7 @@ public class FMSSpringHibernateInsertClient {
 		//Insert Facility Example
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
-        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+      /*FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving Facility ***********************");
@@ -166,6 +167,27 @@ public class FMSSpringHibernateInsertClient {
 		///        
         System.out.println("*************** Saving Use ***********************");
         useManager.addUse(facilityUse);
-        System.out.println("*************** Use Inserted *************************");
+        System.out.println("*************** Use Inserted *************************");*/
+        
+        CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
+        
+        System.out.println("*************** INSERT EXAMPLE *************************");
+        System.out.println("*************** This example involves Instantiating and Saving Customer ***********************");
+        CustomerInterface customer = (CustomerInterface) context.getBean("customer");
+        System.out.println("*************** Instantiating Customer ***********************");
+		customer.setUseID(1111);
+		customer.setCreditCard("1111999911119999");
+		customer.setCustomerID(13);
+		customer.setAddress("999 Maple Street");
+		customer.setFirstName("Larry");
+		customer.setLastName("Smith");
+		customer.setPhoneNumber("1234567");
+    
+        System.out.println("*************** Saving Facility ***********************");
+        customerManager.addCustomer(customer);
+        System.out.println("*************** Facility Inserted *************************");
+		
+  
+
 	}
 }

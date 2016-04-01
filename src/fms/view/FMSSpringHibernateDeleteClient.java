@@ -4,9 +4,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import fms.model.facility.FacilityInterface;
 import fms.model.maintenance.FacilityMaintenanceInterface;
+import fms.model.manager.CustomerManager;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
 import fms.model.manager.UseManager;
+import fms.model.use.CustomerInterface;
 import fms.model.use.FacilityUseInterface;
 
 public class FMSSpringHibernateDeleteClient {
@@ -16,7 +18,7 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
-		FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+		/*FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 		System.out.println("*************** Creating Facility Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
@@ -57,13 +59,28 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Find a use that already exists; 
 		FacilityUseInterface searchedUse = useManager.findUseById(1111); 
-		System.out.println("*************** Facility Maintenance to be deleted *************************");
+		System.out.println("************** Use to be deleted *************************");
 		System.out.println("\tUse ID: \t\t\t" + searchedUse.getUseID());
        
         
-        System.out.println("*************** Maintenance to be deleted *************************");
+        System.out.println("*************** Deleting use *************************");
 		useManager.deleteUse(searchedUse);
 		
-		System.out.println("*************** Maintenance deleted *************************");
+		System.out.println("*************** Use deleted *************************");*/
+		
+		CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
+		System.out.println("*************** Creating Customer Manager object *************************");
+		System.out.println("*************** DELETE EXAMPLE *************************");
+
+		//Find a facility that already exists; 
+		CustomerInterface searchedCustomer = customerManager.findCustomerById(13); 
+		System.out.println("*************** Customer to be deleted *************************");
+		System.out.println("\tName: \t\t\t" + searchedCustomer.getLastName() +", " +searchedCustomer.getFirstName()  + "\n");
+       
+        
+        System.out.println("*************** Customer to be deleted *************************");
+		customerManager.deleteCustomer(searchedCustomer);
+		System.out.println("*************** Customer deleted *************************");
+		
 	}
 }
