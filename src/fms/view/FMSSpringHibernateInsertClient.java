@@ -16,9 +16,15 @@ import fms.model.maintenance.CostInterface;
 import fms.model.maintenance.FacilityMaintenanceInterface;
 import fms.model.maintenance.ProblemInterface;
 import fms.model.maintenance.RequestInterface;
+import fms.model.manager.CostManager;
 import fms.model.manager.CustomerManager;
+import fms.model.manager.DetailsManager;
 import fms.model.manager.FacilityManager;
+import fms.model.manager.InspectionManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.ProblemManager;
+import fms.model.manager.RequestManager;
+import fms.model.manager.RoomManager;
 import fms.model.manager.UseManager;
 import fms.model.use.Customer;
 import fms.model.use.CustomerInterface;
@@ -120,12 +126,12 @@ public class FMSSpringHibernateInsertClient {
 		
 		CustomerInterface customer = (CustomerInterface) context.getBean("customer");
 		customer.setUseID(1111);
-		customer.setCreditCard("1111999911119999");
-		customer.setCustomerID(13);
-		customer.setAddress("999 Maple Street");
-		customer.setFirstName("Larry");
-		customer.setLastName("Smith");
-		customer.setPhoneNumber("1234567");
+		customer.setCreditCard("1234432112344321");
+		customer.setCustomerID(483);
+		customer.setAddress("329 Netherlands");
+		customer.setFirstName("Annie");
+		customer.setLastName("Apple");
+		customer.setPhoneNumber("8274921");
 		
 		facilityUse.setCustomer(customer);
 		facilityUse.setCustomerID(customer.getCustomerID());
@@ -169,25 +175,88 @@ public class FMSSpringHibernateInsertClient {
         useManager.addUse(facilityUse);
         System.out.println("*************** Use Inserted *************************");
         
-      /*  CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
+        CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving Customer ***********************");
-        CustomerInterface customer = (CustomerInterface) context.getBean("customer");
+        CustomerInterface insertCustomer = (CustomerInterface) context.getBean("customer");
         System.out.println("*************** Instantiating Customer ***********************");
-		customer.setUseID(1111);
-		customer.setCreditCard("1111999911119999");
-		customer.setCustomerID(13);
-		customer.setAddress("999 Maple Street");
-		customer.setFirstName("Larry");
-		customer.setLastName("Smith");
-		customer.setPhoneNumber("1234567");
+		insertCustomer.setUseID(1111);
+		insertCustomer.setCreditCard("1111999911119999");
+		insertCustomer.setCustomerID(13);
+		insertCustomer.setAddress("999 Maple Street");
+		insertCustomer.setFirstName("Larry");
+		insertCustomer.setLastName("Smith");
+		insertCustomer.setPhoneNumber("1234567");
     
         System.out.println("*************** Saving Customer ***********************");
-        customerManager.addCustomer(customer);
-        System.out.println("*************** Customer Inserted *************************");*/
+        customerManager.addCustomer(insertCustomer);
+        System.out.println("*************** Customer Inserted *************************");
 		
-  
+        CostManager costManager = (CostManager) context.getBean("costManager");
+        CostInterface insertCost = (CostInterface) context.getBean("cost");
+        insertCost.setMaintenanceCost(9999);
+        insertCost.setMaintenanceID(123);
+        System.out.println("*************** Saving Cost ***********************");
+        costManager.addCost(insertCost);
+        System.out.println("*************** Cost Inserted *************************");
 
+        DetailsManager detailsManager = (DetailsManager) context.getBean("detailsManager");
+        DetailsInterface insertDetail= (DetailsInterface) context.getBean("details");
+        insertDetail.setAddress("888 Forest Lane");
+        insertDetail.setDetailsID(74800);
+        insertDetail.setFacilityID(9124);
+        insertDetail.setInformation("medical building");
+        System.out.println("*************** Saving Details ***********************");
+        detailsManager.addDetails(insertDetail);
+        System.out.println("*************** Details Inserted *************************");
+        
+        InspectionManager inspectionManager = (InspectionManager) context.getBean("inspectionManager");
+        InspectionInterface insertInspection = (InspectionInterface) context.getBean("inspection");
+        insertInspection.setInspectionID(584);
+        insertInspection.setReason("weekly clean up");
+        insertInspection.setUseID(56);
+        ManagerInterface managerInsp= (ManagerInterface) context.getBean("manager");
+        managerInsp.setAddress("123 abc");
+        managerInsp.setEmployeeID(84921);
+        managerInsp.setFirstName("Andrew");
+        managerInsp.setLastName("Johnson");
+        managerInsp.setInspectionID(584);
+        managerInsp.setPhoneNumber("321232");
+        managerInsp.setSalary(48000);
+        insertInspection.setManager(managerInsp);
+        inspectionManager.addInspection(insertInspection);
+        
+        
+        ProblemManager problemManager = (ProblemManager) context.getBean("problemManager");
+        ProblemInterface insertProb = (ProblemInterface) context.getBean("problem");
+        insertProb.setProblem("internet service");
+        insertProb.setProblemID(492);
+        problemManager.addProblem(insertProb);
+        
+        
+		Date date8 = formatter.parse("2016-04-01");
+		Date date9 = formatter.parse("2016-04-03");
+		
+		
+        RequestManager requestManager = (RequestManager) context.getBean("requestManager");
+        RequestInterface insertReq = (RequestInterface) context.getBean("request");
+        insertReq.setRequestDate(date8);
+        insertReq.setCompleteDate(date9);
+        insertReq.setRequestID(281);
+        ProblemInterface reqProb = (ProblemInterface) context.getBean("problem");
+        reqProb.setProblem("routine maintenance");
+        reqProb.setProblemID(155);
+        reqProb.setRequestID(281);
+        insertReq.setProblem(reqProb);
+        requestManager.addRequest(insertReq);
+        
+        RoomManager roomManager = (RoomManager) context.getBean("roomManager");
+        RoomInterface insertRoom = (RoomInterface) context.getBean("room");
+        insertRoom.setCapacity(4000);
+        insertRoom.setFacilityID(828);
+        insertRoom.setRoomID(11111);
+        roomManager.addRoom(insertRoom);
+        
 	}
 }

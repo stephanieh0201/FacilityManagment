@@ -10,8 +10,8 @@
         <property name="facilityID" type="int" column="facilityID"/>
         <property name="startDate" type="date" column="startDate"/>
 		<property name="endDate" type="date" column="endDate"/>	
-		<bag name="inspections" cascade="save-update, delete">
-         	<key column="useID" not-null="true"/>
+		<bag name="inspections" cascade="save-update, delete" inverse="true">
+         	<key column="useID"/>
          	<one-to-many class="fms.model.use.Inspection"/>
          </bag> 
 	</class>

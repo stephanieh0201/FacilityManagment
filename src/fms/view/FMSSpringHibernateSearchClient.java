@@ -128,7 +128,8 @@ public class FMSSpringHibernateSearchClient {
 	     System.out.println("\tCost: \t\t\t" + searchedCost.getMaintenanceCost());
 	     
 	     DetailsManager detailsManager = (DetailsManager) context.getBean("detailsManager");
-	     DetailsInterface searchedDetails = detailsManager.findDetailsById(2);
+	     DetailsInterface searchedDetails = detailsManager.findDetailsById(9124
+	    		 );
 	     System.out.println("Searched details information");
 	     System.out.println("\tFacility ID: \t\t" + searchedDetails.getFacilityID());
 	     System.out.println("\tAddress: \t\t" + searchedDetails.getAddress());

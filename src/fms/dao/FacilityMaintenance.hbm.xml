@@ -8,8 +8,8 @@
 		<id name="maintenanceID" type="int" column="maintenanceID" />
         <property name="facilityID" type="int" column="facilityID"/>
         <one-to-one name="cost" class="fms.model.maintenance.Cost" cascade="save-update, delete"></one-to-one>
-           <bag name="listRequests" cascade="save-update, delete">
-         	<key column="maintenanceID" not-null="true"/>
+           <bag name="listRequests" cascade="save-update, delete" inverse="true">
+         	<key column="maintenanceID"/>
          	<one-to-many class="fms.model.maintenance.Request"/>
          </bag> 
 	</class>
