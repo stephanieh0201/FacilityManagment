@@ -19,6 +19,7 @@ import fms.model.maintenance.RequestInterface;
 import fms.model.manager.CustomerManager;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.ManagerManager;
 import fms.model.manager.UseManager;
 import fms.model.use.CustomerInterface;
 import fms.model.use.FacilityUseInterface;
@@ -29,7 +30,7 @@ public class FMSSpringHibernateSearchClient {
 	public static void main (String args[]) throws Exception {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
-        System.out.println("***************** Application Context instantiated! ******************");
+      /*  System.out.println("***************** Application Context instantiated! ******************");
         //Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
         //Also, bootstrapping the FacilityManager instantiation using factory
         FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
@@ -104,7 +105,16 @@ public class FMSSpringHibernateSearchClient {
 	     System.out.println("\tAddress: \t\t\t"+ searchedCust.getAddress());
 	     System.out.println("\tPhone Number: \t\t\t"+ searchedCust.getPhoneNumber());
 	     System.out.println("\tCredit Card: \t\t\t"+ searchedCust.getCreditCard());
-	     
-
+	    */ 
+		 ManagerManager managerManager = (ManagerManager) context.getBean("managerManager");
+		 ManagerInterface searchedManag = managerManager.findManagerById(3);       
+	     System.out.println("Searched manager information .......>>");
+	     System.out.println("\tManager ID: \t\t\t" + searchedManag.getEmployeeID());
+	  
+	     System.out.println("\tName: \t\t\t\t"+ searchedManag.getLastName()+", " + searchedManag.getFirstName());
+	     System.out.println("\tAddress: \t\t\t"+ searchedManag.getAddress());
+	     System.out.println("\tPhone Number: \t\t\t"+ searchedManag.getPhoneNumber());
+	     System.out.println("\tSalary: \t\t\t"+ searchedManag.getSalary());
+		 
 	}
 }

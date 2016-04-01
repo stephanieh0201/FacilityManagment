@@ -48,7 +48,7 @@
 			
 	<bean id="useManager" class="fms.model.manager.UseManager" scope="prototype"/>
 	<bean id="customerManager" class="fms.model.manager.CustomerManager" scope="prototype"/>
-	
+	<bean id="managerManager" class="fms.model.manager.ManagerManager" scope="prototype"/>
 		
 	<!-- Maintenance   -->
 	<bean id="cost" class="fms.model.maintenance.Cost" scope="prototype"></bean>
