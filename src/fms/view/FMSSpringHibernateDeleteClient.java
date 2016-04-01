@@ -18,7 +18,7 @@ public class FMSSpringHibernateDeleteClient {
 
 		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
-		/*FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+		FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 		System.out.println("*************** Creating Facility Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
@@ -66,8 +66,8 @@ public class FMSSpringHibernateDeleteClient {
         System.out.println("*************** Deleting use *************************");
 		useManager.deleteUse(searchedUse);
 		
-		System.out.println("*************** Use deleted *************************");*/
-		
+		System.out.println("*************** Use deleted *************************");
+		/*
 		CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
 		System.out.println("*************** Creating Customer Manager object *************************");
 		System.out.println("*************** DELETE EXAMPLE *************************");
@@ -80,7 +80,7 @@ public class FMSSpringHibernateDeleteClient {
         
         System.out.println("*************** Customer to be deleted *************************");
 		customerManager.deleteCustomer(searchedCustomer);
-		System.out.println("*************** Customer deleted *************************");
+		System.out.println("*************** Customer deleted *************************");*/
 		
 	}
 }

@@ -20,10 +20,9 @@ public class FacilityUse implements FacilityUseInterface {
 	private UseScheduleInterface useSchedule;
 	private int facilityID;
 	private int customerID;
+
 	
-	
-	public FacilityUse() {
-	}
+	public FacilityUse() {}
 
 	@Override
 	public boolean isInUseDuringInterval(Date startDate, Date endDate) {
@@ -38,7 +37,8 @@ public class FacilityUse implements FacilityUseInterface {
 
 	@Override
 	public CustomerInterface assignFacilityToUse(FacilityInterface facility, CustomerInterface customer) {
-		 facility.setUser(customer);	
+		 setCustomer(customer);	
+		 setFacilityID(facility.getFacilityID());
 		 return customer;
 	}
 

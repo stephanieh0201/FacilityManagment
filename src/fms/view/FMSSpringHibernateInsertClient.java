@@ -32,7 +32,7 @@ public class FMSSpringHibernateInsertClient {
 		//Insert Facility Example
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
-      /*FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving Facility ***********************");
@@ -167,9 +167,9 @@ public class FMSSpringHibernateInsertClient {
 		///        
         System.out.println("*************** Saving Use ***********************");
         useManager.addUse(facilityUse);
-        System.out.println("*************** Use Inserted *************************");*/
+        System.out.println("*************** Use Inserted *************************");
         
-        CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
+      /*  CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
         
         System.out.println("*************** INSERT EXAMPLE *************************");
         System.out.println("*************** This example involves Instantiating and Saving Customer ***********************");
@@ -183,9 +183,9 @@ public class FMSSpringHibernateInsertClient {
 		customer.setLastName("Smith");
 		customer.setPhoneNumber("1234567");
     
-        System.out.println("*************** Saving Facility ***********************");
+        System.out.println("*************** Saving Customer ***********************");
         customerManager.addCustomer(customer);
-        System.out.println("*************** Facility Inserted *************************");
+        System.out.println("*************** Customer Inserted *************************");*/
 		
   
 

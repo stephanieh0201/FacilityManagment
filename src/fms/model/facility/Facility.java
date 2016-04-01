@@ -10,9 +10,8 @@ import fms.model.use.User;
 public class Facility implements FacilityInterface {
 	private int facilityID;
 	private List<RoomInterface> roomsList;
-//	private CustomerInterface customer;
 	private DetailsInterface details;
-//	private int detailsID;
+
 
 	
 	public Facility() {
@@ -31,11 +30,9 @@ public class Facility implements FacilityInterface {
 		this.facilityID=facilityID;
 	}
 	
-	
 	@Override
 	public List<RoomInterface> listFacilities() {
 		return roomsList;
-
 	}
 
 	public List<RoomInterface> getRoomsList() {
@@ -53,9 +50,6 @@ public class Facility implements FacilityInterface {
 		return details;
 	}
 	
-
-
-	
 	@Override
 	public int requestAvailableCapacity() {
 		int capacity=0;
@@ -65,7 +59,6 @@ public class Facility implements FacilityInterface {
 		return capacity;
 	
 	}
-	
 	
 	@Override
 	public RoomInterface addNewFacility(RoomInterface room) {
@@ -84,14 +77,6 @@ public class Facility implements FacilityInterface {
 		return room;
 	}
 
-//	public CustomerInterface getUser() {
-//		return customer;
-//	}
-//
-//	public void setUser(CustomerInterface customer) {
-//		this.customer = customer;
-//	}
-
 	public DetailsInterface getDetails() {
 		return details;
 	}
@@ -99,11 +84,6 @@ public class Facility implements FacilityInterface {
 	public void setDetails(DetailsInterface details) {
 		this.details = details;
 	}
-//	public int getDetailsID() {
-//		return detailsID;
-//	}
-//	public void setDetailsID(int detailsID) {
-//		this.detailsID = detailsID;
-//	}
+
 
 }

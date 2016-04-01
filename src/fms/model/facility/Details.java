@@ -7,8 +7,8 @@ public class Details implements DetailsInterface {
 	int detailsID;
 	
 	
-	
 	public Details() {}
+	
 	public void setDetailsID(int detailsID){
 		this.detailsID=detailsID;
 	}

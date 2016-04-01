@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import fms.model.facility.FacilityInterface;
 import fms.model.use.CustomerInterface;
 
 public class CustomerHibernateDAO {

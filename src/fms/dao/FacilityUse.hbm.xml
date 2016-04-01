@@ -6,11 +6,10 @@
 <hibernate-mapping package="fms.model.use">
 	<class name="FacilityUse" table="facilityUse">
 		<id name="useID" type="int" column="useID"/>
-		<one-to-one name="customer" class="fms.model.use.Customer" cascade="save-update, delete"></one-to-one>
+		<many-to-one name="customer" class="fms.model.use.Customer" column="customerID" unique="true" not-null="true" cascade="save-update, delete"></many-to-one>
         <property name="facilityID" type="int" column="facilityID"/>
         <property name="startDate" type="date" column="startDate"/>
 		<property name="endDate" type="date" column="endDate"/>	
-		<property name="customerID" type="int" column="customerID"/>
 		<bag name="inspections" cascade="save-update, delete">
          	<key column="useID" not-null="true"/>
          	<one-to-many class="fms.model.use.Inspection"/>

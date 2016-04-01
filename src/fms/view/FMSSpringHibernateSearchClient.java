@@ -32,7 +32,7 @@ public class FMSSpringHibernateSearchClient {
         System.out.println("***************** Application Context instantiated! ******************");
         //Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
         //Also, bootstrapping the FacilityManager instantiation using factory
-     /* FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
+        FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 	    System.out.println("*************** Creating Facility Manager object *************************"); 
         System.out.println("*************** SEARCH EXAMPLE *************************");
         //Find a customer if already exists; if not, create a new one.
@@ -81,14 +81,14 @@ public class FMSSpringHibernateSearchClient {
 	     System.out.println("\tEnd Date: \t\t\t\t"+ end);
 	     
 	     List <InspectionInterface> inspectionList =searchedUse.getInspections();
-	     System.out.println("\tInpsections: " );
+	     System.out.println("\tInspections: " );
 	     for (InspectionInterface i : inspectionList) {
 	      	System.out.println("\tID: \t\t\t\t" + i.getInspectionID() + "\n\t-Reason: \t\t\t\t" + i.getReason());
-	      //	ManagerInterface manager = i.getManager();
-	      //	System.out.println("\tManager: \t\t\t  " + manager.getEmployeeID() + " Salary: " + manager.getSalary());
+	      		ManagerInterface manager = i.getManager();
+	      		System.out.println("\tManager: \t\t\t  " + manager.getEmployeeID() + " Salary: " + manager.getSalary());
 	      }
 	     CustomerInterface customer = searchedUse.getCustomer();
-	     System.out.println("Customer ID: " + customer.getCustomerID() + " Payment Credit Card: " + customer.getCreditCard());*/
+	     System.out.println("Customer ID: " + customer.getCustomerID() + " Payment Credit Card: " + customer.getCreditCard());
         
         
          CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");

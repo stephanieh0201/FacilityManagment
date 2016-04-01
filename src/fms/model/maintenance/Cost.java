@@ -4,10 +4,8 @@ public class Cost implements CostInterface {
 	int maintenanceID;
 	int maintenanceCost;
 	
+	public Cost() {}
 	
-	public Cost() {
-		
-	}
 	public int getMaintenanceCost(){
 		return maintenanceCost;
 	}

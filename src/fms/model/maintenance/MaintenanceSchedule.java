@@ -13,9 +13,9 @@ public class MaintenanceSchedule implements MaintenanceScheduleInterface {
 	public MaintenanceSchedule() {}
 	
 	public FacilityInterface getFacility(){
-		return facility;
-		
+		return facility;	
 	}
+	
 	public void setFacility(FacilityInterface facility){
 		this.facility=facility;
 	}
