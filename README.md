@@ -1,7 +1,7 @@
 # FacilityManagment
 LUC COMP 473 Project 2
 
-#Project 2 - Updated 4/3/16
+##Project 2 - Updated 4/3/16
 
 – Spring container configuration for Dependency Injection for the application that you
 developed in Project 1.
@@ -15,7 +15,7 @@ developed in Project 1.
 – Hibernate configuration 
 
 
-#To test project: 
+##To test project: 
 
 You can view database at http://162.243.249.75/phpmyadmin/ (username: root, password: henry2992). Initially should be empty.
 
