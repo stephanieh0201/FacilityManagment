@@ -112,7 +112,7 @@ public class FMSSpringHibernateSearchClient {
 	     System.out.println("\tCredit Card: \t\t\t"+ searchedCust.getCreditCard());
 	     
 		 ManagerManager managerManager = (ManagerManager) context.getBean("managerManager");
-		 ManagerInterface searchedManag = managerManager.findManagerById(9991);       
+		 ManagerInterface searchedManag = managerManager.findManagerById(7234);       
 	     System.out.println("Searched manager information .......>>");
 	     System.out.println("\tManager ID: \t\t\t" + searchedManag.getEmployeeID());
 	  
