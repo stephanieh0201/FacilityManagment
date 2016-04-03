@@ -1,4 +1,4 @@
-# FacilityManagment
+# FacilityManagement
 ##LUC COMP 473 Project 2
 
 ###Project 2 - Updated 4/3/16
