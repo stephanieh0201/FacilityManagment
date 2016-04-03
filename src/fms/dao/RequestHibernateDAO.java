@@ -18,7 +18,7 @@ public class RequestHibernateDAO {
 	}
 	
 	public void deleteRequest(RequestInterface request) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + request.getRequestID());
+		System.out.println("*************** Deleteing request information in DB with ID ...  " + request.getRequestID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(request);

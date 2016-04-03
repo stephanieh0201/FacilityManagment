@@ -19,7 +19,7 @@ public class FacilityHibernateDAO {
 	}
 	
 	public void deleteFacility(FacilityInterface facility) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + facility.getFacilityID());
+		System.out.println("*************** Deleteing facility information in DB with ID ...  " + facility.getFacilityID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(facility);

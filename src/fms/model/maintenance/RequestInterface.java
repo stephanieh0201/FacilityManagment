@@ -22,5 +22,7 @@ public interface RequestInterface {
 	public void setMaintenanceSchedule(MaintenanceScheduleInterface maintenanceSchedule);
 	public int getProblemID();
 	public void setProblemID(int problemID);
+	public int getMaintenanceID();
+	public void setMaintenanceID(int maintenanceID);
 
 }

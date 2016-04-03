@@ -18,7 +18,7 @@ public class InspectionHibernateDAO {
 	}
 	
 	public void deleteInspection(InspectionInterface inspection) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + inspection.getInspectionID());
+		System.out.println("*************** Deleteing inspection information in DB with ID ...  " + inspection.getInspectionID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(inspection);

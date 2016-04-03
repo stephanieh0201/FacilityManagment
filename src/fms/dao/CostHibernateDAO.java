@@ -18,7 +18,7 @@ public class CostHibernateDAO {
 	}
 	
 	public void deleteCost(CostInterface cost) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + cost.getMaintenanceID());
+		System.out.println("*************** Deleteing cost information in DB with ID ...  " + cost.getMaintenanceID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(cost);

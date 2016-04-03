@@ -18,7 +18,7 @@ public class DetailsHibernateDAO {
 	}
 	
 	public void deleteDetails(DetailsInterface details) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + details.getDetailsID());
+		System.out.println("*************** Deleteing details information in DB with ID ...  " + details.getDetailsID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(details);

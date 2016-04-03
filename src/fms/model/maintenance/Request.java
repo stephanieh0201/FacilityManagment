@@ -14,6 +14,7 @@ public class Request implements RequestInterface{
 	private ProblemInterface problem;
 	private int problemID;
 	private MaintenanceScheduleInterface maintenanceSchedule;
+	private int maintenanceID;
 	
 	public Request() {
 	}
@@ -78,6 +79,12 @@ public class Request implements RequestInterface{
 
 	public void setProblemID(int problemID) {
 		this.problemID = problemID;
+	}
+	public int getMaintenanceID() {
+		return maintenanceID;
+	}
+	public void setMaintenanceID(int maintenanceID) {
+		this.maintenanceID = maintenanceID;
 	}
 
 }

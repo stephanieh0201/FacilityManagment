@@ -7,5 +7,6 @@
 	<class name="Room" table="room">
 		<id name="roomID" column="roomId" type="int"/>
 		<property name="capacity" type="int" column="capacity"/>
+		<property name="facilityID" type="int" column="facilityID"/>
 	</class>
 </hibernate-mapping>

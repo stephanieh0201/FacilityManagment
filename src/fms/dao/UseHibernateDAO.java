@@ -28,7 +28,7 @@ public class UseHibernateDAO {
 	}
 	
 	public void deleteUse(FacilityUseInterface use) {
-		System.out.println("*************** Deleting maintenance information in DB with ID ...  " + use.getUseID());
+		System.out.println("*************** Deleting use information in DB with ID ...  " + use.getUseID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(use);

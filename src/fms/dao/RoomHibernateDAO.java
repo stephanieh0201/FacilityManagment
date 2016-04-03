@@ -18,7 +18,7 @@ public class RoomHibernateDAO {
 	}
 	
 	public void deleteRoom(RoomInterface room) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + room.getRoomID());
+		System.out.println("*************** Deleteing room information in DB with ID ...  " + room.getRoomID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(room);

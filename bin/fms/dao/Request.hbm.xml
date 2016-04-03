@@ -9,6 +9,7 @@
         <one-to-one name="problem" class="fms.model.maintenance.Problem" cascade="save-update, delete"></one-to-one>
         <property name="requestDate" type="date" column="requestDate"/>
         <property name="completeDate" type="date" column="completeDate"/>
+        <property name="maintenanceID" type="int" column="maintenanceID"/>
 	</class>
 </hibernate-mapping>
 

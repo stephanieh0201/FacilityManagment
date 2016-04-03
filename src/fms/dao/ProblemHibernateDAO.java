@@ -18,7 +18,7 @@ public class ProblemHibernateDAO {
 	}
 	
 	public void deleteProblem(ProblemInterface problem) {
-		System.out.println("*************** Deleteing customer information in DB with ID ...  " + problem.getProblemID());
+		System.out.println("*************** Deleteing problem information in DB with ID ...  " + problem.getProblemID());
 		Session session = HibernateMySQLHelper.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(problem);

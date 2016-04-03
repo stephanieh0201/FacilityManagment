@@ -31,7 +31,7 @@ public class FMSSpringHibernateDeleteClient {
 		ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
 		System.out.println("***************** Application Context instantiated! ******************");
 
-		//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
+	//Spring to inject the right object implementation in FacilityManager for facility using Setter Injection
 		//Also, bootstrapping the FacilityManager instantiation using factory
 		FacilityManager facilityManager = (FacilityManager) context.getBean("facilityManager");
 		System.out.println("*************** Creating Facility Manager object *************************");
@@ -103,7 +103,7 @@ public class FMSSpringHibernateDeleteClient {
 		System.out.println("*************** DELETE EXAMPLE *************************");
 
 		//Find a facility that already exists
-		ManagerInterface searchedManager = managerManager.findManagerById(3); 
+		ManagerInterface searchedManager = managerManager.findManagerById(7234); 
 		System.out.println("*************** Manager to be deleted *************************");
 		System.out.println("\tName: \t\t\t" + searchedManager.getLastName() +", " +searchedManager.getFirstName()  + "\n");
        

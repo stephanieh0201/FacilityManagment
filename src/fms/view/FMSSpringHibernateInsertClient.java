@@ -22,6 +22,7 @@ import fms.model.manager.DetailsManager;
 import fms.model.manager.FacilityManager;
 import fms.model.manager.InspectionManager;
 import fms.model.manager.MaintenanceManager;
+import fms.model.manager.ManagerManager;
 import fms.model.manager.ProblemManager;
 import fms.model.manager.RequestManager;
 import fms.model.manager.RoomManager;
@@ -92,6 +93,7 @@ public class FMSSpringHibernateInsertClient {
 		request.setCompleteDate(date2);
 		request.setProblemID(1);
 		request.setRequestID(555);
+		request.setMaintenanceID(facilityMaint.getMaintenanceID());
 
 		ProblemInterface problem = (ProblemInterface) context.getBean("problem");
 		problem.setProblem("testing");
@@ -193,6 +195,21 @@ public class FMSSpringHibernateInsertClient {
         customerManager.addCustomer(insertCustomer);
         System.out.println("*************** Customer Inserted *************************");
 		
+        ManagerManager managerManager = (ManagerManager) context.getBean("managerManager");
+        ManagerInterface insertManager = (ManagerInterface) context.getBean("manager");
+        insertManager.setAddress("8482 Sunshine Street");
+        insertManager.setEmployeeID(7234);
+        insertManager.setFirstName("Harry");
+        insertManager.setLastName("Potter");
+        insertManager.setInspectionID(8);
+        insertManager.setPhoneNumber("3471111");
+        insertManager.setSalary(150000);
+        
+        System.out.println("*************** Saving Manager ***********************");
+        managerManager.addManager(insertManager);
+        System.out.println("*************** Manager Inserted *************************");
+
+        
         CostManager costManager = (CostManager) context.getBean("costManager");
         CostInterface insertCost = (CostInterface) context.getBean("cost");
         insertCost.setMaintenanceCost(9999);
