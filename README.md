@@ -1,7 +1,8 @@
 # FacilityManagment
 LUC COMP 473 Project 2
 
-Project 2 Updated 4/3/16
+#Project 2 - Updated 4/3/16
+
 – Spring container configuration for Dependency Injection for the application that you
 developed in Project 1.
 
