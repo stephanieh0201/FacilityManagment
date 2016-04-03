@@ -14,8 +14,13 @@ developed in Project 1.
 – Hibernate configuration 
 
 
-To test code: 
+#To test project: 
+
 You can view database at http://162.243.249.75/phpmyadmin/ (username: root, password: henry2992). Initially should be empty.
+
 1) Run FMSSpringHibernateInsertClient to insert into database.
+
 2) Run FMSSpringHibernateSearchClient to search and output data in database.
+
 3) Run FMSSpringHibernateDeleteClient to delete info added in step 1.
+
